@@ -6,15 +6,19 @@ Due: September 08, 2024
 ## Git, GitHub
 
 *What is the URL of the GitHub repo that you created in your personal account?*
+
 The URL of my Report is [Link](https://github.com/odu-cs625-datavis/Fall24-aveerasa-vnwal001)
    
 *In which direction does the 'push' command work (send local changes to remote OR send remote changes to local or something else)?*
+
 The push command sends local copy to remote
    
 *You have committed a change on your local machine/remote. However, you want to undo the changes committed. How would you do that?*
 
 Find the commit hash of the commit you want to undo using git log. 
+
 Run git revert <commit_hash>. This creates a new commit that undoes the changes. 
+
 Push the changes to the remote repository using git push origin <branch_name>.
 
 ## Markdown
