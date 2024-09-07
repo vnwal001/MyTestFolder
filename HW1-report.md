@@ -52,6 +52,8 @@ def greet(name):
 
 *What is the URL of your Google Colab notebook?*
 
+This is the link to my Google Colab [Notebook](https://colab.research.google.com/drive/1_mXwqMkIBWL-y3ICkcqrNPPDWoSydE7I#scrollTo=gh2gkteR8ish)
+
 ## Python/Seaborn
 
 *Insert the first penguin chart here*
