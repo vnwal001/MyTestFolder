@@ -62,6 +62,8 @@ This is the link to my Google Colab [Notebook](https://colab.research.google.com
 
 *Describe what the figure is showing.*
 
+The figure above shows a scatter plot
+
 *Insert the second penguin chart here*
 
 *Describe what the figure is showing.*
