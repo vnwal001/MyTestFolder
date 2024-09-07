@@ -39,6 +39,8 @@ def greet(name):
 ### This In My Level 3 Heading
 *Insert a image of your favorite Olympics sport/game, sized appropriately*
 
+![\label{fig:Spanish Team}](https://raw.githubusercontent.com/anwala/teaching-web-science/main/fall-2022/homework/hw0/growth_early_web.png)
+
 ## Tableau
 
 *Insert the image of your horizontal bar chart here. Reminder, this should show countries that won most number of medals in Paris2024 Summer Olynpics by continent.*
