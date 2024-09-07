@@ -45,6 +45,9 @@ def greet(name):
 
 *Insert the image of your horizontal bar chart here. Reminder, this should show countries that won most number of medals in Paris2024 Summer Olynpics by continent.*
 
+
+![\label{fig:Olympic Medal Count}](https://github.com/vnwal001/CS625-2ND/blob/main/Paris%202024%20Olympics.jpg)
+
 ## Google Colab
 
 *What is the URL of your Google Colab notebook?*
