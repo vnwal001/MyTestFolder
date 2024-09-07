@@ -57,6 +57,8 @@ This is the link to my Google Colab [Notebook](https://colab.research.google.com
 ## Python/Seaborn
 
 *Insert the first penguin chart here*
+![\label{fig:Penguin 1}](https://github.com/vnwal001/CS625-2ND/blob/main/panda1.png)
+
 
 *Describe what the figure is showing.*
 
