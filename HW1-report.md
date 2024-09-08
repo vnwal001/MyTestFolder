@@ -81,6 +81,7 @@ line.
 ## Observable and Vega-Lite
 
 *What happens when you replace `markCircle()` with `markSquare()`?*
+It replaces the circle at each point of the scatter plot with squares
 
 *What happens when you replace `markCircle()` with `markPoint()`?*
 
