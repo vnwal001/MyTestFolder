@@ -1,6 +1,7 @@
 # HW 1 - CS 625, Fall 2024
 
 VICTOR NWALA 
+
 Due: September 08, 2024
 
 ## Git, GitHub
@@ -90,9 +91,11 @@ It replaces the circles on the scatter plots with points
 To swap the x and y axes on a scatterplot in Vega-Lite, you can simply swap the x and y fields in the encoding block of your Vega-Lite specification.
 
 *Insert the bar chart image here*
-![\label{fig:Bar Chart}](https://github.com/vnwal001/CS625-2ND/blob/main/olympic%20image.jpg)
+![\label{fig:Bar Chart}](https://github.com/vnwal001/CS625-2ND/blob/main/barChart.png)
 
 *Why do you think this chart is the result of this code change?*
+
+ In this chart y came before x in the encoding order. The encoding parameter order has the independent variable “Origin” before the dependent variable count.
 
 ## References
 
