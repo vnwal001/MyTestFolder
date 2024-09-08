@@ -101,5 +101,7 @@ To swap the x and y axes on a scatterplot in Vega-Lite, you can simply swap the 
 
 *Every report must list the references (including the URL) that you consulted while completing the assignment. Replace the items below with the references you consulted*
 
-* Reference 1, <https://www.example.com>
-* Reference 2, <https://www.example.com/reallyreallyreally-extra-long-URI/>
+* Reference 1, <https://observablehq.com/@observablehq/vega-lite/>
+* Reference 2, <https://markdownguide.offshoot.io/basic-syntax/>
+* Reference 3, <https://chatgpt.com/>
+* Reference 4, <https://www.meta.ai/>
