@@ -70,9 +70,13 @@ line.
 ## Observable and Vega-Lite
 
 *What happens when you replace `markCircle()` with `markSquare()`?*
+
 It replaces the circles on the scatter plot with squares  
+
 *What happens when you replace `markCircle()` with `markPoint()`?*
+
 It replaces the circles on the scatter plots with points
+
 *What change do you need to make to swap the x and y axes on the scatterplot?*
 
 *Insert the bar chart image here*
