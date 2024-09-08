@@ -29,11 +29,7 @@ Push the changes to the remote repository using git push origin <branch_name>.
 
 My favorite olympic sport is *soccer*, it is also known as *__football__* outside of the U.S. In the men's catergory of this 
 sport you can only win one medal. Brazil won the gold medal in 2020 (Japan), while Spain won the gold in 2024 (France). `For
-more details you can refer to the official olympic` [website](https://olympics.com/en/news/olympic-football-winners-list-men-women-gold-medals-champions)
-```python
-def greet(name):
-    return f"Hi, {name}!"
-```
+more details you can refer to the official olympic` [website](https://olympics.com/en/news/olympic-football-winners-list-men-women-gold-medals-champions) 
 
 *Create a level 3 heading*
 ### This In My Level 3 Heading
@@ -41,10 +37,8 @@ def greet(name):
 
 ![\label{fig:Spanish Team}](https://github.com/vnwal001/CS625-2ND/blob/main/olympic%20image.jpg)
 
-## Tableau
-
+## Tableau  
 *Insert the image of your horizontal bar chart here. Reminder, this should show countries that won most number of medals in Paris2024 Summer Olynpics by continent.*
-
 
 ![\label{fig:Olympic Medal Count}](https://github.com/vnwal001/CS625-2ND/blob/main/Paris%202024%20Olympics.jpg)
 
@@ -65,26 +59,20 @@ This is the link to my Google Colab [Notebook](https://colab.research.google.com
 The figure above shows a scatter plot
 
 *Insert the second penguin chart here*
-
-
 ![\label{fig:Penguin 2}](https://github.com/vnwal001/CS625-2ND/blob/main/panda2.png)
 
 *Describe what the figure is showing.*
-
 The image above shows a bar chart of the body mass of penguin species 
-
-*What happened when you removed the outer parentheses from the code? Why?*
-
+*What happened when you removed the outer parentheses from the code? Why?*  
 When I remove the parenthesis from the code, it breaks with an error. It breaks because without the parenthesis you cannot write the code in multiple
 line. 
 
 ## Observable and Vega-Lite
 
 *What happens when you replace `markCircle()` with `markSquare()`?*
-It replaces the circle at each point of the scatter plot with squares
-
+It replaces the circles on the scatter plot with squares  
 *What happens when you replace `markCircle()` with `markPoint()`?*
-
+It replaces the circles on the scatter plots with points
 *What change do you need to make to swap the x and y axes on the scatterplot?*
 
 *Insert the bar chart image here*
