@@ -81,6 +81,8 @@ It replaces the circles on the scatter plots with points
 
 *What change do you need to make to swap the x and y axes on the scatterplot?*
 
+To swap the x and y axes on a scatterplot in Vega-Lite, you can simply swap the x and y fields in the encoding block of your Vega-Lite specification.
+
 *Insert the bar chart image here*
 
 *Why do you think this chart is the result of this code change?*
