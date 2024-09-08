@@ -25,6 +25,12 @@ Push the changes to the remote repository using git push origin <branch_name>.
 
 *Create a bulleted list with at least 3 items*
 
+- Orange
+- Mango
+- Grape
+
+
+
 *Write a single paragraph that demonstrates the use of italics, bold, bold italics, code, and includes a link. The paragraph must explain your favorite Olympic sport/game, the country that won the most number of olympic medals (Summer) in your favorite sport in 2020 (Japan) and 2024 (France). You are free to include more information.*
 
 My favorite olympic sport is *soccer*, it is also known as *__football__* outside of the U.S. In the men's catergory of this 
