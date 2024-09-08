@@ -69,6 +69,7 @@ The figure above shows a scatter plot
 ![\label{fig:Penguin 2}](https://github.com/vnwal001/CS625-2ND/blob/main/panda2.png)
 
 *Describe what the figure is showing.*
+
 The image above shows a bar chart of the body mass of penguin species 
 
 *What happened when you removed the outer parentheses from the code? Why?*
