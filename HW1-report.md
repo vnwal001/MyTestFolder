@@ -75,7 +75,7 @@ The image above shows a bar chart of the body mass of penguin species
 *What happened when you removed the outer parentheses from the code? Why?*
 
 When I remove the parenthesis from the code, it breaks with an error. It breaks because without the parenthesis you cannot write the code in multiple
-line. 
+lines. 
 
 ## Observable and Vega-Lite
 
