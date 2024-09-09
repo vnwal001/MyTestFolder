@@ -63,14 +63,14 @@ This is the link to my Google Colab [Notebook](https://colab.research.google.com
 
 *Describe what the figure is showing.*
 
-The figure above shows a scatter plot
+This is a scatter plot that shows the relationship between penguin bill length and bill depth.
 
 *Insert the second penguin chart here*
 ![\label{fig:Penguin 2}](https://github.com/vnwal001/CS625-2ND/blob/main/panda2.png)
 
 *Describe what the figure is showing.*
 
-The image above shows a bar chart of the body mass of penguin species 
+This is a bar chart that shows the average body mass of male and female penguins across different species.
 
 *What happened when you removed the outer parentheses from the code? Why?*
 
