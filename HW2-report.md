@@ -110,6 +110,7 @@ I performed the following transformation GREL expressions on the respective colu
 
 
     Answer
+  	
     I performed the following transformation GREL expressions on the Year columns:
   	
     - `value.trim()`  
@@ -152,12 +153,10 @@ I performed the following transformation GREL expressions on the respective colu
 
    Answer: 
 
-   I perform the follow transformations on the year column to split it into startYear and endYear
+   I performed the follow transformations on the year column to split it into startYear and endYear
    
    -`if(length(value) < 7, value.replace(value,"(" + value + /–/ + value + ")"),value)`
      This to transform all the single year values to this format, (xxxx-xxxx)
-     
-   - Split 8171 cell(s) in column YEAR into several columns by field lengths
      
    - I split the Year column in 2 by index lenght of 5 each, the result was 2 columns, Year 1 with format (xxxx and Year 2 with format, –xxxx
      
@@ -166,10 +165,13 @@ I performed the following transformation GREL expressions on the respective colu
    - I  Renamed column YEAR 2 to endYear
     
    -`grel:value.replace("(", "")`
-     To replace the open parenthesis symbol in startYear, 8, 171 rows were affected 
+     To replace the open parenthesis symbol in startYear, 8,171 rows were affected 
 
     -`grel:value.replace(/–/, "")`
-     To replace the "–" symbol in endYear
+     To replace the "–" symbol in endYear, 8,166 rows were affected.
+     
+     * I noticed 8,177 - 8,166 = 5, so I have 5 problematic rows* 
+     
      
     - I removed the Initial Year Column
 
