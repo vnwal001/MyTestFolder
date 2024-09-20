@@ -52,8 +52,8 @@ Refill the blank cells for the columns "Rating", "Votes", and "Run Time" to 0 an
 
 I peformed the following transformation on GREL expressions on columns 
 
-` 
-Text transform on 0 cells in column RATING: grel:if(isNull(value), 0, value)------------if rating is null, change to zero
+ 
+`Text transform on 0 cells in column RATING: grel:if(isNull(value), 0, value)------------if rating is null, change to zero
 
 Text transform on 0 cells in column VOTES: grel:if(isNull(value), 0, value)-------------if rating is votes is null, change to zero
 
@@ -69,23 +69,23 @@ Text transform on 4,423 cells in column VOTES: value.toString() ------ Convert v
 
 Text transform on 3,748 cells in column VOTES: grel:value.replace(",", "")------------Remove all commas in votes
 
-Text transform on 8,171 cells in column VOTES: value.toNumber()----------Convert all votes back to numbers
-`
+Text transform on 8,171 cells in column VOTES: value.toNumber()----------Convert all votes back to numbers`
+
 
 
 Your solution must be arrived via GREL or Python functions wherever it is required. Fill "N/A" for text type column(s) that has blank cells otherwise 0. 
 
-`
-Text transform on 0 cells in column MOVIES: grel:if(isNull(value), "N/A", value)-------- if movies column is empty replace with N/A
+
+`Text transform on 0 cells in column MOVIES: grel:if(isNull(value), "N/A", value)-------- if movies column is empty replace with N/A
 
 Text transform on 0 cells in column YEAR: grel:if(isNull(value), "N/A", value)-----------if year column is empty replace with N/A
 
 Text transform on 0 cells in column ONE-LINE: grel:if(isNull(value), "N/A", value)-------if year one-line is empty replace with N/A
 
-Text transform on 0 cells in column STARS: grel:if(isNull(value), "N/A", value)----------if year one-line is empty replace with N/A
+Text transform on 0 cells in column STARS: grel:if(isNull(value), "N/A", value)----------if year one-line is empty replace with N/A`
 
 
-`
+
 
 Refer <https://openrefine.org/docs/manual/grelfunctions>
 
