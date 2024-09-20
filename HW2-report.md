@@ -52,7 +52,7 @@ I merged all the clusters by the STAR column, using the Key collison, fingerprin
 
 Refill the blank cells for the columns "Rating", "Votes", and "Run Time" to 0 and change their data type to numeric. Similarly check values of all other columns and update the values accordingly (free to decide). 
 
-I peformed the following transformation on GREL expressions on columns 
+I performed the following transformation GREL expressions on the respective columns: 
 
  
 - `if(isNull(value), 0, value)`  
@@ -97,16 +97,47 @@ I peformed the following transformation on GREL expressions on columns
 
 
 
-Refer <https://openrefine.org/docs/manual/grelfunctions>
 
 
 3.	The column "Year" has numerous ambiguous values. Follow the steps given below to proceed further.
 
-    i.	Remove the rows if the cell value is Roman numerals/string only. 
+    i.	Remove the rows if the cell value is Roman numerals/string only.
+
 
     ii.	Replace the value of the year that enclosed by (xxxx) single year only. 
     
         Example: (2024) --> 2024, (2021-) --> 2021, 1965 TV Special --> 1965, (ii) (2012-) --> 2012 [Apply GREL/Python commands to arrive at the solution wherever is possible]
+
+
+    Answer
+    I performed the following transformation GREL expressions on the Year columns:
+  	
+    - `value.trim()`  
+       Remove all spaces in the year column
+      
+    - `if(length(value) < 9, value.replace("(", "").replace(")", ""), value)`  
+       Remove perenthesis for columns with single year value
+      
+    - `if(length(value) < 7, value.replace(/–/,""),value)`  
+       Remove the symbol (–) for single year values
+      
+    - `value.replace(/[a-zA-Z ]+/, '')`  
+      Removes all letters (both uppercase and lowercase) and spaces from the value
+      
+    - `value.replace("()", "")`  
+      Removes all empty parenthesis
+      
+    - `if(length(value) < 9, value.replace("(", "").replace(")", ""), value)`  
+       Again remove perenthesis for columns with single year value, this was done to catch the new values after alphabets have been removed, their index now falls with range 
+      
+    - `if(length(value) < 7, value.replace(/–/,""),value)`  
+       Again remove the symbol (–) for single year values, this was done to catch the new values after alphabets have been removed, their index now falls with range 
+      
+  	 - I also performed a custom facet by blank (null or empty string), I found 4 blank rows and deleted matching rows on the YEAR Column 
+
+
+
+
 
     iii. After successful execution of (i) to (iii) the "Year" column may have values in the format (xxxx-xxxx) or (<roman letter> xxxx-xxxx).  
     
@@ -119,7 +150,7 @@ Refer <https://openrefine.org/docs/manual/grelfunctions>
     Remove the column "Year" after successful execution of steps 3.(i) - 3(iii). 
 
 
-4.	Create a new column called "Verdict" and fill its values based on the criteria given below:
+5.	Create a new column called "Verdict" and fill its values based on the criteria given below:
 
 |   Rating       |  Verdict     |
 |----------------|--------------|
