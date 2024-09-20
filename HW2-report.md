@@ -195,10 +195,10 @@ I perfomed the following transformations:
 
 - Created a new column Vedict based on column RATING by filling with it "Not Known"  for 0 values, GREL,  `grel:if(value == 0, "Not known", value)'
 
-- `grel:if(value > 8.0, "Super Hit", value)'
-  If value is greater than 8 in Verdict replace with "Super Hit)
+- `grel:if(value > 8.0, "Super Hit", value)`
+ If value is greater than 8 in Verdict replace with "Super Hit)
 
-- `grel:if(isNumeric(value), if ((value > 0).and(value <= 4.5), "Flop", value ) , value )'
+- `grel:if(isNumeric(value), if ((value > 0).and(value <= 4.5), "Flop", value ) , value )`
   Replace values >0 and <=4.5 with Flop and ignore none numeric values in verdict
 
 - `grel:if(isNumeric(value), if ((value > 4.5).and(value <= 6.5), "Average", value) , value )`
