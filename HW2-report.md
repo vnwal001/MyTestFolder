@@ -19,8 +19,10 @@
 1.	Remove rows/columns:
 
     i.	Remove blank rows/row contain misleading values/columns that has no values (more than one column of the same row for example). Remove the column "Gross".
-  	
-  	Answer: A) I clicked on the Gross Column--------> Edit Column--------->Remove Column
+
+  	Answer: 
+
+  	A) I clicked on the Gross Column--------> Edit Column--------->Remove Column
 
   	B) I created a new column (MissingValues) to count number of missing values in every rows, I used the GREL expression
 
@@ -53,24 +55,33 @@ Refill the blank cells for the columns "Rating", "Votes", and "Run Time" to 0 an
 I peformed the following transformation on GREL expressions on columns 
 
  
-`if(isNull(value), 0, value)------------if rating is null, change to zero
+- `if(isNull(value), 0, value)`  
+  If rating is null, change to zero.
 
-if(isNull(value), 0, value)-------------if rating is votes is null, change to zero
+- `if(isNull(value), 0, value)`  
+  If rating votes is null, change to zero.
 
-if(isNull(value), 0, value)-------if rating is runtime is null, change to zero
+- `if(isNull(value), 0, value)`  
+  If rating runtime is null, change to zero.
 
-value.toNumber()------- Convert votes to numbers
+- `value.toNumber()`  
+  Convert votes to numbers.
 
-value.toNumber()----- Convert runtime to numbers
+- `value.toNumber()`  
+  Convert runtime to numbers.
 
-value.toNumber()------ Convert ratings to numbers
+- `value.toNumber()`  
+  Convert ratings to numbers.
 
+- `value.toString()`  
+  Convert votes back to string.
 
-value.toString() ------ Convert votes back to string
+- `value.replace(",", "")`  
+  Remove all commas in votes.
 
-grel:value.replace(",", "")------------Remove all commas in votes
+- `value.toNumber()`  
+  Convert all votes back to numbers.
 
-value.toNumber()----------Convert all votes back to numbers`
 
 
 
