@@ -54,13 +54,22 @@ I peformed the following transformation on GREL expressions on columns
 
  
 `if(isNull(value), 0, value)------------if rating is null, change to zero
+
 if(isNull(value), 0, value)-------------if rating is votes is null, change to zero
+
 if(isNull(value), 0, value)-------if rating is runtime is null, change to zero
+
 value.toNumber()------- Convert votes to numbers
+
 value.toNumber()----- Convert runtime to numbers
+
 value.toNumber()------ Convert ratings to numbers
+
+
 value.toString() ------ Convert votes back to string
+
 grel:value.replace(",", "")------------Remove all commas in votes
+
 value.toNumber()----------Convert all votes back to numbers`
 
 
