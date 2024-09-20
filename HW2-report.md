@@ -50,6 +50,7 @@
 Refill the blank cells for the columns "Rating", "Votes", and "Run Time" to 0 and change their data type to numeric. Similarly check values of all other columns and update the values accordingly (free to decide). 
 
 I peformed the following transformation on GREL expressions on columns 
+
 ` 
 Text transform on 0 cells in column RATING: grel:if(isNull(value), 0, value)------------if rating is null, change to zero
 
