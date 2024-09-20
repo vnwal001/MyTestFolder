@@ -46,9 +46,11 @@ I refilled the blank cells for the columns "Rating", "Votes", and "Run Time" wit
 - `value.toNumber()`  (Convert Ratings to numbers)
 - `value.toString()`  (Convert Votes back to string)
 - `value.replace(",", "")`  (Remove all commas in Votes)
+- `value.toNumber()` Convert all votes back to numbers.
 - `if(isNull(value), "N/A", value)`  (Replace empty Movies with "N/A")
 - `if(isNull(value), "N/A", value)`  (Replace empty Year with "N/A")
 - `if(isNull(value), "N/A", value)`  (Replace empty One-Line with "N/A")
+- if(isNull(value), "N/A", value)`  (Replace empty STARS with "N/A")
 
 #### 3. Handling Ambiguous Values in the "Year" Column
 
@@ -64,16 +66,26 @@ I performed the following GREL transformations on the Year column:
 - `if(length(value) < 7, value.replace(/–/,""), value)`  (Remove the symbol "–" for single year values)
 - `value.replace(/[a-zA-Z ]+/, '')`  (Remove all letters and spaces)
 - `value.replace("()", "")`  (Remove empty parentheses)
-- I also performed a custom facet by blank (null or empty string) and found 4 blank rows to delete in the YEAR column.
+- `if(length(value) < 9, value.replace("(", "").replace(")", ""), value)`  (Again remove perenthesis for columns with single year value, this was done to catch the new values after alphabets have been removed, their index now falls with range) 
+- `if(length(value) < 7, value.replace(/–/,""),value)`  (Again remove the symbol (–) for single year values, this was done to catch the new values after alphabets have been removed, their index now falls with range) 
+- I also performed a custom facet by blank (null or empty string), I found 4 blank rows and deleted matching rows on the YEAR Column 
+
 
 iii. Create new columns "startYear" and "endYear".
 
 **Answer:**
 I transformed the Year column to split it into startYear and endYear:
 
-- `if(length(value) < 7, value.replace(value, "(" + value + /–/ + value + ")"), value)`  (Transform single year values)
-- I split the Year column into two by index length of 5.
-- I renamed columns accordingly and removed problematic symbols.
+- `if(length(value) < 7, value.replace(value,"(" + value + /–/ + value + ")"),value)`
+  This to transform all the single year values to this format, (xxxx-xxxx)
+- I split the Year column in 2 by index lenght of 5 each, the result was 2 columns, Year 1 with format (xxxx and Year 2 with format, –xxxx
+- I Renamed column YEAR 1 to startYear
+- I  Renamed column YEAR 2 to endYear
+- `value.replace("(", "")` To replace the open parenthesis symbol in startYear, 8,171 rows were affected
+- `grel:value.replace(/–/, "")`
+  To replace the "–" symbol in endYear, 8,166 rows were affected.
+- *I noticed 8,177 - 8,166 = 5, so I have 5 problematic rows* 
+- I removed the Initial Year Column
 
 #### 4. Create a New Column "Verdict"
 
@@ -89,11 +101,16 @@ I created a new column "Verdict" based on the "Rating" column:
 | >8.0         | Super Hit   |
 
 **Transformations:**
-- `if(value == 0, "Not known", value)`
-- `if(value > 8.0, "Super Hit", value)`
-- `if(isNumeric(value), if ((value > 0).and(value <= 4.5), "Flop", value), value)`
-- `if(isNumeric(value), if ((value > 4.5).and(value <= 6.5), "Average", value), value)`
-- `if(isNumeric(value), if ((value > 6.5).and(value <= 8.0), "Hit", value), value)`
+-  Created a new column, Vedict based on column RATING by filling with it "Not Known"  for 0 values, GREL,  `if(value == 0, "Not known", value)`
+- `if(value > 8.0, "Super Hit", value)` if value is greater than 8 in Verdict replace with "Super Hit"
+- `if(isNumeric(value), if ((value > 0).and(value <= 4.5), "Flop", value), value)` Replace values >0 and <=4.5 with Flop and ignore none numeric values in verdict
+- `if(isNumeric(value), if ((value > 4.5).and(value <= 6.5), "Average", value), value)` Replace values >4.5 and <=6.5 with  Average and ignore none numeric values in verdict
+- `if(isNumeric(value), if ((value > 6.5).and(value <= 8.0), "Hit", value), value)` Replace values >6.5 and <=8.0 with  Hit and ignore none numeric values in verdict
+
+#### Additional Cleaning of Data based of invalid date values
+- I created new column convertToDateStartDate based on column startYear converting all the values to date data type, grel, `toDate(value)`
+- I Performed a text facet on convertToDateStartDate and saw 5 blank rows, because they have invalid Date values, I deleted those 5 matching rows
+- I removed convertToDateStartDate column
 
 After cleaning the file:
 - Exported as `HW2-Movies.csv`.
