@@ -165,14 +165,14 @@ I performed the following transformation GREL expressions on the respective colu
    - I  Renamed column YEAR 2 to endYear
     
    - `value.replace("(", "")`
-     To replace the open parenthesis symbol in startYear, 8,171 rows were affected 
-
-    - `grel:value.replace(/–/, "")`
+     To replace the open parenthesis symbol in startYear, 8,171 rows were affected
+     
+   - `grel:value.replace(/–/, "")`
       To replace the "–" symbol in endYear, 8,166 rows were affected.
+
+   - *I noticed 8,177 - 8,166 = 5, so I have 5 problematic rows* 
      
-     * I noticed 8,177 - 8,166 = 5, so I have 5 problematic rows* 
-     
-    - I removed the Initial Year Column
+   - I removed the Initial Year Column
 
 
 5.	Create a new column called "Verdict" and fill its values based on the criteria given below:
