@@ -155,7 +155,7 @@ I performed the following transformation GREL expressions on the respective colu
 
    I performed the follow transformations on the year column to split it into startYear and endYear
    
-   -`if(length(value) < 7, value.replace(value,"(" + value + /–/ + value + ")"),value)`
+   - `if(length(value) < 7, value.replace(value,"(" + value + /–/ + value + ")"),value)`
      This to transform all the single year values to this format, (xxxx-xxxx)
      
    - I split the Year column in 2 by index lenght of 5 each, the result was 2 columns, Year 1 with format (xxxx and Year 2 with format, –xxxx
