@@ -82,19 +82,17 @@ I peformed the following transformation on GREL expressions on columns
 - `value.toNumber()`  
   Convert all votes back to numbers.
 
+- `if(isNull(value), "N/A", value)`
+  if movies column is empty replace with N/A
 
-
-
-Your solution must be arrived via GREL or Python functions wherever it is required. Fill "N/A" for text type column(s) that has blank cells otherwise 0. 
-
-
-`Text transform on 0 cells in column MOVIES: grel:if(isNull(value), "N/A", value)-------- if movies column is empty replace with N/A
-
-Text transform on 0 cells in column YEAR: grel:if(isNull(value), "N/A", value)-----------if year column is empty replace with N/A
-
-Text transform on 0 cells in column ONE-LINE: grel:if(isNull(value), "N/A", value)-------if year one-line is empty replace with N/A
-
-Text transform on 0 cells in column STARS: grel:if(isNull(value), "N/A", value)----------if year one-line is empty replace with N/A`
+- `if(isNull(value), "N/A", value)`
+  if year column is empty replace with N/A
+   
+- `if(isNull(value), "N/A", value)`
+  if year one-line is empty replace with N/A
+  
+- `if(isNull(value), "N/A", value)`
+  if year one-line is empty replace with N/A
 
 
 
