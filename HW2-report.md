@@ -1,6 +1,6 @@
-# Homework 2: Data Cleaning
+# Course : CS 625
 ## Name : Victor Nwala
-## Course : CS 625
+## Homework 2
 
 **Due:** September 22, 2024 by 11:59pm  
 
@@ -175,7 +175,10 @@ I performed the following transformation GREL expressions on the respective colu
    - I removed the Initial Year Column
 
 
-5.	Create a new column called "Verdict" and fill its values based on the criteria given below:
+
+
+
+4.	Create a new column called "Verdict" and fill its values based on the criteria given below:
 
 |   Rating       |  Verdict     |
 |----------------|--------------|
@@ -186,11 +189,26 @@ I performed the following transformation GREL expressions on the respective colu
 | Above>8.0      |   Super Hit  |
 |----------------|--------------|
 
-*Caution:* This is medium sized, messy dataset.  Clean the data as well as you can, with an eye towards being able to answer the questions in Part 2. However, you are not expected to clean the entire dataset fully.
+Answer:
 
-In your report, explain the steps you took to clean the data. Include screenshots, GREL statements, etc. as needed to clearly document what you did. If you did any manual cleaning, note that and explain why you did this manually. Include enough detail so that I am convinced that you understand how to use OpenRefine.
+I perfomed the following transformations:
 
-You will likely not have learned everything in class that you need to know to complete the assignment. I expect that you will watch the tutorials and read documentation, including documentation on the [GREL regex language](https://openrefine.org/docs/manual/grel).
+- Created a new column Vedict based on column RATING by filling with it "Not Known"  for 0 values, GREL,  `grel:if(value == 0, "Not known", value)'
+
+- `grel:if(value > 8.0, "Super Hit", value)'
+  If value is greater than 8 in Verdict replace with "Super Hit)
+
+- `grel:if(isNumeric(value), if ((value > 0).and(value <= 4.5), "Flop", value ) , value )'
+  Replace values >0 and <=4.5 with Flop and ignore none numeric values in verdict
+
+- `grel:if(isNumeric(value), if ((value > 4.5).and(value <= 6.5), "Average", value) , value )`
+  Replace values >4.5 and <=6.5 with  Average and ignore none numeric values in verdict
+
+- `grel:if(isNumeric(value), if ((value > 6.5).and(value <= 8.0), "Hit", value) , value )`
+  Replace values >6.5 and <=8.0 with  Hit and ignore none numeric values in verdict
+
+
+
 
 When you are done cleaning the file:
 
