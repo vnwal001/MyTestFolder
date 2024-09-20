@@ -19,8 +19,9 @@
 1.	Remove rows/columns:
 
     i.	Remove blank rows/row contain misleading values/columns that has no values (more than one column of the same row for example). Remove the column "Gross".
+  	
   	Answer: A) I clicked on the Gross Column--------> Edit Column--------->Remove Column
-  	        B) I created a new column (MissingValues) to count number of missing rows, I used the GREL expression
+  	        B) I created a new column (MissingValues) to count number of missing values in every rows, I used the GREL expression
 
 `
   	if(isNull(cells['MOVIES'].value), 1, 0)+
@@ -31,16 +32,58 @@
  if(isNull(cells['VOTES'].value), 1, 0)+ 
  if(isNull(cells['RunTime'].value), 1, 0)
   	`
+   C) I performed a numeric facet on the MissingValues Column, and I sorted for all matching rows with MissingValue > 1, I deleted the matching rows and removed the MissingValues column
   	       
 
     ii.	Remove rows that contain misleading info. You must explain in your report the criteria you defined to remove those selected row(s)/column(s). [It should be noted movie/series may have several sequels with same name]
 
+    Answer:
+    
+    A) I merged all the clusters by the STAR column, using the Key collison, fingerprint method. I did this believe if the cells in that column have exactly the same stars and director, it is highly like to be the same movie. I found 38 clusters. 
+
 
 3.	Refilling the values in the column(s):
 
+   Answer:
+   
+
 Refill the blank cells for the columns "Rating", "Votes", and "Run Time" to 0 and change their data type to numeric. Similarly check values of all other columns and update the values accordingly (free to decide). 
 
+I peformed the following transformation on GREL expressions on columns 
+` 
+Text transform on 0 cells in column RATING: grel:if(isNull(value), 0, value)------------if rating is null, change to zero
+
+Text transform on 0 cells in column VOTES: grel:if(isNull(value), 0, value)-------------if rating is votes is null, change to zero
+
+Text transform on 1,393 cells in column RunTime: grel:if(isNull(value), 0, value)-------if rating is runtime is null, change to zero
+
+Text transform on 4,423 cells in column VOTES: value.toNumber()------- Convert votes to numbers
+
+Text transform on 6,781 cells in column RunTime: value.toNumber()----- Convert runtime to numbers
+
+Text transform on 8,170 cells in column RATING: value.toNumber()------ Convert ratings to numbers
+
+Text transform on 4,423 cells in column VOTES: value.toString() ------ Convert votes back to string
+
+Text transform on 3,748 cells in column VOTES: grel:value.replace(",", "")------------Remove all commas in votes
+
+Text transform on 8,171 cells in column VOTES: value.toNumber()----------Convert all votes back to numbers
+`
+
+
 Your solution must be arrived via GREL or Python functions wherever it is required. Fill "N/A" for text type column(s) that has blank cells otherwise 0. 
+
+`
+Text transform on 0 cells in column MOVIES: grel:if(isNull(value), "N/A", value)-------- if movies column is empty replace with N/A
+
+Text transform on 0 cells in column YEAR: grel:if(isNull(value), "N/A", value)-----------if year column is empty replace with N/A
+
+Text transform on 0 cells in column ONE-LINE: grel:if(isNull(value), "N/A", value)-------if year one-line is empty replace with N/A
+
+Text transform on 0 cells in column STARS: grel:if(isNull(value), "N/A", value)----------if year one-line is empty replace with N/A
+
+
+`
 
 Refer <https://openrefine.org/docs/manual/grelfunctions>
 
