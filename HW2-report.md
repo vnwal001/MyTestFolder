@@ -35,12 +35,12 @@
   
    C) I performed a numeric facet on the MissingValues Column, and I sorted for all matching rows with MissingValue > 1, I deleted the matching rows and removed the MissingValues column
   	       
+   ii Remove rows that contain misleading info. You must explain in your report the criteria you defined to remove those selected row(s)/column(s).
 
-    ii.	Remove rows that contain misleading info. You must explain in your report the criteria you defined to remove those selected row(s)/column(s).
+Answer:
 
-    Answer:
-    
-    A) I merged all the clusters by the STAR column, using the Key collison, fingerprint method. I did this believe if the cells in that column have exactly the same stars and director, it is highly like to be the same movie. I found 38 clusters. 
+I merged all the clusters by the STAR column, using the Key collison, fingerprint method. I did this believe if the cells in that column have exactly the same stars and director, it is highly like to be the same movie. I found 38 clusters. 
+
 
 
 3.	Refilling the values in the column(s):
