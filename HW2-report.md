@@ -193,18 +193,18 @@ Answer:
 
 I perfomed the following transformations:
 
-- Created a new column Vedict based on column RATING by filling with it "Not Known"  for 0 values, GREL,  `grel:if(value == 0, "Not known", value)'
+- Created a new column Vedict based on column RATING by filling with it "Not Known"  for 0 values, GREL,  `if(value == 0, "Not known", value)`
 
-- `grel:if(value > 8.0, "Super Hit", value)`
- If value is greater than 8 in Verdict replace with "Super Hit)
+- `if(value > 8.0, "Super Hit", value)`
+   if value is greater than 8 in Verdict replace with "Super Hit)
 
-- `grel:if(isNumeric(value), if ((value > 0).and(value <= 4.5), "Flop", value ) , value )`
+- `if(isNumeric(value), if ((value > 0).and(value <= 4.5), "Flop", value ) , value )`
   Replace values >0 and <=4.5 with Flop and ignore none numeric values in verdict
 
-- `grel:if(isNumeric(value), if ((value > 4.5).and(value <= 6.5), "Average", value) , value )`
+- `if(isNumeric(value), if ((value > 4.5).and(value <= 6.5), "Average", value) , value )`
   Replace values >4.5 and <=6.5 with  Average and ignore none numeric values in verdict
 
-- `grel:if(isNumeric(value), if ((value > 6.5).and(value <= 8.0), "Hit", value) , value )`
+- `(isNumeric(value), if ((value > 6.5).and(value <= 8.0), "Hit", value) , value )`
   Replace values >6.5 and <=8.0 with  Hit and ignore none numeric values in verdict
 
 
