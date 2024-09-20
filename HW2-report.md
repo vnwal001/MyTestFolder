@@ -45,7 +45,7 @@ I merged all the clusters by the STAR column, using the Key collison, fingerprin
 
 
 
-3.	Refilling the values in the column(s):
+2.	Refilling the values in the column(s):
 
    Answer:
    
@@ -147,7 +147,31 @@ I performed the following transformation GREL expressions on the respective colu
     Yea --> (1966-1969): startYear --> 1966; endYear --> 1969
     Year --> (I/II/?) (1966): startYear  1966; endYear --> 1966
 
-    Remove the column "Year" after successful execution of steps 3.(i) - 3(iii). 
+    Remove the column "Year" after successful execution of steps 3.(i) - 3(iii).
+
+
+   Answer: 
+
+   I perform the follow transformations on the year column to split it into startYear and endYear
+   
+   -`if(length(value) < 7, value.replace(value,"(" + value + /–/ + value + ")"),value)`
+     This to transform all the single year values to this format, (xxxx-xxxx)
+     
+   - Split 8171 cell(s) in column YEAR into several columns by field lengths
+     
+   - I split the Year column in 2 by index lenght of 5 each, the result was 2 columns, Year 1 with format (xxxx and Year 2 with format, –xxxx
+     
+   - I Renamed column YEAR 1 to startYear
+    
+   - I  Renamed column YEAR 2 to endYear
+    
+   -`grel:value.replace("(", "")`
+     To replace the open parenthesis symbol in startYear, 8, 171 rows were affected 
+
+    -`grel:value.replace(/–/, "")`
+     To replace the "–" symbol in endYear
+     
+    - I removed the Initial Year Column
 
 
 5.	Create a new column called "Verdict" and fill its values based on the criteria given below:
