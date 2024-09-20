@@ -53,15 +53,15 @@ Refill the blank cells for the columns "Rating", "Votes", and "Run Time" to 0 an
 I peformed the following transformation on GREL expressions on columns 
 
  
-`Text transform on 0 cells in column RATING: grel:if(isNull(value), 0, value)------------if rating is null, change to zero
-Text transform on 0 cells in column VOTES: grel:if(isNull(value), 0, value)-------------if rating is votes is null, change to zero
-Text transform on 1,393 cells in column RunTime: grel:if(isNull(value), 0, value)-------if rating is runtime is null, change to zero
-Text transform on 4,423 cells in column VOTES: value.toNumber()------- Convert votes to numbers
-Text transform on 6,781 cells in column RunTime: value.toNumber()----- Convert runtime to numbers
-Text transform on 8,170 cells in column RATING: value.toNumber()------ Convert ratings to numbers
-Text transform on 4,423 cells in column VOTES: value.toString() ------ Convert votes back to string
-Text transform on 3,748 cells in column VOTES: grel:value.replace(",", "")------------Remove all commas in votes
-Text transform on 8,171 cells in column VOTES: value.toNumber()----------Convert all votes back to numbers`
+`if(isNull(value), 0, value)------------if rating is null, change to zero
+if(isNull(value), 0, value)-------------if rating is votes is null, change to zero
+if(isNull(value), 0, value)-------if rating is runtime is null, change to zero
+value.toNumber()------- Convert votes to numbers
+value.toNumber()----- Convert runtime to numbers
+value.toNumber()------ Convert ratings to numbers
+value.toString() ------ Convert votes back to string
+grel:value.replace(",", "")------------Remove all commas in votes
+value.toNumber()----------Convert all votes back to numbers`
 
 
 
