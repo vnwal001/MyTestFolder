@@ -1,34 +1,42 @@
 # Homework 2: Data Cleaning
+## Name : Victor Nwala
+## Course : CS 625
 
 **Due:** September 22, 2024 by 11:59pm  
 
-The goal of this week's assignment is to gain experience using OpenRefine for data cleaning.  
 
-**Note:** This assignment assumes that you have already downloaded and installed [OpenRefine](https://openrefine.org) version 3.7.4 or above and worked through the OpenRefine tutorial from Week 2 of CS 625.
 
-## Assignment
-
-Write a report that describes how you carried out the tasks in Part 1 and how you arrived at the answers to the questions in Part 2.
 
 ### Report
 
-I have not provided a template, but I expect your report to be named `HW2-report.md` in your class GitHub repo and to include your name, CS625-HW2, due date, and appropriate headings and Markdown markup for clarity and neatness. You will lose points if there are many spelling/grammatical errors or your report is hard to read because of formatting issues.
 
-As for all reports, there should be a "References" section that includes links to any examples that you used in completing this assignment.
 
 ### Part 1. Data Cleaning
 
-Create a new project in OpenRefine and load the movies.csv dataset available in <https://github.com/odu-cs625-datavis/public-Fall24-aveerasa>. OR you can download it from <https://www.kaggle.com/datasets/bharatnatrayn/movies-dataset-for-feature-extracion-prediction?select=movies.csv>. If you view the raw version of the data file in GitHub, you can copy that URL directly into OpenRefine to load the data without downloading it separately.
 
-Use OpenRefine to clean the dataset of movies so that you can answer the questions in Part 2. Look at the questions before you start cleaning so that you know what fields to pay attention to. Take notes and keep track of all operations you perform. As much as you can, use OpenRefine facets and GREL transforms to clean the data rather than manual editing (though, some cleaning needs to be done manually).
+
+
 1.	Remove rows/columns:
 
     i.	Remove blank rows/row contain misleading values/columns that has no values (more than one column of the same row for example). Remove the column "Gross".
+  	Answer: A) I clicked on the Gross Column--------> Edit Column--------->Remove Column
+  	        B) I created a new column (MissingValues) to count number of missing rows, I used the GREL expression
+
+`
+  	if(isNull(cells['MOVIES'].value), 1, 0)+
+ if(isNull(cells['GENRE'].value), 1, 0)+ 
+ if(isNull(cells['RATING'].value), 1, 0) + 
+ if(isNull(cells['ONE-LINE'].value), 1, 0) +
+ if(isNull(cells['STARS'].value), 1, 0)+ 
+ if(isNull(cells['VOTES'].value), 1, 0)+ 
+ if(isNull(cells['RunTime'].value), 1, 0)
+  	`
+  	       
 
     ii.	Remove rows that contain misleading info. You must explain in your report the criteria you defined to remove those selected row(s)/column(s). [It should be noted movie/series may have several sequels with same name]
 
 
-2.	Refilling the values in the column(s):
+3.	Refilling the values in the column(s):
 
 Refill the blank cells for the columns "Rating", "Votes", and "Run Time" to 0 and change their data type to numeric. Similarly check values of all other columns and update the values accordingly (free to decide). 
 
