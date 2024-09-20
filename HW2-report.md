@@ -21,23 +21,22 @@
     i.	Remove blank rows/row contain misleading values/columns that has no values (more than one column of the same row for example). Remove the column "Gross".
   	
   	Answer: A) I clicked on the Gross Column--------> Edit Column--------->Remove Column
-  	
-  	        B) I created a new column (MissingValues) to count number of missing values in every rows, I used the GREL expression
 
-`
- if(isNull(cells['MOVIES'].value), 1, 0)+
+  	B) I created a new column (MissingValues) to count number of missing values in every rows, I used the GREL expression
+
+
+ `if(isNull(cells['MOVIES'].value), 1, 0)+
  if(isNull(cells['GENRE'].value), 1, 0)+ 
  if(isNull(cells['RATING'].value), 1, 0) + 
  if(isNull(cells['ONE-LINE'].value), 1, 0) +
  if(isNull(cells['STARS'].value), 1, 0)+ 
  if(isNull(cells['VOTES'].value), 1, 0)+ 
- if(isNull(cells['RunTime'].value), 1, 0)
-  `
+ if(isNull(cells['RunTime'].value), 1, 0) `
   
    C) I performed a numeric facet on the MissingValues Column, and I sorted for all matching rows with MissingValue > 1, I deleted the matching rows and removed the MissingValues column
   	       
 
-    ii.	Remove rows that contain misleading info. You must explain in your report the criteria you defined to remove those selected row(s)/column(s). It should be noted movie/series may have several sequels with same name
+    ii.	Remove rows that contain misleading info. You must explain in your report the criteria you defined to remove those selected row(s)/column(s).
 
     Answer:
     
