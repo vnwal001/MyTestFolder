@@ -55,7 +55,7 @@
   Idiom: Bar Chart / Mark: Bar
 | Data: Attribute | Data: Attribute Type  | Encode: Channel | 
 | --- |---| --- |
-| Sales | key, categorical | length of bars (y-axis) |
+| Total Sales | key, categorical | length of bars (y-axis) |
 | Year | value, quantitative | horizontal spatial region (x-axis) |
 
 **Answer:**
