@@ -22,45 +22,33 @@
 
 **Answer:**
 
- ` import matplotlib.pyplot as plt
-
-import pandas as pd
-
-df = pd.read_csv("https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/vgsales.csv", sep=",")
-
-
-df = df[(df != 0).all(axis=1)]
-
-
-df = df[(df['Year'].between(2001, 2010)) & (df['Publisher'] == 'Nintendo')]
-
-
-df['Year'] = df['Year'].astype(int)
-
-# Filter for years between 2001 and 2010
-df_filtered = df[(df['Year'] >= 2001) & (df['Year'] <= 2010)]
-
-df_filtered.to_csv('output.csv', index=False, sep=',', header=True, encoding='utf-8')
-# Group by Year and sum the sales
-sales_by_year = df_filtered.groupby('Year')[['NA_Sales', 'JP_Sales', 'EU_Sales', 'Other_Sales']].sum().reset_index()
-
-# Create a stacked bar plot
-plt.figure(figsize=(10, 6))
-plt.bar(sales_by_year['Year'].astype(str), sales_by_year['NA_Sales'], label='NA Sales', color='blue')
-plt.bar(sales_by_year['Year'].astype(str), sales_by_year['JP_Sales'], bottom=sales_by_year['NA_Sales'], label='JP Sales', color='orange')
-plt.bar(sales_by_year['Year'].astype(str), sales_by_year['EU_Sales'], bottom=sales_by_year['NA_Sales'] + sales_by_year['JP_Sales'], label='EU Sales', color='green')
-plt.bar(sales_by_year['Year'].astype(str), sales_by_year['Other_Sales'], 
+  `import matplotlib.pyplot as plt
+   import pandas as pd
+   df = pd.read_csv("https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/vgsales.csv", sep=",")
+   df = df[(df != 0).all(axis=1)]
+   df = df[(df['Year'].between(2001, 2010)) & (df['Publisher'] == 'Nintendo')]
+   df['Year'] = df['Year'].astype(int)
+   # Filter for years between 2001 and 2010
+   df_filtered = df[(df['Year'] >= 2001) & (df['Year'] <= 2010)]
+   df_filtered.to_csv('output.csv', index=False, sep=',', header=True, encoding='utf-8')
+   # Group by Year and sum the sales
+   sales_by_year = df_filtered.groupby('Year')[['NA_Sales', 'JP_Sales', 'EU_Sales', 'Other_Sales']].sum().reset_index()
+   # Create a stacked bar plot
+   plt.figure(figsize=(10, 6))
+   plt.bar(sales_by_year['Year'].astype(str), sales_by_year['NA_Sales'], label='NA Sales', color='blue')
+   plt.bar(sales_by_year['Year'].astype(str), sales_by_year['JP_Sales'], bottom=sales_by_year['NA_Sales'], label='JP Sales', color='orange')
+   plt.bar(sales_by_year['Year'].astype(str), sales_by_year['EU_Sales'], bottom=sales_by_year['NA_Sales'] + sales_by_year['JP_Sales'], label='EU Sales', color='green')
+   plt.bar(sales_by_year['Year'].astype(str), sales_by_year['Other_Sales'], 
          bottom=sales_by_year['NA_Sales'] + sales_by_year['JP_Sales'] + sales_by_year['EU_Sales'], 
          label='Other Sales', color='red')
-
-# Add labels and title
-plt.title('Stacked Bar Plot of Nintendo Sales by Year (2001-2010)')
-plt.xlabel('Year')
-plt.ylabel('Total Sales (in millions)')
-plt.xticks(rotation=45)
-plt.legend()
-plt.tight_layout()
-plt.show()`
+   # Add labels and title
+   plt.title('Stacked Bar Plot of Nintendo Sales by Year (2001-2010)')
+   plt.xlabel('Year')
+   plt.ylabel('Total Sales (in millions)')
+   plt.xticks(rotation=45)
+   plt.legend()
+   plt.tight_layout()
+   plt.show()`
 
 
 
