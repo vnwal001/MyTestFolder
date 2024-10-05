@@ -21,8 +21,8 @@
 #### 1. STACKED BAR CHART 
 
 **Answer:**
-
-  `import matplotlib.pyplot as plt
+   ```
+   import matplotlib.pyplot as plt
    import pandas as pd
    df = pd.read_csv("https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/vgsales.csv", sep=",")
    df = df[(df != 0).all(axis=1)]
@@ -48,7 +48,8 @@
    plt.xticks(rotation=45)
    plt.legend()
    plt.tight_layout()
-   plt.show()`
+   plt.show()
+   ```
 
 
 
