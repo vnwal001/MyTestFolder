@@ -58,19 +58,42 @@
 | Total Sales | key, categorical | length of bars (y-axis) |
 | Year | value, quantitative | horizontal spatial region (x-axis) |
 
-**Answer:**
-I transformed the Year column to split it into startYear and endYear:
+#### 2. MULTI-LINE CHART 
 
-- `if(length(value) < 7, value.replace(value,"(" + value + /–/ + value + ")"),value)`
-  This to transform all the single year values to this format, (xxxx-xxxx)
-- I split the Year column in 2 by index lenght of 5 each, the result was 2 columns, Year 1 with format (xxxx and Year 2 with format, –xxxx
-- I Renamed column YEAR 1 to startYear
-- I  Renamed column YEAR 2 to endYear
-- `value.replace("(", "")` To replace the open parenthesis symbol in startYear, 8,171 rows were affected
-- `grel:value.replace(/–/, "")`
-  To replace the "–" symbol in endYear, 8,166 rows were affected.
-- *I noticed 8,177 - 8,166 = 5, so I have 5 problematic rows* 
-- I removed the Initial Year Column
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/MultiLineChart.png" alt="Total Nintendo Sales Across Regions (2001-2010)" width="989" height="590">
+
+**Answer:**
+
+```
+import matplotlib.pyplot as plt
+import pandas as pd
+df = pd.read_csv("https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/vgsales.csv", sep=",")
+df = df[(df != 0).all(axis=1)]
+df = df[(df['Year'].between(2001, 2010)) & (df['Publisher'] == 'Nintendo')]
+df['Year'] = df['Year'].astype(int)
+# Filter for years between 2001 and 2010
+df_filtered = df[(df['Year'] >= 2001) & (df['Year'] <= 2010)]
+# Group by Year and sum the sales
+sales_by_year = df_filtered.groupby('Year')[['NA_Sales', 'JP_Sales', 'EU_Sales', 'Other_Sales']].sum().reset_index()
+# Create a multi-line plot
+plt.figure(figsize=(10, 6))
+# Plot each sales category
+plt.plot(sales_by_year['Year'].astype(str), sales_by_year['NA_Sales'], label='NA Sales', marker='o', color='blue')
+plt.plot(sales_by_year['Year'].astype(str), sales_by_year['JP_Sales'], label='JP Sales', marker='o', color='orange')
+plt.plot(sales_by_year['Year'].astype(str), sales_by_year['EU_Sales'], label='EU Sales', marker='o', color='green')
+plt.plot(sales_by_year['Year'].astype(str), sales_by_year['Other_Sales'], label='Other Sales', marker='o', color='red')
+# Add labels and title
+plt.title('Multi-Line Plot of Sales by Year (2001-2010) For Nintendo')
+plt.xlabel('Year')
+plt.ylabel('Total Sales (in millions)')
+plt.xticks(rotation=45)
+plt.legend()
+plt.tight_layout()
+plt.grid()
+
+# Show the plot
+plt.show()
+```
 
 #### 4. Create a New Column "Verdict"
 
