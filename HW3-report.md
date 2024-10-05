@@ -19,6 +19,7 @@
 ### Part 2: MY CHARTS
 
 #### 1. STACKED BAR CHART 
+<img src="https://github.com/odu-cs625-datavis/Fall24-aveerasa-vnwal001/blob/main/QTop3.png" alt="Top 3 MOVIE GENRE" width="1891" height="721">
 
 **Answer:**
    ```
