@@ -1,77 +1,68 @@
 # Course: CS 625
 ## Name: Victor Nwala
-## Homework 2
+## Homework 3
 
-**Due:** September 22, 2024 by 11:59 PM
+**Due:** October 6, 2024 by 11:59 PM
 
 ### Report
 
-### Part 1: Data Cleaning
+### Part 1: PRE-PROCESSING
 
-#### 1. Remove Rows/Columns
 
-i. Remove blank rows/rows containing misleading values/columns with no values (more than one column of the same row, for example). Remove the column "Gross".
 
-**Answer:**
-- A) I clicked on the Gross Column → Edit Column → Remove Column.
-- B) I created a new column (MissingValues) to count the number of missing values in each row using the GREL expression:
+- 1) I used the real-world data of VIDEO GAMES SALES of various publishers. My intent was to focus on the Nintendo Brand and from the years 2001 to 2010
+- 2) I deleted the rows with 0 sales across any region listed in the data.
+- 3) This reduces my dataset from over 16,000 rows to just 203 rows
+- *Please note that the data pre-processing steps are shown within my python code in each question answered*
 
-    ```grel
-    if(isNull(cells['MOVIES'].value), 1, 0) +
-    if(isNull(cells['GENRE'].value), 1, 0) + 
-    if(isNull(cells['RATING'].value), 1, 0) + 
-    if(isNull(cells['ONE-LINE'].value), 1, 0) +
-    if(isNull(cells['STARS'].value), 1, 0) + 
-    if(isNull(cells['VOTES'].value), 1, 0) + 
-    if(isNull(cells['RunTime'].value), 1, 0)
-    ```
+  
+### Part 2: MY CHARTS
 
-- C) I performed a numeric facet on the MissingValues column, sorted for all matching rows with MissingValue > 1, deleted those rows, and removed the MissingValues column.
-
-ii. Remove rows that contain misleading info. Explain the criteria you defined for the selected row(s)/column(s).
+#### 1. STACKED BAR CHART 
 
 **Answer:**
-I merged all the clusters by the STAR column using the Key collision and fingerprint method. I concluded that if the cells in that column had exactly the same stars and director, they were highly likely to be the same movie. I found 38 clusters.
 
-#### 2. Refilling Values in Columns
+ ` import matplotlib.pyplot as plt
 
-**Answer:**
-I refilled the blank cells for the columns "Rating", "Votes", and "Run Time" with 0 and changed their data types to numeric. I also checked values of all other columns and updated them accordingly. I performed the following transformations using GREL expressions:
+import pandas as pd
 
-- `if(isNull(value), 0, value)`  (For Rating)
-- `if(isNull(value), 0, value)`  (For Votes)
-- `if(isNull(value), 0, value)`  (For Run Time)
-- `value.toNumber()`  (Convert Votes to numbers)
-- `value.toNumber()`  (Convert Run Time to numbers)
-- `value.toNumber()`  (Convert Ratings to numbers)
-- `value.toString()`  (Convert Votes back to string)
-- `value.replace(",", "")`  (Remove all commas in Votes)
-- `value.toNumber()` Convert all votes back to numbers.
-- `if(isNull(value), "N/A", value)`  (Replace empty Movies with "N/A")
-- `if(isNull(value), "N/A", value)`  (Replace empty Year with "N/A")
-- `if(isNull(value), "N/A", value)`  (Replace empty One-Line with "N/A")
-- if(isNull(value), "N/A", value)`  (Replace empty STARS with "N/A")
-
-#### 3. Handling Ambiguous Values in the "Year" Column
-
-i. Remove rows with cell values as Roman numerals/strings only.
-
-ii. Replace values of the year enclosed in parentheses with a single year only.
-
-**Answer:**
-I performed the following GREL transformations on the Year column:
-
-- `value.trim()`  (Remove all spaces)
-- `if(length(value) < 9, value.replace("(", "").replace(")", ""), value)`  (Remove parentheses for single year values)
-- `if(length(value) < 7, value.replace(/–/,""), value)`  (Remove the symbol "–" for single year values)
-- `value.replace(/[a-zA-Z ]+/, '')`  (Remove all letters and spaces)
-- `value.replace("()", "")`  (Remove empty parentheses)
-- `if(length(value) < 9, value.replace("(", "").replace(")", ""), value)`  (Again remove perenthesis for columns with single year value, this was done to catch the new values after alphabets have been removed, their index now falls with range) 
-- `if(length(value) < 7, value.replace(/–/,""),value)`  (Again remove the symbol (–) for single year values, this was done to catch the new values after alphabets have been removed, their index now falls with range) 
-- I also performed a custom facet by blank (null or empty string), I found 4 blank rows and deleted matching rows on the YEAR Column 
+df = pd.read_csv("https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/vgsales.csv", sep=",")
 
 
-iii. Create new columns "startYear" and "endYear".
+df = df[(df != 0).all(axis=1)]
+
+
+df = df[(df['Year'].between(2001, 2010)) & (df['Publisher'] == 'Nintendo')]
+
+
+df['Year'] = df['Year'].astype(int)
+
+# Filter for years between 2001 and 2010
+df_filtered = df[(df['Year'] >= 2001) & (df['Year'] <= 2010)]
+
+df_filtered.to_csv('output.csv', index=False, sep=',', header=True, encoding='utf-8')
+# Group by Year and sum the sales
+sales_by_year = df_filtered.groupby('Year')[['NA_Sales', 'JP_Sales', 'EU_Sales', 'Other_Sales']].sum().reset_index()
+
+# Create a stacked bar plot
+plt.figure(figsize=(10, 6))
+plt.bar(sales_by_year['Year'].astype(str), sales_by_year['NA_Sales'], label='NA Sales', color='blue')
+plt.bar(sales_by_year['Year'].astype(str), sales_by_year['JP_Sales'], bottom=sales_by_year['NA_Sales'], label='JP Sales', color='orange')
+plt.bar(sales_by_year['Year'].astype(str), sales_by_year['EU_Sales'], bottom=sales_by_year['NA_Sales'] + sales_by_year['JP_Sales'], label='EU Sales', color='green')
+plt.bar(sales_by_year['Year'].astype(str), sales_by_year['Other_Sales'], 
+         bottom=sales_by_year['NA_Sales'] + sales_by_year['JP_Sales'] + sales_by_year['EU_Sales'], 
+         label='Other Sales', color='red')
+
+# Add labels and title
+plt.title('Stacked Bar Plot of Nintendo Sales by Year (2001-2010)')
+plt.xlabel('Year')
+plt.ylabel('Total Sales (in millions)')
+plt.xticks(rotation=45)
+plt.legend()
+plt.tight_layout()
+plt.show()`
+
+
 
 **Answer:**
 I transformed the Year column to split it into startYear and endYear:
