@@ -95,6 +95,13 @@ plt.grid()
 plt.show()
 ```
 
+Idiom: Multi-Line Chart / Mark: Line
+| Data: Attribute | Data: Attribute Type  | Encode: Channel | 
+| --- |---| --- |
+| Total Sales | key, categorical | Continuous (y-axis) |
+| Year | value, quantitative | Continuous (x-axis) |
+
+
 #### 4. Create a New Column "Verdict"
 
 **Answer:**
