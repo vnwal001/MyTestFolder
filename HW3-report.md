@@ -6,12 +6,12 @@
 
 ### Report
 
-### Part 1: PRE-PROCESSING
+### Part 1: PRE-PROCESSING DATA
 
 
 
 - 1) I used the real-world data of VIDEO GAMES SALES of various publishers. My intent was to focus on the Nintendo Brand and from the years 2001 to 2010
-- 2) I deleted the rows with 0 sales across any region listed in the data.
+- 2) I also deleted the rows with 0 sales across any region listed in the data.
 - 3) This reduces my dataset from over 16,000 rows to just 203 rows
 - *Please note that the data pre-processing steps are shown within my python code in each question answered*
 
@@ -147,15 +147,28 @@ plt.tight_layout()
 plt.show()
 ```
 
-Idiom: Multi-Line Chart / Mark: Dots
+Idiom: Scatter Plot / Mark: Dots
 | Data: Attribute | Data: Attribute Type  | Encode: Channel | 
 | --- |---| --- |
 | Total Other Sales | value, quantitative| color (y-axis) |
 | Total Global Sales |  value, quantitative | color (x-axis) |
 
+
+
+
 #### 4. SCATTER PLOT FROM TABLEAU
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/TableauPlot.jpg" alt="Total Nintendo Sales Across Regions (2001-2010)" width="1024" height="791">
+
+Idiom: Multi-Line Chart / Mark: Line
+| Data: Attribute | Data: Attribute Type  | Encode: Channel | 
+| --- |---| --- |
+| Total Sales | value, quantitative| Continuous and color (y-axis) |
+| Year |  key, categorical | Continuous and color (x-axis) |
+
+#### Reflection
+It was easier to plot this multi-line plot on Tableau, but for this use case I will prefare blotting this in python just because it handles data pre-processing and plotting in one instance.
+I had to export a preprocess data to use for my Tableau plot. 
 
 **References:**
 - Dataset: [5 Datasets to Practice Data Cleaning](https://medium.com/@FranciscoHinojosaLuna/5-datasets-to-practice-data-cleaning-27378f422e1c)
