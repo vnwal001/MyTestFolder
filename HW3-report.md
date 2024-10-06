@@ -102,18 +102,55 @@ Idiom: Multi-Line Chart / Mark: Line
 | Year |  key, categorical | Continuous and color (x-axis) |
 
 
-#### 4. Create a New Column "Verdict"
+#### 3. SCATTER PLOT 
+
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/ScatterPlot.png" alt="Total Nintendo Sales from Other Regions Vs Total Global Sales From (2001-2010)" width="989" height="590">
 
 **Answer:**
-I created a new column "Verdict" based on the "Rating" column:
 
-| Rating       | Verdict     |
-|--------------|-------------|
-| 0            | Not known   |
-| >0 and <=4.5 | Flop        |
-| >4.5 and <=6.5| Average    |
-| >6.5 and <=8.0| Hit        |
-| >8.0         | Super Hit   |
+```
+import matplotlib.pyplot as plt
+import pandas as pd
+
+df = pd.read_csv("https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/vgsales.csv", sep=",")
+df = df[(df != 0).all(axis=1)]
+df = df[(df['Year'].between(2001, 2010)) & (df['Publisher'] == 'Nintendo')]
+df['Year'] = df['Year'].astype(int)
+df_filtered = df[(df['Year'].between(2001, 2010)) & (df['Publisher'] == 'Nintendo')]
+# Group by Year and sum the Other_Sales and Global_Sales
+total_sales_by_year = df_filtered.groupby('Year')[['Other_Sales', 'Global_Sales']].sum().reset_index()
+# Create a scatter plot for Total Other_Sales vs Total Global_Sales
+plt.figure(figsize=(10, 6))
+# Plot all points
+plt.scatter(total_sales_by_year['Other_Sales'], total_sales_by_year['Global_Sales'], color='blue', alpha=0.6, edgecolors='w', s=100)
+# Find the index of the highest value in Global Sales
+max_index = total_sales_by_year['Global_Sales'].idxmax()
+max_row = total_sales_by_year.iloc[max_index]
+# Highlight the maximum point
+plt.scatter(max_row['Other_Sales'], max_row['Global_Sales'], color='red', s=100, edgecolors='black', label='Max Value')
+# Label the maximum point
+plt.text(max_row['Other_Sales'], max_row['Global_Sales'], '', fontsize=10, ha='right', color='red')
+# Label each point with the corresponding year, without the .0
+for i, row in total_sales_by_year.iterrows():
+    plt.text(row['Other_Sales'], row['Global_Sales'], str(int(row['Year'])), fontsize=10, ha='right')
+# Add labels and title
+plt.title('Scatter Plot of Total Other Sales vs Total Global Sales (2001-2010)')
+plt.xlabel('Total Other Sales (in millions)')
+plt.ylabel('Total Global Sales (in millions)')
+plt.grid()
+plt.legend()
+# Show the plot
+plt.tight_layout()
+plt.show()
+```
+
+**Answer:**
+
+Idiom: Multi-Line Chart / Mark: Dots
+| Data: Attribute | Data: Attribute Type  | Encode: Channel | 
+| --- |---| --- |
+| Total Other Sales | value, quantitative| color (y-axis) |
+| Total Global Sales |  value, quantitative | color (x-axis) |
 
 **Transformations:**
 -  Created a new column, Vedict based on column RATING by filling with it "Not Known"  for 0 values, GREL,  `if(value == 0, "Not known", value)`
