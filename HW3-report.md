@@ -55,8 +55,8 @@
   Idiom: Bar Chart / Mark: Bar
 | Data: Attribute | Data: Attribute Type  | Encode: Channel | 
 | --- |---| --- |
-| Total Sales | key, categorical | length of bars (y-axis) |
-| Year | value, quantitative | horizontal spatial region (x-axis) |
+| Total Sales | value, quantitative | length of bars (y-axis) |
+| Year |  key, categorical  | horizontal spatial region (x-axis) |
 
 #### 2. MULTI-LINE CHART 
 
@@ -98,8 +98,8 @@ plt.show()
 Idiom: Multi-Line Chart / Mark: Line
 | Data: Attribute | Data: Attribute Type  | Encode: Channel | 
 | --- |---| --- |
-| Total Sales | key, categorical | Continuous (y-axis) |
-| Year | value, quantitative | Continuous (x-axis) |
+| Total Sales | value, quantitative| Continuous and color (y-axis) |
+| Year |  key, categorical | Continuous and color (x-axis) |
 
 
 #### 4. Create a New Column "Verdict"
