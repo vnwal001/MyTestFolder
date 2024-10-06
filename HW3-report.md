@@ -31,7 +31,10 @@
    df['Year'] = df['Year'].astype(int)
    # Filter for years between 2001 and 2010
    df_filtered = df[(df['Year'] >= 2001) & (df['Year'] <= 2010)]
+
+   #Output Processed file to be used in Tableau
    df_filtered.to_csv('output.csv', index=False, sep=',', header=True, encoding='utf-8')
+
    # Group by Year and sum the sales
    sales_by_year = df_filtered.groupby('Year')[['NA_Sales', 'JP_Sales', 'EU_Sales', 'Other_Sales']].sum().reset_index()
    # Create a stacked bar plot
@@ -144,61 +147,15 @@ plt.tight_layout()
 plt.show()
 ```
 
-**Answer:**
-
 Idiom: Multi-Line Chart / Mark: Dots
 | Data: Attribute | Data: Attribute Type  | Encode: Channel | 
 | --- |---| --- |
 | Total Other Sales | value, quantitative| color (y-axis) |
 | Total Global Sales |  value, quantitative | color (x-axis) |
 
-**Transformations:**
--  Created a new column, Vedict based on column RATING by filling with it "Not Known"  for 0 values, GREL,  `if(value == 0, "Not known", value)`
-- `if(value > 8.0, "Super Hit", value)` if value is greater than 8 in Verdict replace with "Super Hit"
-- `if(isNumeric(value), if ((value > 0).and(value <= 4.5), "Flop", value), value)` Replace values >0 and <=4.5 with Flop and ignore none numeric values in verdict
-- `if(isNumeric(value), if ((value > 4.5).and(value <= 6.5), "Average", value), value)` Replace values >4.5 and <=6.5 with  Average and ignore none numeric values in verdict
-- `if(isNumeric(value), if ((value > 6.5).and(value <= 8.0), "Hit", value), value)` Replace values >6.5 and <=8.0 with  Hit and ignore none numeric values in verdict
+#### 4. SCATTER PLOT FROM TABLEAU
 
-#### Additional Cleaning of Data based of invalid date values
-- I created new column convertToDateStartDate based on column startYear converting all the values to date data type, grel, `toDate(value)`
-- I Performed a text facet on convertToDateStartDate and saw 5 blank rows, because they have invalid Date values, I deleted those 5 matching rows
-- I removed convertToDateStartDate column
-
-After cleaning the file:
-- Exported as `HW2-Movies.csv`.
-- Extracted JSON scripts containing all operations and saved as `HW2-Movies.json`.
-
-### Part 2: Analyze Cleaned Data
-
-1. **How many movies were listed as “Super Hit” in the year 2021?**
-   - [Insert answer with explanation]
-
-2. **Which movie got the lowest rating in the years 2018 to 2020 (excluding 0)?**
-   - [Insert answer with explanation]
-
-3. **List the top 3 genres (no duplicates) that got the highest number of votes (excluding 0).**
-   - [Insert answer with explanation]
-
-4. **Name the director who directed the 10-minute runtime movie in 2020 that received the lowest number of votes.**
-   - [Insert answer with explanation]
-
-5. **List the top 5 movies that received the highest number of votes but are categorized as “Flop.”**
-   - [Insert answer with explanation]
-
-*Note any cleaning decisions made that could impact the answers.*
-
-## Submission
-
-Your GitHub repository should include the following files:
-- `HW2-report.md` - Your report
-- `HW2-Movies.csv` - Cleaned CSV
-- `HW2-Movies.json` - Operations used to clean the data in JSON format
-- Any images referenced in your report
-
-Submit the URL of your report in Canvas under HW2. This should look like:  
-`https://github.com/odu-cs625-datavis/Fall24-asv-*username*/blob/main/HW2-report.md`
-
-*If you make changes after submitting, the last commit time in your repo will be considered as your submission time.*
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/ScatterPlot.png" alt="Total Nintendo Sales from Other Regions Vs Total Global Sales From (2001-2010)" width="989" height="590">
 
 **References:**
 - Dataset: [5 Datasets to Practice Data Cleaning](https://medium.com/@FranciscoHinojosaLuna/5-datasets-to-practice-data-cleaning-27378f422e1c)
