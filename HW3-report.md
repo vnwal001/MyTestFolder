@@ -154,8 +154,6 @@ Idiom: Scatter Plot / Mark: Dots
 | Total Global Sales |  value, quantitative | color (x-axis) |
 
 
-
-
 #### 4. SCATTER PLOT FROM TABLEAU
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/TableauPlot.jpg" alt="Total Nintendo Sales Across Regions (2001-2010)" width="1024" height="791">
@@ -171,5 +169,4 @@ It was easier to plot this multi-line plot on Tableau, but for this use case I w
 I had to export a preprocess data to use for my Tableau plot. 
 
 **References:**
-- Dataset: [5 Datasets to Practice Data Cleaning](https://medium.com/@FranciscoHinojosaLuna/5-datasets-to-practice-data-cleaning-27378f422e1c)
-- Movies: [Kaggle Movies Dataset](https://www.kaggle.com/datasets/bharatnatrayn/movies-dataset-for-feature-extraction-prediction?resource=download)
+- https://chatgpt.com/
