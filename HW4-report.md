@@ -183,7 +183,7 @@ Idiom: STACKED BAR CHART / Mark: Bar
 
 ### Extra Credit [2 points]: Combine this table with Table 12 (Resident Population, from Section 1 - Population) to show the relationship between land area and 2008 population for each state.
 
-#### 3. STACKED BAR CHART
+#### STACKED BAR CHART
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/q3.png" alt="Resident Population Vs Land Area" width="1189" height="590">
 
@@ -651,7 +651,72 @@ Idiom: Multi-Line Chart / Mark: Line
 
 ### Q8 Using the data from all of the cities, which month most often has the highest high? (Hint: For each month, show the number of times it had the highest high for a city.)
 
+#### BAR CHART
 
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/q8.png" alt="Frequency of the Highest Temperature" width="841" height="597">
+
+**Python Code**
+```
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Load the data from the CSV file
+file_path = 'https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/Q3UDATA.csv'  # Change this to your CSV file path
+df = pd.read_csv(file_path)
+
+# Strip whitespace from column names
+df.columns = df.columns.str.strip()
+
+# Convert the monthly temperature columns to numeric values
+monthly_columns = ['January', 'February', 'March', 'April', 
+                   'May', 'June', 'July', 'August', 
+                   'September', 'October', 'November', 'December']
+
+for col in monthly_columns:
+    df[col] = pd.to_numeric(df[col], errors='coerce').fillna(0)
+
+# Create a DataFrame to store the month with the highest temperature for each city
+highest_months = []
+
+# Loop through each city to find the month with the highest record high
+for index, row in df.iterrows():
+    city_highest_month = row[monthly_columns].idxmax()
+    highest_months.append(city_highest_month)
+
+# Count occurrences of each month being the highest
+month_counts = pd.Series(highest_months).value_counts()
+
+# Display the results
+print("Number of times each month had the highest high temperature:")
+print(month_counts)
+
+# Generate unique colors for each bar
+colors = plt.cm.tab10(np.linspace(0, 1, len(month_counts)))
+
+# Plot the results with unique colors for each bar
+plt.figure(figsize=(10, 6))
+bars = plt.bar(month_counts.index, month_counts.values, color=colors)
+plt.title('Frequency of Highest High Temperatures by Month')
+plt.xlabel('Month')
+plt.ylabel('Number of Cities with Highest Record High')
+plt.xticks(rotation=45)
+plt.grid(axis='y')
+
+
+for bar in bars:
+    yval = bar.get_height()
+    plt.text(bar.get_x() + bar.get_width()/2, yval, int(yval), ha='center', va='bottom')
+
+plt.show()
+```
+
+
+Idiom: BAR Chart / Mark: BAR
+| Data: Attribute | Data: Attribute Type  | Encode: Channel | 
+| --- |---| --- |
+| Frequency | value, quantitative| Height of Bar (y-axis) |
+| Month |  key, categorical |  color (x-axis) |
 
 
 #### Reflection
