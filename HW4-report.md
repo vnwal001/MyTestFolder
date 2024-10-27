@@ -403,12 +403,157 @@ Idiom: Multi-Line Chart / Mark: Line
 - *Further Questions - What further questions does your exploration of the dataset prompt? What hypotheses do you have about what the answers might be? Are there other tables that might help you address these questions?*
 - I would love to know why the sharp increase from 1950 to 1980 in themo-electric power and sudden decline and plateau from 1980. I would also like to know what is causing the decline in irrigation.
 
-### Q5: Combine this table with Table 354 (Land Cover/Use by Type) to show the relationship between the change in area of cropland and pastureland to rural water withdrawal (domestic and livestock).
+### Q6: Combine this table with Table 354 (Land Cover/Use by Type) to show the relationship between the change in area of cropland and pastureland to rural water withdrawal (domestic and livestock).
 
 ### ANSWERS
 
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/q6a.png" alt="Estimating Water Withdrawal values for Missing Years" width="1189" height="590">
 
+**Python Code**
 
+```
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Create the dataset
+data = {
+    'Year': [1950, 1955, 1960, 1965, 1970, 1975, 1980, 
+             1985, 1990, 1995, 2000, 2005],
+    'Domestic': [2.1, 2.1, 2.0, 2.3, 2.6, 2.8, 3.4, 
+               3.32, 3.39, 3.39, 3.58, 3.83],
+    'Livestock': [1.5, 1.5, 1.6, 1.7, 1.9, 2.1, 2.2, 
+               2.23, 2.25, 2.28, 2.38, 2.14]
+}
+
+# Convert to DataFrame
+df = pd.DataFrame(data)
+
+# Set the Year as the index for easier plotting and interpolation
+df.set_index('Year', inplace=True)
+
+# Specify the years for estimation
+years_to_estimate = [1982, 1987, 1992, 1997, 2001, 2002, 2003]
+
+# Interpolate the values for the specified years
+df_estimated = df.reindex(df.index.union(years_to_estimate)).interpolate()
+
+# Plot the original and estimated values
+plt.figure(figsize=(12, 6))
+plt.plot(df.index, df['Domestic'], marker='o', label='Domestic (Original)', color='blue')
+plt.plot(df.index, df['Livestock'], marker='o', label='Livestock (Original)', color='orange')
+plt.plot(df_estimated.index, df_estimated['Domestic'], linestyle='--', color='blue', alpha=0.5, label='Domestic (Estimated)')
+plt.plot(df_estimated.index, df_estimated['Livestock'], linestyle='--', color='orange', alpha=0.5, label='Livestock (Estimated)')
+
+# Highlight the estimated points
+for year in years_to_estimate:
+    plt.scatter(year, df_estimated.loc[year, 'Domestic'], color='blue')
+    plt.scatter(year, df_estimated.loc[year, 'Livestock'], color='orange')
+
+# Adding titles and labels
+plt.title('Original and Estimated Values Over Years')
+plt.xlabel('Year')
+plt.ylabel('Billion Gallons')
+plt.xticks(np.arange(1950, 2006, 5))
+plt.legend()
+plt.grid()
+plt.tight_layout()
+plt.show()
+
+# Display estimated values
+print("Estimated values:")
+print(df_estimated.loc[years_to_estimate])
+```
+
+```
+Estimated values:
+        Domestic    Livestock
+Year                     
+1982    3.3600      2.215
+1987    3.3550      2.240
+1992    3.3900      2.265
+1997    3.4850      2.330
+2001    3.6425      2.320
+2002    3.7050      2.260
+2003    3.7675      2.200
+
+```
+import pandas as pd
+
+# Create the dataset
+data = {
+    'Self Supply Domestic': [3.36, 3.355, 3.39, 3.485, 3.6425, 3.705, 3.7675],
+    'Livestock': [2.215, 2.24, 2.265, 2.33, 2.32, 2.26, 2.2]
+}
+
+# Convert to DataFrame
+df = pd.DataFrame(data)
+
+# Calculate the new column 'Rural'
+df['Rural'] = df['Self Supply Domestic'] + df['Livestock']
+
+# Display the updated DataFrame
+print(df)
+```
+
+```
+import pandas as pd
+
+# Create the dataset
+data = {
+    'Self Supply Domestic': [3.36, 3.355, 3.39, 3.485, 3.6425, 3.705, 3.7675],
+    'Livestock': [2.215, 2.24, 2.265, 2.33, 2.32, 2.26, 2.2]
+}
+
+# Convert to DataFrame
+df = pd.DataFrame(data)
+
+# Calculate the new column 'Rural'
+df['Rural'] = df['Self Supply Domestic'] + df['Livestock']
+
+# Display the updated DataFrame
+print(df)
+
+```
+
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/q6b.png" alt="Change in Cropland, Pastureland and Rural Water Withdrawals Over the Years" width="1189" height="590">
+
+```
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Create the dataset
+data = {
+    'Year': [1982, 1987, 1992, 1997, 2001, 2002, 2003],
+    'Cropland': [420.4, 406.2, 381.2, 376.4, 369.6, 368.4, 367.9],
+    'Pastureland': [131.4, 127.2, 125.1, 119.5, 116.9, 117.3, 117],
+    'Rural Water Withdrawal': [5.575, 5.595, 5.655, 5.815, 5.9625, 5.965, 5.9675]
+}
+
+# Convert to DataFrame
+df = pd.DataFrame(data)
+
+# Plotting the changes over the years
+plt.figure(figsize=(12, 6))
+
+# Plot for Cropland
+plt.plot(df['Year'], df['Cropland'], marker='o', label='Cropland', color='green')
+# Plot for Pastureland
+plt.plot(df['Year'], df['Pastureland'], marker='o', label='Pastureland', color='brown')
+# Plot for Rural Water Withdrawal
+plt.plot(df['Year'], df['Rural Water Withdrawal'], marker='o', label='Rural Water Withdrawal', color='blue')
+
+# Adding titles and labels
+plt.title('Change in Cropland, Pastureland, and Rural Water Withdrawal Over the Years')
+plt.xlabel('Year')
+plt.ylabel('Area (acres) / Water Withdrawal (million gallons)')
+plt.xticks(df['Year'])  # Ensure all years are shown
+plt.legend()
+plt.grid()
+plt.tight_layout()
+plt.show()
+
+```
 
 #### Reflection
 It was easier to plot this multi-line plot on Tableau, but for this use case I will prefare blotting this in python just because it handles data pre-processing and plotting in one instance.
