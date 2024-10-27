@@ -718,6 +718,19 @@ Idiom: BAR Chart / Mark: BAR
 | Frequency | value, quantitative| Height of Bar (y-axis) |
 | Month |  key, categorical |  color (x-axis) |
 
+- *Explanation of how the idiom used in your chart is appropriate for your datasets and question/task*
+- Answer: I used a Bar chart because it best shows frequency with the height of the bars.
+- *Discussion of any insights gained about the data from your chart*
+- I found the months of July and August had the the same frequecy of highest temperatures
+- *Discussion of any design decisions you made*
+- I decided to give each Bar a unique color to represent the months
+- *Discussion of any special customizations you used*
+- I added the frequency as a label to the bars 
+- *Further Questions - What further questions does your exploration of the dataset prompt? What hypotheses do you have about what the answers might be? Are there other tables that might help you address these questions?*
+- I would like to know if the frequency of highest temperatures have changed over the years. My Hypothesis is yes, because of climate change. I do not have a table to address this questions but there could be. 
+
+
+
 
 #### Reflection
 It was easier to plot this multi-line plot on Tableau, but for this use case I will prefare blotting this in python just because it handles data pre-processing and plotting in one instance.
