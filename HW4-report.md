@@ -478,7 +478,7 @@ Year
 2003    3.7675      2.200
 
 ```
-
+#### RURAL =  DOMESTIC + LIVESTOCK
 
 ```
 import pandas as pd
@@ -511,7 +511,7 @@ print(df)
 6                3.7675      2.200  5.9675
 
 ```
-
+#### Multi-Line Chart
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/q6b.png" alt="Change in Cropland, Pastureland and Rural Water Withdrawals Over the Years" width="1189" height="590">
 
 ```
@@ -550,6 +550,13 @@ plt.tight_layout()
 plt.show()
 
 ```
+
+Idiom: Multi-Line Chart / Mark: Line
+| Data: Attribute | Data: Attribute Type  | Encode: Channel | 
+| --- |---| --- |
+| Water Widthdrawals | value, quantitative| Continuous and color (y-axis) |
+| Year |  key, categorical | Continuous and color (x-axis) |
+
 
 #### Reflection
 It was easier to plot this multi-line plot on Tableau, but for this use case I will prefare blotting this in python just because it handles data pre-processing and plotting in one instance.
