@@ -569,6 +569,12 @@ Idiom: Multi-Line Chart / Mark: Line
 - *Further Questions - What further questions does your exploration of the dataset prompt? What hypotheses do you have about what the answers might be? Are there other tables that might help you address these questions?*
 - I would like to know if the cropland water withdrawal is holding steady or still declining till date. My hypothesis is that it is still holding steady. I have no tables to address this question.
 
+### Q7 Choose 5 cities and compare their record highs in each month. You may pick the 5 cities however you wish, but you must discuss how you chose the cities.
+
+#### ANSWERS
+
+
+
 
 
 #### Reflection
