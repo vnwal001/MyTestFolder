@@ -163,7 +163,7 @@ Idiom: STACKED BAR CHART / Mark: Bar
 | Data: Attribute | Data: Attribute Type  | Encode: Channel | 
 | --- |---| --- |
 | Area | value, quantitative| Position: The height or length of each segment in the bar (y-axis) |
-| States |  key, categorical | Label: Text labels can be used to indicate the categories (x-axis) |
+| States |  key, categorical | Label: Text labels can be used to indicate the states (x-axis) |
 
 - *Explanation of how the idiom used in your chart is appropriate for your datasets and question/task*
 - Answer: I used a stacked bar chart to show the fraction of water and land in the total area
@@ -245,8 +245,19 @@ Idiom: STACKED BAR CHART / Mark: Bar
 | Data: Attribute | Data: Attribute Type  | Encode: Channel | 
 | --- |---| --- |
 | Magnitude in Thousands | value, quantitative| Position: The height or length of each segment in the bar (y-axis) |
-| States |  key, categorical | Label: Text labels can be used to indicate the categories (x-axis) |
+| States |  key, categorical | Label: Text labels can be used to indicate the states (x-axis) |
 
+
+- *Explanation of how the idiom used in your chart is appropriate for your datasets and question/task*
+- Answer: I used a stacked bar chart to show the fraction of population and land in the area
+- *Discussion of any insights gained about the data from your chart*
+- I found about 12 states whose population is smaller compared to its land area. 
+- *Discussion of any design decisions you made*
+- I decided to use a stacked bar to visualize the ratio
+- *Discussion of any special customizations you used*
+- I added labels to the bars whose population hue did not show because of how small they were. 
+- *Further Questions - What further questions does your exploration of the dataset prompt? What hypotheses do you have about what the answers might be? Are there other tables that might help you address these questions?*
+- I would to know for those 12 states why less people live there despite how large the are. Hypothesis could be that they have less opportunities. I do noyt have a tabe to address this question.  
 
 #### 4. SCATTER PLOT FROM TABLEAU
 
