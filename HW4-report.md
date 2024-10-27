@@ -573,6 +573,9 @@ Idiom: Multi-Line Chart / Mark: Line
 
 #### ANSWERS
 
+#### Multi-Line Chart
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/q7.png" alt="Record High Temperatures of Selected Cities" width="1389" height="690">
+
 ```
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -626,6 +629,28 @@ plt.grid()
 plt.tight_layout()
 plt.show()
 ```
+
+
+Idiom: Multi-Line Chart / Mark: Line
+| Data: Attribute | Data: Attribute Type  | Encode: Channel | 
+| --- |---| --- |
+| Temperature | value, quantitative| Continuous and color (y-axis) |
+| Month |  key, categorical | Continuous and color (x-axis) |
+
+
+- *Explanation of how the idiom used in your chart is appropriate for your datasets and question/task*
+- Answer: I used a multi-line chart to show the monthly record high temperatures
+- *Discussion of any insights gained about the data from your chart*
+- I selected 5 cities from the various regions of  the united states namely: Los Angeles: West, Mobile: South, Chicago: Midwest, Little Rock: South, Denver: Mountain. Also from the Month of July to August, only Mobile and Los Angeles are trending upwards. 
+- *Discussion of any design decisions you made*
+- I used distinct colors to represent each city chosen
+- *Discussion of any special customizations you used*
+- no special customizations. 
+- *Further Questions - What further questions does your exploration of the dataset prompt? What hypotheses do you have about what the answers might be? Are there other tables that might help you address these questions?*
+- I noticed that from August to Septempter only Los Angeles is trending upwards, I would like to see if there are other cities with this behaviour. My hypothesis is yes, escpecially in the west. There are tables to address this question.
+
+### Q8 Using the data from all of the cities, which month most often has the highest high? (Hint: For each month, show the number of times it had the highest high for a city.)
+
 
 
 
