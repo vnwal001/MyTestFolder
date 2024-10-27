@@ -333,7 +333,7 @@ Idiom: LINE CHART / Mark: Points
 
 #### ANSWER: THERMO-ELECTRIC POWER
 
-<img src="https://github.com/vnwal001/MyTestFolder/blob/main/q5.png" alt="Water Withdrawals by End Use over Time" width="1400" height="700">
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/q5.png" alt="Water Withdrawals by End Use over Time" width="620" height="470">
 
 **Python Code**
 
@@ -391,6 +391,18 @@ Idiom: Multi-Line Chart / Mark: Line
 | --- |---| --- |
 | Water Widthdrawals | value, quantitative| Continuous and color (y-axis) |
 | Year |  key, categorical | Continuous and color (x-axis) |
+
+- *Explanation of how the idiom used in your chart is appropriate for your datasets and question/task*
+- Answer: I used a multi-line chart, because it is best used to show a trend across the various uses over time
+- *Discussion of any insights gained about the data from your chart*
+- I found that mining,  aquaculture and Commercial did not significantly increase over time. I also found that irrigation use is begining to decline
+- *Discussion of any design decisions you made*
+- I used distinct colors to represent each end use  
+- *Discussion of any special customizations you used*
+- no special customizations bacause the multi-line chart is clear
+- *Further Questions - What further questions does your exploration of the dataset prompt? What hypotheses do you have about what the answers might be? Are there other tables that might help you address these questions?*
+- I would love to know why the sharp increase from 1950 to 1980 in themo-electric power and sudden decline and plateau from 1980. I would also like to know what is causing the decline in irrigation.
+
 
 #### Reflection
 It was easier to plot this multi-line plot on Tableau, but for this use case I will prefare blotting this in python just because it handles data pre-processing and plotting in one instance.
