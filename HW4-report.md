@@ -563,11 +563,11 @@ Idiom: Multi-Line Chart / Mark: Line
 - *Discussion of any insights gained about the data from your chart*
 - I found that Rural water withdrawal is holding steady over the years I selected.
 - *Discussion of any design decisions you made*
-- Firstly from the table 358 there were no data of year 1982, 1987, 1992,  1997, 2001, 2002 and 2003. I had to interlopate to get values of those specific years from the existing values. With the values of I got, I combined it with table 354, which had cropland and pastureland water values for those specific years. 
+- Firstly from the table 358 there were no data of year 1982, 1987, 1992, 1997, 2001, 2002 and 2003. I had to interlopate to get values of those specific years from the existing values. With the values of I got, I combined it with table 354, which had cropland and pastureland water values for those specific years. 
 - *Discussion of any special customizations you used*
 - I used distinct colors to represent the various water uses.
 - *Further Questions - What further questions does your exploration of the dataset prompt? What hypotheses do you have about what the answers might be? Are there other tables that might help you address these questions?*
-- I would to know if the cropland water withdrawal is holding steady or still declining till date. My hypothesis is that it is still holding steady. I have no tables to address this question.
+- I would like to know if the cropland water withdrawal is holding steady or still declining till date. My hypothesis is that it is still holding steady. I have no tables to address this question.
 
 
 
