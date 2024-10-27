@@ -88,6 +88,9 @@ plt.show()
 
 
 
+### Q2: Pick 10 states and compare the proportion of their total area that is land and the proportion that is water. You may pick the 10 states however you wish (e.g., 10 largest, 10 smallest, 10 largest based on land area, 10 largest based on water area, 10 favorite states), but you must discuss how you chose the states.
+
+### ANSWERS
 
 
 
