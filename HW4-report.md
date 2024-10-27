@@ -12,7 +12,7 @@
 #### SCATTER PLOT
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/q1.png" alt="Total Land Area vs Total Water Area" width="1188" height="708">
 
-**Answer:**
+**Python Code**
    ```
   import pandas as pd
 import matplotlib.pyplot as plt
@@ -74,6 +74,17 @@ plt.show()
 | --- |---| --- |
 | Total Sales | value, quantitative | length of bars (y-axis) |
 | Year |  key, categorical  | horizontal spatial region (x-axis) |
+
+
+
+
+
+
+
+
+
+
+
 
 #### 2. MULTI-LINE CHART 
 
