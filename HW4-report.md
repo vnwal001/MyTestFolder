@@ -259,6 +259,13 @@ Idiom: STACKED BAR CHART / Mark: Bar
 - *Further Questions - What further questions does your exploration of the dataset prompt? What hypotheses do you have about what the answers might be? Are there other tables that might help you address these questions?*
 - I would to know for those states which significantly smaller population compare to their land size, why less people live there despite how large the are. Hypothesis could be that they have less opportunities. I do not have a table to address this question.  
 
+
+### Q4: Show how the amount of water withdrawals attributed to the public supply has changed over time.
+
+
+
+
+
 #### 4. SCATTER PLOT FROM TABLEAU
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/TableauPlot.jpg" alt="Total Nintendo Sales Across Regions (2001-2010)" width="1024" height="791">
