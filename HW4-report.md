@@ -10,41 +10,64 @@
 
 ### ANSWERS
 
-#### 1. STACKED BAR CHART 
+#### SCATTER PLOT
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/stackedBar.png" alt="Sales Across Regions (2001-2010)" width="989" height="590">
 
 **Answer:**
    ```
-   import matplotlib.pyplot as plt
-   import pandas as pd
-   df = pd.read_csv("https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/vgsales.csv", sep=",")
-   df = df[(df != 0).all(axis=1)]
-   df = df[(df['Year'].between(2001, 2010)) & (df['Publisher'] == 'Nintendo')]
-   df['Year'] = df['Year'].astype(int)
-   # Filter for years between 2001 and 2010
-   df_filtered = df[(df['Year'] >= 2001) & (df['Year'] <= 2010)]
+  import pandas as pd
+import matplotlib.pyplot as plt
 
-   #Output Processed file to be used in Tableau
-   df_filtered.to_csv('output.csv', index=False, sep=',', header=True, encoding='utf-8')
+# Load the data from the CSV file
+file_path = 'https://raw.githubusercontent.com/vnwal001/MyTestFolder/main/QU1DATA.csv'  # Corrected CSV file path
+df = pd.read_csv(file_path)
 
-   # Group by Year and sum the sales
-   sales_by_year = df_filtered.groupby('Year')[['NA_Sales', 'JP_Sales', 'EU_Sales', 'Other_Sales']].sum().reset_index()
-   # Create a stacked bar plot
-   plt.figure(figsize=(10, 6))
-   plt.bar(sales_by_year['Year'].astype(str), sales_by_year['NA_Sales'], label='NA Sales', color='blue')
-   plt.bar(sales_by_year['Year'].astype(str), sales_by_year['JP_Sales'], bottom=sales_by_year['NA_Sales'], label='JP Sales', color='orange')
-   plt.bar(sales_by_year['Year'].astype(str), sales_by_year['EU_Sales'], bottom=sales_by_year['NA_Sales'] + sales_by_year['JP_Sales'], label='EU Sales', color='green')
-   plt.bar(sales_by_year['Year'].astype(str), sales_by_year['Other_Sales'], 
-         bottom=sales_by_year['NA_Sales'] + sales_by_year['JP_Sales'] + sales_by_year['EU_Sales'], 
-         label='Other Sales', color='red')
-   # Add labels and title
-   plt.title('Stacked Bar Plot of Nintendo Sales by Year (2001-2010)')
-   plt.xlabel('Year')
-   plt.ylabel('Total Sales (in millions)')
-   plt.xticks(rotation=45)
-   plt.legend()
-   plt.tight_layout()
-   plt.show()
+# Select relevant columns
+df = df[['POST OFFICE ABBR', 'Land area SQ MILE', 'Total Water SQ MILE']]
+
+# Rename columns for easier access
+df.columns = ['Post Office ABBR', 'Land Area (sq mi)', 'Total Water Area (sq mi)']
+
+# Convert columns to numeric, taking absolute values
+df['Land Area (sq mi)'] = pd.to_numeric(df['Land Area (sq mi)'], errors='coerce').abs()
+df['Total Water Area (sq mi)'] = pd.to_numeric(df['Total Water Area (sq mi)'], errors='coerce').abs()
+
+# Drop rows with NaN values
+df = df.dropna()
+
+# Ignore District of Columbia
+df = df[df['Post Office ABBR'] != 'DC']
+
+# Plotting
+plt.figure(figsize=(12, 8))
+
+# Plot all states except District of Columbia with the default color
+plt.scatter(df['Land Area (sq mi)'], df['Total Water Area (sq mi)'], 
+            color='blue', alpha=0.5)
+
+# Identify the highest point
+max_point = df.loc[df['Total Water Area (sq mi)'].idxmax()]
+
+# Plot the highest point with a different color
+plt.scatter(max_point['Land Area (sq mi)'], max_point['Total Water Area (sq mi)'], 
+            color='red', s=100, label=f'Highest: {max_point["Post Office ABBR"]}', edgecolor='black')
+
+# Add labels for each point
+for i in range(len(df)):
+    plt.text(df['Land Area (sq mi)'].iloc[i], df['Total Water Area (sq mi)'].iloc[i], 
+             df['Post Office ABBR'].iloc[i], fontsize=8, ha='right')
+
+# Adding titles and labels
+plt.title('Land Area vs. Total Water Area by POST OFFICE ABBR (Excluding District of Columbia)')
+plt.xlabel('Land Area (square miles)')
+plt.ylabel('Total Water Area (square miles)')
+plt.xscale('log')  # Optional: Logarithmic scale for better visualization
+plt.yscale('log')  # Optional: Logarithmic scale for better visualization
+plt.legend(title='Significant Points', bbox_to_anchor=(1.05, 1), loc='upper left')
+plt.grid(True)
+
+# Show the plot
+plt.show()
    ```
 
   Idiom: Bar Chart / Mark: Bar
