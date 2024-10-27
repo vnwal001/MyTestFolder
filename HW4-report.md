@@ -181,7 +181,7 @@ Idiom: STACKED BAR CHART / Mark: Bar
 
 
 
-### Extra Credit [2 points]: Combine this table with Table 12 (Resident Population, from Section 1 - Population) to show the relationship between land area and 2008 population for each state.
+### Q3 Combine this table with Table 12 (Resident Population, from Section 1 - Population) to show the relationship between land area and 2008 population for each state.
 
 #### STACKED BAR CHART
 
