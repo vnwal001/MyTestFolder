@@ -183,52 +183,62 @@ Idiom: STACKED BAR CHART / Mark: Bar
 
 ### Extra Credit [2 points]: Combine this table with Table 12 (Resident Population, from Section 1 - Population) to show the relationship between land area and 2008 population for each state.
 
-
-
-
-
-
-
 #### 3. SCATTER PLOT 
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/ScatterPlot.png" alt="Total Nintendo Sales from Other Regions Vs Total Global Sales From (2001-2010)" width="989" height="590">
 
-**Answer:**
+**Python Code**
 
 ```
-import matplotlib.pyplot as plt
 import pandas as pd
+import matplotlib.pyplot as plt
 
-df = pd.read_csv("https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/vgsales.csv", sep=",")
-df = df[(df != 0).all(axis=1)]
-df = df[(df['Year'].between(2001, 2010)) & (df['Publisher'] == 'Nintendo')]
-df['Year'] = df['Year'].astype(int)
-df_filtered = df[(df['Year'].between(2001, 2010)) & (df['Publisher'] == 'Nintendo')]
-# Group by Year and sum the Other_Sales and Global_Sales
-total_sales_by_year = df_filtered.groupby('Year')[['Other_Sales', 'Global_Sales']].sum().reset_index()
-# Create a scatter plot for Total Other_Sales vs Total Global_Sales
-plt.figure(figsize=(10, 6))
-# Plot all points
-plt.scatter(total_sales_by_year['Other_Sales'], total_sales_by_year['Global_Sales'], color='blue', alpha=0.6, edgecolors='w', s=100)
-# Find the index of the highest value in Global Sales
-max_index = total_sales_by_year['Global_Sales'].idxmax()
-max_row = total_sales_by_year.iloc[max_index]
-# Highlight the maximum point
-plt.scatter(max_row['Other_Sales'], max_row['Global_Sales'], color='red', s=100, edgecolors='black', label='Max Value')
-# Label the maximum point
-plt.text(max_row['Other_Sales'], max_row['Global_Sales'], '', fontsize=10, ha='right', color='red')
-# Label each point with the corresponding year, without the .0
-for i, row in total_sales_by_year.iterrows():
-    plt.text(row['Other_Sales'], row['Global_Sales'], str(int(row['Year'])), fontsize=10, ha='right')
-# Add labels and title
-plt.title('Scatter Plot of Total Other Sales vs Total Global Sales (2001-2010)')
-plt.xlabel('Total Other Sales (in millions)')
-plt.ylabel('Total Global Sales (in millions)')
-plt.grid()
+# Load the data from the CSV file
+file_path = 'https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/QU1DATA_EXTRA1.csv'
+df = pd.read_csv(file_path)
+
+# Select relevant columns and rename for easier access
+df = df[['POST OFFICE ABBR', 'Land area SQ MILE', 'RESIDENT POPULATION']]
+
+# Convert columns to numeric, forcing string values to NaN
+df['Resident Population'] = pd.to_numeric(df['RESIDENT POPULATION'], errors='coerce')
+df['Land Area (sq mi)'] = pd.to_numeric(df['Land area SQ MILE'], errors='coerce')
+
+# Drop rows with NaN values
+df = df.dropna()
+
+# Exclude Washington, D.C.
+df = df[df['POST OFFICE ABBR'] != 'DC']
+
+# Prepare the data for a stacked bar chart
+df_grouped = df.groupby('POST OFFICE ABBR').sum()
+
+# Create the bar chart
+plt.figure(figsize=(12, 6))
+
+# Plotting the populations and land areas as a stacked bar chart
+plt.bar(df_grouped.index, df_grouped['Resident Population'], label='Resident Population', color='skyblue')
+plt.bar(df_grouped.index, df_grouped['Land Area (sq mi)'], label='Land Area (sq mi)', 
+        bottom=df_grouped['Resident Population'], color='orange')
+
+# Adding resident population value labels for specified states
+for state in ['AK', 'WV', 'WY', 'DE', 'HI', 'NE', 'MT', 'ME', 'VT', 'NH', 'RI', 'SD', 'ID']:
+    if state in df_grouped.index:
+        plt.text(state, df_grouped['Resident Population'].loc[state] + df_grouped['Land Area (sq mi)'].loc[state] / 2,
+                 f"{int(df_grouped['Resident Population'].loc[state])}", 
+                 ha='center', va='center', fontsize=10, color='black')
+
+# Adding titles and labels
+plt.title('Stacked Bar Chart of Resident Population and Land Area by State (Excluding DC)')
+plt.xlabel('Post Office Abbreviation')
+plt.ylabel('Population in Thousands')
+plt.xticks(rotation=45)
 plt.legend()
+
 # Show the plot
 plt.tight_layout()
 plt.show()
+
 ```
 
 Idiom: Scatter Plot / Mark: Dots
