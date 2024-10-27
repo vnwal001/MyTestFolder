@@ -178,6 +178,17 @@ Idiom: STACKED BAR CHART / Mark: Bar
 
 
 
+
+
+
+### Extra Credit [2 points]: Combine this table with Table 12 (Resident Population, from Section 1 - Population) to show the relationship between land area and 2008 population for each state.
+
+
+
+
+
+
+
 #### 3. SCATTER PLOT 
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/ScatterPlot.png" alt="Total Nintendo Sales from Other Regions Vs Total Global Sales From (2001-2010)" width="989" height="590">
