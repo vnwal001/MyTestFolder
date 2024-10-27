@@ -4,14 +4,13 @@
 
 **Due:** October 27, 2024 by 11:59 PM
 
-### Report
 
 ### Q1: For each state, show the relationship between the state's land area and its total water area. Consider only the 50 US states (Alabama - Wyoming), ignore DC and the territories. Highlight any interesting outliers.
 
 ### ANSWERS
 
 #### SCATTER PLOT
-<img src="https://github.com/vnwal001/MyTestFolder/blob/main/stackedBar.png" alt="Sales Across Regions (2001-2010)" width="989" height="590">
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/q1.png" alt="Total Land Area vs Total Water Area" width="1188" height="708">
 
 **Answer:**
    ```
