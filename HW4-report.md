@@ -651,6 +651,8 @@ Idiom: Multi-Line Chart / Mark: Line
 
 ### Q8 Using the data from all of the cities, which month most often has the highest high? (Hint: For each month, show the number of times it had the highest high for a city.)
 
+### ANSWER IS JULY
+
 #### BAR CHART
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/q8.png" alt="Frequency of the Highest Temperature" width="841" height="597">
