@@ -729,7 +729,7 @@ Idiom: BAR Chart / Mark: BAR
 - *Further Questions - What further questions does your exploration of the dataset prompt? What hypotheses do you have about what the answers might be? Are there other tables that might help you address these questions?*
 - I would like to know if the frequency of highest temperatures have changed over the years. My Hypothesis is yes, because of climate change. I do not have a table to address this questions but there could be. 
 
-
+### Q8 Combine this table with Table 380 (Lowest Temperature of Record) to show the relationship between each city's annual highest high and annual lowest low.
 
 
 #### Reflection
