@@ -327,16 +327,69 @@ Idiom: LINE CHART / Mark: Points
 - *Discussion of any special customizations you used*
 - no special customizations bacause the line chart is clear
 - *Further Questions - What further questions does your exploration of the dataset prompt? What hypotheses do you have about what the answers might be? Are there other tables that might help you address these questions?*
-- I would love to know if the increase in water withdrawals continued until recent years. My hypothesis will be yes it did, I have no table to address this issue.   
+- I would love to know if the increase in water withdrawals continued until recent years. My hypothesis will be yes it did, I have no table to address this issue.
 
-#### 4. SCATTER PLOT FROM TABLEAU
+### Q5: Which of the end uses has contributed the most to the growth over time?
 
-<img src="https://github.com/vnwal001/MyTestFolder/blob/main/TableauPlot.jpg" alt="Total Nintendo Sales Across Regions (2001-2010)" width="1024" height="791">
+#### ANSWER: THERMO-ELECTRIC POWER
+
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/q5.png" alt="Water Withdrawals by End Use over Time" width="1400" height="700">
+
+**Python Code**
+
+```
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load the data from the CSV file
+file_path = 'https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/Q2UDATA.csv'  # Change this to your CSV file path
+df = pd.read_csv(file_path)
+
+# Select relevant columns
+columns_of_interest = [
+    'Year', 'Public Supply', 'Self Supply Domestic', 'Livestock', 
+    'Irrigation', 'Thermo-electric power', 'Self-supplied industrial', 
+    'Mining', 'Commercial', 'Aquaculture'
+]
+df = df[columns_of_interest]
+
+# Clean the Year column
+df['Year'] = df['Year'].str.replace(r'\D', '', regex=True).str[:4]
+df['Year'] = pd.to_numeric(df['Year'], errors='coerce')
+
+# Replace non-numeric values in end use columns with zero
+for col in columns_of_interest[1:]:  # Exclude the 'Year' column
+    df[col] = pd.to_numeric(df[col], errors='coerce').fillna(0)
+
+# Drop rows with NaN values in 'Year' after cleaning
+df = df.dropna(subset=['Year'])
+
+# Group by Year and sum the values for each end use
+annual_withdrawals = df.groupby('Year').sum()
+
+# Plotting
+plt.figure(figsize=(14, 7))
+annual_withdrawals.plot(kind='line', marker='o', alpha=0.8)
+
+# Adding titles and labels
+plt.title('Water Withdrawals by End Use Over Time')
+plt.xlabel('Year')
+plt.ylabel('Water Withdrawals (Billion gallons')
+plt.grid()
+
+# Place the legend outside the plot
+plt.legend(title='End Uses', bbox_to_anchor=(1.05, 1), loc='upper left')
+
+# Show the plot
+plt.tight_layout()
+plt.show()
+```
+
 
 Idiom: Multi-Line Chart / Mark: Line
 | Data: Attribute | Data: Attribute Type  | Encode: Channel | 
 | --- |---| --- |
-| Total Sales | value, quantitative| Continuous and color (y-axis) |
+| Water Widthdrawals | value, quantitative| Continuous and color (y-axis) |
 | Year |  key, categorical | Continuous and color (x-axis) |
 
 #### Reflection
