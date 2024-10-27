@@ -93,54 +93,89 @@ plt.show()
 ### ANSWERS
 
 ### STACKED BAR CHART
-<img src="https://github.com/vnwal001/MyTestFolder/blob/main/q1.png" alt="Total Land Area vs Total Water Area" width="1188" height="708">
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/q2.png" alt="Total Land Area vs Total Water Area Comparision" width="1389" height="690">
 
-
-
-
-
-#### 2. MULTI-LINE CHART 
-
-<img src="https://github.com/vnwal001/MyTestFolder/blob/main/MultiLineChart.png" alt="Total Nintendo Sales Across Regions (2001-2010)" width="989" height="590">
-
-**Answer:**
+**Python Code**
 
 ```
-import matplotlib.pyplot as plt
 import pandas as pd
-df = pd.read_csv("https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/vgsales.csv", sep=",")
-df = df[(df != 0).all(axis=1)]
-df = df[(df['Year'].between(2001, 2010)) & (df['Publisher'] == 'Nintendo')]
-df['Year'] = df['Year'].astype(int)
-# Filter for years between 2001 and 2010
-df_filtered = df[(df['Year'] >= 2001) & (df['Year'] <= 2010)]
-# Group by Year and sum the sales
-sales_by_year = df_filtered.groupby('Year')[['NA_Sales', 'JP_Sales', 'EU_Sales', 'Other_Sales']].sum().reset_index()
-# Create a multi-line plot
-plt.figure(figsize=(10, 6))
-# Plot each sales category
-plt.plot(sales_by_year['Year'].astype(str), sales_by_year['NA_Sales'], label='NA Sales', marker='o', color='blue')
-plt.plot(sales_by_year['Year'].astype(str), sales_by_year['JP_Sales'], label='JP Sales', marker='o', color='orange')
-plt.plot(sales_by_year['Year'].astype(str), sales_by_year['EU_Sales'], label='EU Sales', marker='o', color='green')
-plt.plot(sales_by_year['Year'].astype(str), sales_by_year['Other_Sales'], label='Other Sales', marker='o', color='red')
-# Add labels and title
-plt.title('Multi-Line Plot of Sales by Year (2001-2010) For Nintendo')
-plt.xlabel('Year')
-plt.ylabel('Total Sales (in millions)')
-plt.xticks(rotation=45)
+import matplotlib.pyplot as plt
+
+# Load the data from the CSV file
+file_path = 'https://raw.githubusercontent.com/vnwal001/MyTestFolder/main/QU1DATA.csv'  # Change this to your CSV file path
+df = pd.read_csv(file_path)
+
+# Select relevant columns
+df = df[['POST OFFICE ABBR', 'Total area SQ MILE', 'Land area SQ MILE', 'Total Water SQ MILE']]
+
+# Rename columns for easier access
+df.columns = ['Post Office ABBR', 'Total Area (sq mi)', 'Land Area (sq mi)', 'Total Water Area (sq mi)']
+
+# Convert columns to numeric
+df['Total Area (sq mi)'] = pd.to_numeric(df['Total Area (sq mi)'], errors='coerce')
+df['Land Area (sq mi)'] = pd.to_numeric(df['Land Area (sq mi)'], errors='coerce')
+df['Total Water Area (sq mi)'] = pd.to_numeric(df['Total Water Area (sq mi)'], errors='coerce')
+
+# Drop rows with NaN values
+df = df.dropna()
+
+# Sort by Total Area and get the top 10 largest states
+largest_states = df.nlargest(10, 'Total Area (sq mi)')
+
+# Plotting
+plt.figure(figsize=(14, 7))
+
+# Create a stacked bar chart
+plt.bar(largest_states['Post Office ABBR'], largest_states['Land Area (sq mi)'], 
+        color='royalblue', label='Land Area (sq mi)')
+plt.bar(largest_states['Post Office ABBR'], largest_states['Total Water Area (sq mi)'], 
+        bottom=largest_states['Land Area (sq mi)'], color='lightskyblue', label='Total Water Area (sq mi)')
+
+# Adding titles and labels
+plt.title('Total Area (sq mi) = Land Area (sq mi) + Total Water Area (sq mi) for the 10 Largest States')
+plt.xlabel('States')
+plt.ylabel('Area (square miles)')
+
+# Set y-axis limits to ensure visibility
+plt.ylim(0, largest_states['Total Area (sq mi)'].max() * 1.1)
+
+# Add gridlines for better readability
+plt.grid(True, which="both", ls="--", linewidth=0.5)
+
 plt.legend()
-plt.tight_layout()
-plt.grid()
+
+# Annotate both land and water portions
+for index, row in largest_states.iterrows():
+    plt.text(row['Post Office ABBR'], row['Land Area (sq mi)'] / 2, 
+             f"{row['Land Area (sq mi)']:.1f}", 
+             ha='center', va='center', color='white')
+    plt.text(row['Post Office ABBR'], row['Land Area (sq mi)'] + row['Total Water Area (sq mi)'] / 2, 
+             f"{row['Total Water Area (sq mi)']:.1f}", 
+             ha='center', va='center', color='black')
 
 # Show the plot
+plt.tight_layout()
 plt.show()
+
 ```
 
-Idiom: Multi-Line Chart / Mark: Line
+Idiom: STACKED BAR CHART / Mark: Bar
 | Data: Attribute | Data: Attribute Type  | Encode: Channel | 
 | --- |---| --- |
-| Total Sales | value, quantitative| Continuous and color (y-axis) |
-| Year |  key, categorical | Continuous and color (x-axis) |
+| Area | value, quantitative| Position: The height or length of each segment in the bar (y-axis) |
+| States |  key, categorical | Label: Text labels can be used to indicate the categories (x-axis) |
+
+- *Explanation of how the idiom used in your chart is appropriate for your datasets and question/task*
+- Answer: I used a stacked bar chart to show the fraction of water and land in the total area
+- *Discussion of any insights gained about the data from your chart*
+- I found that Alaska has the highest bar, it's size is more than double the size of Texas also I found the the water are of Alaska is almost the size of the entire state of Wyoming
+- *Discussion of any design decisions you made*
+- I selected the top 10 largest states in the US
+- *Discussion of any special customizations you used*
+- I added labels to the bars, to visualize the actual values
+- *Further Questions - What further questions does your exploration of the dataset prompt? What hypotheses do you have about what the answers might be? Are there other tables that might help you address these questions?*
+- I would to know how many states will I sum to get the size of Alaska, I think about 5 of the top 10 states. Yes, there is a table to help address this question. I would also love to know where Alaska would rank by population from the top 10 states. 
+
 
 
 #### 3. SCATTER PLOT 
