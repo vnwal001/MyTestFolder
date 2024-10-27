@@ -573,7 +573,59 @@ Idiom: Multi-Line Chart / Mark: Line
 
 #### ANSWERS
 
+```
+import pandas as pd
+import matplotlib.pyplot as plt
 
+# Load the data from the CSV file
+file_path = 'https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/Q3UDATA.csv'  # Change this to your CSV file path
+df = pd.read_csv(file_path)
+
+
+# Strip whitespace from column names
+df.columns = df.columns.str.strip()
+
+# Convert specified columns to numeric values
+columns_to_convert = [
+    'Length of record (years)', 'January', 'February', 'March', 'April', 
+    'May', 'June', 'July', 'August', 'September', 'October', 'November', 
+    'December', 'Annual \\1'  # Note: use double backslash to escape
+]
+
+# Apply conversion
+for col in columns_to_convert:
+    df[col] = pd.to_numeric(df[col], errors='coerce').fillna(0)
+
+# Filter the DataFrame for the specified cities
+cities_of_interest = ['Los Angeles', 'Mobile', 'Chicago', 'Little Rock', 'Denver']
+df_filtered = df[df['Cities'].isin(cities_of_interest)]
+
+# Set the index to cities for easier plotting
+df_filtered.set_index('Cities', inplace=True)
+
+# Extract the monthly temperatures
+monthly_temps = df_filtered[['January', 'February', 'March', 'April', 'May', 'June',
+                              'July', 'August', 'September', 'October', 'November', 'December']]
+
+# Plotting
+plt.figure(figsize=(14, 7))
+
+# Create a line plot for each city
+for city in cities_of_interest:
+    plt.plot(monthly_temps.columns, monthly_temps.loc[city], marker='o', label=city)
+
+# Adding titles and labels
+plt.title('Monthly Record High Temperatures for Selected Cities')
+plt.xlabel('Month')
+plt.ylabel('Temperature (°F)')
+plt.xticks(rotation=45)
+plt.legend(title='Cities', loc='upper left', bbox_to_anchor=(1, 1))
+
+# Show the plot
+plt.grid()
+plt.tight_layout()
+plt.show()
+```
 
 
 
