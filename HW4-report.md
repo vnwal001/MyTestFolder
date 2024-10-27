@@ -92,7 +92,8 @@ plt.show()
 
 ### ANSWERS
 
-
+### STACKED BAR CHART
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/q1.png" alt="Total Land Area vs Total Water Area" width="1188" height="708">
 
 
 
