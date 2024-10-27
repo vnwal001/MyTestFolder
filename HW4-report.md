@@ -183,7 +183,7 @@ Idiom: STACKED BAR CHART / Mark: Bar
 
 ### Extra Credit [2 points]: Combine this table with Table 12 (Resident Population, from Section 1 - Population) to show the relationship between land area and 2008 population for each state.
 
-#### 3. SCATTER PLOT 
+#### 3. STACKED BAR CHART
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/q3.png" alt="Resident Population Vs Land Area" width="1189" height="590">
 
@@ -251,13 +251,13 @@ Idiom: STACKED BAR CHART / Mark: Bar
 - *Explanation of how the idiom used in your chart is appropriate for your datasets and question/task*
 - Answer: I used a stacked bar chart to show the fraction of population and land in the area
 - *Discussion of any insights gained about the data from your chart*
-- I found about 12 states whose population is smaller compared to its land area. 
+- I found some states whose population is significantly smaller compared to its land area. 
 - *Discussion of any design decisions you made*
-- I decided to use a stacked bar to visualize the ratio
+- I decided to use a log scale so I can visualize the population ratios, a linear scale gave me poor results. 
 - *Discussion of any special customizations you used*
-- I added labels to the bars whose population hue did not show because of how small they were. 
+- I added labels to the bar whose population hue did not show because of how small it is. 
 - *Further Questions - What further questions does your exploration of the dataset prompt? What hypotheses do you have about what the answers might be? Are there other tables that might help you address these questions?*
-- I would to know for those 12 states why less people live there despite how large the are. Hypothesis could be that they have less opportunities. I do noyt have a tabe to address this question.  
+- I would to know for those states which significantly smaller population compare to their land size, why less people live there despite how large the are. Hypothesis could be that they have less opportunities. I do not have a table to address this question.  
 
 #### 4. SCATTER PLOT FROM TABLEAU
 
