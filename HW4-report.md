@@ -75,10 +75,14 @@ plt.show()
 | Land Area | value, quantitative | horizontal spatial region (x-axis) |
 | Total Water Area |  value, quantitative  | vertical spatial region (y-axis) |
 
-- Explanation of how the idiom used in your chart is appropriate for your datasets and question/task
-- Discussion of any insights gained about the data from your chart
-- Discussion of any design decisions you made
-- Discussion of any special customizations you used
+- *Explanation of how the idiom used in your chart is appropriate for your datasets and question/task*
+- Answer: I am doing a comparision of two quantitative attributes, so a scatter plot is the right plot.
+- *Discussion of any insights gained about the data from your chart*
+- I found that Alaska was a popout in the plot having the highest water and land area
+- *Discussion of any design decisions you made*
+- I decided to use a log scale to space out the points to prevent overcrowding 
+- *Discussion of any special customizations you used*
+- I added labels to the points on the plot to help identify each state. 
 
 
 
