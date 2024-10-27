@@ -82,7 +82,9 @@ plt.show()
 - *Discussion of any design decisions you made*
 - I decided to use a log scale to space out the points to prevent overcrowding 
 - *Discussion of any special customizations you used*
-- I added labels to the points on the plot to help identify each state. 
+- I added labels to the points on the plot to help identify each state.
+- *Further Questions - What further questions does your exploration of the dataset prompt? What hypotheses do you have about what the answers might be? Are there other tables that might help you address these questions?*
+- My further question will be, have the total water and land area changed over time? My hypothesis will be that it has due to climate change. I would love to know what has changed, if water area has increased and land area has shrunk over time. I don't have other tables to help address this question.  
 
 
 
