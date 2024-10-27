@@ -69,13 +69,16 @@ plt.grid(True)
 plt.show()
    ```
 
-  Idiom: Bar Chart / Mark: Bar
+  Idiom: Scatter Plot / Mark: Point
 | Data: Attribute | Data: Attribute Type  | Encode: Channel | 
 | --- |---| --- |
-| Total Sales | value, quantitative | length of bars (y-axis) |
-| Year |  key, categorical  | horizontal spatial region (x-axis) |
+| Land Area | value, quantitative | horizontal spatial region (x-axis) |
+| Total Water Area |  value, quantitative  | vertical spatial region (y-axis) |
 
-
+- Explanation of how the idiom used in your chart is appropriate for your datasets and question/task
+- Discussion of any insights gained about the data from your chart
+- Discussion of any design decisions you made
+- Discussion of any special customizations you used
 
 
 
