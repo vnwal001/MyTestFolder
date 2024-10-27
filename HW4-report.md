@@ -1,22 +1,14 @@
 # Course: CS 625
 ## Name: Victor Nwala
-## Homework 3
+## Homework 4
 
-**Due:** October 6, 2024 by 11:59 PM
+**Due:** October 27, 2024 by 11:59 PM
 
 ### Report
 
-### Part 1: PRE-PROCESSING DATA
+### Q1: For each state, show the relationship between the state's land area and its total water area. Consider only the 50 US states (Alabama - Wyoming), ignore DC and the territories. Highlight any interesting outliers.
 
-
-
-- 1) I used the real-world data of VIDEO GAMES SALES of various publishers. My intent was to focus on the Nintendo Brand and from the years 2001 to 2010
-- 2) I also deleted the rows with 0 sales across any region listed in the data.
-- 3) This reduces my dataset from over 16,000 rows to just 203 rows
-- *Please note that the data pre-processing steps are shown within my python code in each question answered*
-
-  
-### Part 2: MY CHARTS
+### ANSWERS
 
 #### 1. STACKED BAR CHART 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/stackedBar.png" alt="Sales Across Regions (2001-2010)" width="989" height="590">
