@@ -501,22 +501,14 @@ print(df)
 
 
 ```
-import pandas as pd
-
-# Create the dataset
-data = {
-    'Self Supply Domestic': [3.36, 3.355, 3.39, 3.485, 3.6425, 3.705, 3.7675],
-    'Livestock': [2.215, 2.24, 2.265, 2.33, 2.32, 2.26, 2.2]
-}
-
-# Convert to DataFrame
-df = pd.DataFrame(data)
-
-# Calculate the new column 'Rural'
-df['Rural'] = df['Self Supply Domestic'] + df['Livestock']
-
-# Display the updated DataFrame
-print(df)
+ Self Supply Domestic  Livestock   Rural
+0                3.3600      2.215  5.5750
+1                3.3550      2.240  5.5950
+2                3.3900      2.265  5.6550
+3                3.4850      2.330  5.8150
+4                3.6425      2.320  5.9625
+5                3.7050      2.260  5.9650
+6                3.7675      2.200  5.9675
 
 ```
 
