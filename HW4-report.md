@@ -185,7 +185,7 @@ Idiom: STACKED BAR CHART / Mark: Bar
 
 #### 3. SCATTER PLOT 
 
-<img src="https://github.com/vnwal001/MyTestFolder/blob/main/ScatterPlot.png" alt="Total Nintendo Sales from Other Regions Vs Total Global Sales From (2001-2010)" width="989" height="590">
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/q3.png" alt="Resident Population Vs Land Area" width="1189" height="590">
 
 **Python Code**
 
@@ -241,11 +241,11 @@ plt.show()
 
 ```
 
-Idiom: Scatter Plot / Mark: Dots
+Idiom: STACKED BAR CHART / Mark: Bar
 | Data: Attribute | Data: Attribute Type  | Encode: Channel | 
 | --- |---| --- |
-| Total Other Sales | value, quantitative| color (y-axis) |
-| Total Global Sales |  value, quantitative | color (x-axis) |
+| Magnitude in Thousands | value, quantitative| Position: The height or length of each segment in the bar (y-axis) |
+| States |  key, categorical | Label: Text labels can be used to indicate the categories (x-axis) |
 
 
 #### 4. SCATTER PLOT FROM TABLEAU
