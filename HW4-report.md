@@ -731,10 +731,86 @@ Idiom: BAR Chart / Mark: BAR
 
 ### Q8 Combine this table with Table 380 (Lowest Temperature of Record) to show the relationship between each city's annual highest high and annual lowest low.
 
+#### ANSWERS
 
-#### Reflection
-It was easier to plot this multi-line plot on Tableau, but for this use case I will prefare blotting this in python just because it handles data pre-processing and plotting in one instance.
-I had to export a preprocess data to use for my Tableau plot. 
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/q9.png" alt="Annual Highest and Lowest temperatures by City" width="1189" height="790">
+
+**Python Code**
+
+```
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load the data from the CSV file
+file_path = 'https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/Q3UDATA1_EXTRA.csv'  # Replace with your actual file path
+df = pd.read_csv(file_path)
+
+# Clean column names by stripping whitespace
+df.columns = df.columns.str.strip()
+
+# Select relevant columns
+df = df[['Cities', 'AnnualHighest', 'AnnualLowest']]
+
+# Convert temperature columns to numeric
+df['AnnualHighest'] = pd.to_numeric(df['AnnualHighest'], errors='coerce')
+df['AnnualLowest'] = pd.to_numeric(df['AnnualLowest'], errors='coerce')
+
+# Drop rows with NaN values
+df = df.dropna()
+
+# Identify the cities with the highest and lowest temperatures
+highest_temp_city = df.loc[df['AnnualHighest'].idxmax()]
+lowest_temp_city = df.loc[df['AnnualLowest'].idxmin()]
+
+# Create a horizontal bar chart
+plt.figure(figsize=(12, 8))
+
+# Plot Annual Highest and Lowest
+bars_highest = plt.barh(df['Cities'], df['AnnualHighest'], color='skyblue', label='Annual Highest', alpha=0.7)
+bars_lowest = plt.barh(df['Cities'], df['AnnualLowest'], color='orange', label='Annual Lowest', alpha=0.7)
+
+# Highlight the city with the highest temperature
+for bar in bars_highest:
+    if bar.get_y() + bar.get_height() / 2 == highest_temp_city.name:
+        bar.set_color('red')  # Change color to highlight highest temperature city
+
+# Highlight the city with the lowest temperature
+for bar in bars_lowest:
+    if bar.get_y() + bar.get_height() / 2 == lowest_temp_city.name:
+        bar.set_color('black')  # Change color to highlight lowest temperature city
+
+# Adding titles and labels
+plt.title('Annual Highest and Lowest Temperatures by City')
+plt.xlabel('Temperature (°F)')
+plt.ylabel('Cities')
+plt.legend()
+
+# Show the plot
+plt.tight_layout()
+plt.show()
+
+```
+
+Idiom: Horizontal BAR Chart / Mark: BAR
+| Data: Attribute | Data: Attribute Type  | Encode: Channel | 
+| --- |---| --- |
+| Cities | Categorical| Position: Position of Bar (y-axis) |
+| Temperature |  value, quantitative |  color (x-axis) |
+
+
+- *Explanation of how the idiom used in your chart is appropriate for your datasets and question/task*
+- Answer: I used a Horizontal Bar chart so I could visual encode the temperature by the length of the Bar
+- *Discussion of any insights gained about the data from your chart*
+- I found that Phoenix had the highest temperature and Bismarck had the lowest temperature
+- *Discussion of any design decisions you made*
+- I decided not to give all the cities unique colors, it would too colorful and confusing. 
+- *Discussion of any special customizations you used*
+- I decided to popout the highest and lowest temperatures 
+- *Further Questions - What further questions does your exploration of the dataset prompt? What hypotheses do you have about what the answers might be? Are there other tables that might help you address these questions?*
+- I would like to know, over the years if more cities are having lower minimun temperatures and higher maximum temperatures. I want to know where the trend lies, my hypothesis is yes, and there could be data to address this question. 
+
 
 **References:**
 - https://chatgpt.com/
+- https://www.census.gov/library/publications/2009/compendia/statab/129ed/geography-environment.html
+- https://www.census.gov/library/publications/2009/compendia/statab/129ed.html
