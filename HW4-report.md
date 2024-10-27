@@ -262,9 +262,72 @@ Idiom: STACKED BAR CHART / Mark: Bar
 
 ### Q4: Show how the amount of water withdrawals attributed to the public supply has changed over time.
 
+### ANSWERS
 
+#### 4 LINE CHART
 
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/q4.png" alt="Public Supply Widthrawal over time" width="1190" height="590">
 
+**Python Code**
+
+```
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load the data from the CSV file
+file_path = 'https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/Q2UDATA.csv'  # Change this to your CSV file path
+df = pd.read_csv(file_path)
+
+# Select relevant columns
+df = df[['Year', 'Public Supply']]
+
+# Clean the Year column by removing unwanted characters
+df['Year'] = df['Year'].str.replace(r'\D', '', regex=True)  # Remove non-digit characters
+
+# Retain only the first four characters (the year)
+df['Year'] = df['Year'].str[:4]
+
+# Convert the cleaned Year to numeric
+df['Year'] = pd.to_numeric(df['Year'], errors='coerce')
+
+# Convert Public Supply to numeric
+df['Public Supply'] = pd.to_numeric(df['Public Supply'], errors='coerce')
+
+# Drop rows with NaN values
+df = df.dropna()
+
+# Plotting
+plt.figure(figsize=(12, 6))
+plt.plot(df['Year'], df['Public Supply'], marker='o', linestyle='-', color='blue')
+
+# Adding titles and labels
+plt.title('Changes in Water Withdrawals Attributed to Public Supply Over Time')
+plt.xlabel('Year')
+plt.ylabel('Water Withdrawals (billion gallons)')
+plt.grid()
+
+# Show the plot
+plt.tight_layout()
+plt.show()
+```
+
+Idiom: LINE CHART / Mark: Points
+| Data: Attribute | Data: Attribute Type  | Encode: Channel | 
+| --- |---| --- |
+| Water Withdrawals | value, quantitative| Position: Showing measure value of water (y-axis) |
+| Year |  key, categorical | Position: Showing Years (x-axis) |
+
+- *Explanation of how the idiom used in your chart is appropriate for your datasets and question/task*
+- Answer: I used a line chart, because it is best used to show a trend
+- *Discussion of any insights gained about the data from your chart*
+- I found a continous increase in water withdrawals each year.
+- *Discussion of any design decisions you made*
+- I use a linear scale  
+- *Discussion of any special customizations you used*
+- no special customizations bacause the line chart is clear
+- *Further Questions - What further questions does your exploration of the dataset prompt? What hypotheses do you have about what the answers might be? Are there other tables that might help you address these questions?*
+- I would love to know if the increase in water withdrawals continued until recent years. My hypothesis will be yes it did, I have no table to address this issue.   
 
 #### 4. SCATTER PLOT FROM TABLEAU
 
