@@ -403,6 +403,12 @@ Idiom: Multi-Line Chart / Mark: Line
 - *Further Questions - What further questions does your exploration of the dataset prompt? What hypotheses do you have about what the answers might be? Are there other tables that might help you address these questions?*
 - I would love to know why the sharp increase from 1950 to 1980 in themo-electric power and sudden decline and plateau from 1980. I would also like to know what is causing the decline in irrigation.
 
+### Q5: Combine this table with Table 354 (Land Cover/Use by Type) to show the relationship between the change in area of cropland and pastureland to rural water withdrawal (domestic and livestock).
+
+### ANSWERS
+
+
+
 
 #### Reflection
 It was easier to plot this multi-line plot on Tableau, but for this use case I will prefare blotting this in python just because it handles data pre-processing and plotting in one instance.
