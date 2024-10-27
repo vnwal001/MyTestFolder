@@ -478,6 +478,9 @@ Year
 2003    3.7675      2.200
 
 ```
+
+
+```
 import pandas as pd
 
 # Create the dataset
@@ -495,6 +498,7 @@ df['Rural'] = df['Self Supply Domestic'] + df['Livestock']
 # Display the updated DataFrame
 print(df)
 ```
+
 
 ```
 import pandas as pd
