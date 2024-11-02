@@ -1,6 +1,6 @@
 # Course: CS 625
 ## Name: Victor Nwala
-## Homework 
+## Homework 5
 
 **Due:** November 3, 2024 by 11:59 PM
 
@@ -270,6 +270,8 @@ Disadvantages:
 #### 1) What states population were the outliers 1970, 1985, 1995 and 2009.
 
  ##### Answer: To answer this question, I decided to plot a Bar chart of all the outliers across these years
+
+ <img src="https://github.com/vnwal001/MyTestFolder/blob/main/h4.png" alt="eCDF Distributions of the population of all states for 1995 and 2009" width="1189" height="590">
  
 
 
