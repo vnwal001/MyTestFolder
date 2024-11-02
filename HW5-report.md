@@ -19,7 +19,68 @@
 
 #### 1) BOXPLOT : Show the distributions of the population of all states in 1970, 1985, 1995, and 2009. This should result in 4 separate boxplot glyphs in a single chart
 
-<img src="https://github.com/vnwal001/MyTestFolder/blob/main/h1.png" alt="Boxplot of Population distribution For 50 States for 1970, 1985, 1995, and 2009" width="1188" height="708">
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/h1.png" alt="Boxplot of Population distribution For 50 States for 1970, 1985, 1995, and 2009" width="1189" height="590">
+
+- *Description of the chart and how is was created (explain the code you used and include code snippets)*
+- Answer: Code Snipet and Explanation
+
+```
+#pandas: Used for data manipulation and analysis.
+#matplotlib.pyplot: A plotting library for creating static, animated, and interactive visualizations.
+#seaborn: A statistical data visualization library based on Matplotlib, providing a high-level interface for drawing attractive graphics.
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Step 1: Load the data
+data = pd.read_csv('https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/population4.csv')
+
+
+# Step 2: Extract relevant columns (removing unnecessary columns)
+years = ['1970', '1985', '1995', '2009']
+pop_data = data[['State'] + years]  # Only keep State and relevant year columns
+
+# Step 3: Melt the DataFrame to long format
+pop_melted = pop_data.melt(id_vars=['State'], value_vars=years, var_name='Year', value_name='Population')
+
+# Convert Population to numeric (if not already)
+pop_melted['Population'] = pd.to_numeric(pop_melted['Population'], errors='coerce')
+
+# Step 4: Exclude Washington, D.C.
+pop_melted = pop_melted[pop_melted['State'] != 'District of Columbia']
+
+# Step 5: Create the boxplots
+plt.figure(figsize=(12, 6))
+sns.boxplot(x='Year', y='Population', data=pop_melted)
+
+# Set the y-axis to start from 0
+plt.ylim(0, pop_melted['Population'].max() * 1.1)  # Adjust the upper limit as needed
+
+# Add titles and labels
+plt.title('Population Distribution by State for Selected Years (Excluding D.C.)')
+plt.xlabel('Year')
+plt.ylabel('Population In Thousands')
+plt.xticks(rotation=45)
+plt.grid(True)
+
+# Show the plot
+plt.tight_layout()
+plt.show()
+
+```
+- Explanation
+  ```
+  Each box represents the interquartile range (IQR) of the population data for each year, indicating where the middle 50% of data lies.
+  The line inside each box represents the median population.
+  Whiskers extend to show the range of the data (excluding outliers).
+  Outliers are plotted as individual points outside the whiskers*
+   ```
+  
+- *Discuss the advantages and disadvantages of each type of distribution chart idiom for showing these distributions (talk specifically about these distributions, not just their advantages and disadvantages in general)*
+- Answer:
+- *Name 1-2 simple observations you can draw from each chart*
+- Answer: 
 
 
 
