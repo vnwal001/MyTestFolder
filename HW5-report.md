@@ -74,13 +74,26 @@ plt.show()
   Each box represents the interquartile range (IQR) of the population data for each year, indicating where the middle 50% of data lies.
   The line inside each box represents the median population.
   Whiskers extend to show the range of the data (excluding outliers).
-  Outliers are plotted as individual points outside the whiskers*
+  Outliers are plotted as individual points outside the whiskers
    ```
   
 - *Discuss the advantages and disadvantages of each type of distribution chart idiom for showing these distributions (talk specifically about these distributions, not just their advantages and disadvantages in general)*
 - Answer:
+```
+Advantages
+1) This Boxplots have provide a concise summary of the dataset by displaying the median, quartiles, and potential outliers, making it easy to grasp the distribution characteristics at a glance.
+2) It has helped to facilitate comparisons between different categories (in this case, different years), highlighting differences in central tendency and variability.
+3) This Boxplot has  effectively identified outliers, which can be crucial for understanding anomalies in the data.
+
+Disadvantages
+1) It does convey information about the number of data points or the specific values
+2) In this box plot you cannot clearly tell if outlier points overlap
+```
+
 - *Name 1-2 simple observations you can draw from each chart*
-- Answer: 
+- Answer:
+- 1) Every year compared had state population outliers
+- 2) The median population does not change by so much, yes there is a steady increase but not by much. 
 
 
 
