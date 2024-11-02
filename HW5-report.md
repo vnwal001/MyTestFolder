@@ -1,8 +1,27 @@
 # Course: CS 625
 ## Name: Victor Nwala
-## Homework 4
+## Homework 
 
-**Due:** October 27, 2024 by 11:59 PM
+**Due:** November 3, 2024 by 11:59 PM
+
+
+## PART 1
+
+### A) DATA MANIPULATION
+
+##### To prepare my data for use I did the following:
+- The original file was in xls format, I created a new csv file to place my data
+- I copied over the values of the only data I needed for my analysis, I copied the state population data for just 1970, 1985, 1995 and 2009.
+- I for the specified years, if they had both and April and July data, I picked the July data for that year because most years data were collected in July. I only took the April data if there was not July available
+- I rename the Years column to just the Year and removed the month. 
+
+### B) TABLE 12
+
+#### 1) BOXPLOT : Show the distributions of the population of all states in 1970, 1985, 1995, and 2009. This should result in 4 separate boxplot glyphs in a single chart
+
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/h1.png" alt="Boxplot of Population distribution For 50 States for 1970, 1985, 1995, and 2009" width="1188" height="708">
+
+
 
 
 ### Q1: For each state, show the relationship between the state's land area and its total water area. Consider only the 50 US states (Alabama - Wyoming), ignore DC and the territories. Highlight any interesting outliers.
