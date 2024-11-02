@@ -22,7 +22,7 @@
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/h1.png" alt="Boxplot of Population distribution For 50 States for 1970, 1985, 1995, and 2009" width="1189" height="590">
 
 - *Description of the chart and how is was created (explain the code you used and include code snippets)*
-- Answer: Code Snipet and Explanation
+- Answer: Code Snippet and Explanation
 
 ```
 #pandas: Used for data manipulation and analysis.
@@ -102,150 +102,196 @@ Disadvantages
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/h2.png" alt="Histogram of Population distribution For 50 States for 2009" width="1189" height="590">
 
-**Python Code**
-   ```
-  import pandas as pd
-import matplotlib.pyplot as plt
 
-# Load the data from the CSV file
-file_path = 'https://raw.githubusercontent.com/vnwal001/MyTestFolder/main/QU1DATA.csv'  # Corrected CSV file path
-df = pd.read_csv(file_path)
-
-# Select relevant columns
-df = df[['POST OFFICE ABBR', 'Land area SQ MILE', 'Total Water SQ MILE']]
-
-# Rename columns for easier access
-df.columns = ['Post Office ABBR', 'Land Area (sq mi)', 'Total Water Area (sq mi)']
-
-# Convert columns to numeric, taking absolute values
-df['Land Area (sq mi)'] = pd.to_numeric(df['Land Area (sq mi)'], errors='coerce').abs()
-df['Total Water Area (sq mi)'] = pd.to_numeric(df['Total Water Area (sq mi)'], errors='coerce').abs()
-
-# Drop rows with NaN values
-df = df.dropna()
-
-# Ignore District of Columbia
-df = df[df['Post Office ABBR'] != 'DC']
-
-# Plotting
-plt.figure(figsize=(12, 8))
-
-# Plot all states except District of Columbia with the default color
-plt.scatter(df['Land Area (sq mi)'], df['Total Water Area (sq mi)'], 
-            color='blue', alpha=0.5)
-
-# Identify the highest point
-max_point = df.loc[df['Total Water Area (sq mi)'].idxmax()]
-
-# Plot the highest point with a different color
-plt.scatter(max_point['Land Area (sq mi)'], max_point['Total Water Area (sq mi)'], 
-            color='red', s=100, label=f'Highest: {max_point["Post Office ABBR"]}', edgecolor='black')
-
-# Add labels for each point
-for i in range(len(df)):
-    plt.text(df['Land Area (sq mi)'].iloc[i], df['Total Water Area (sq mi)'].iloc[i], 
-             df['Post Office ABBR'].iloc[i], fontsize=8, ha='right')
-
-# Adding titles and labels
-plt.title('Land Area vs. Total Water Area by POST OFFICE ABBR (Excluding District of Columbia)')
-plt.xlabel('Land Area (square miles)')
-plt.ylabel('Total Water Area (square miles)')
-plt.xscale('log')  # Optional: Logarithmic scale for better visualization
-plt.yscale('log')  # Optional: Logarithmic scale for better visualization
-plt.legend(title='Significant Points', bbox_to_anchor=(1.05, 1), loc='upper left')
-plt.grid(True)
-
-# Show the plot
-plt.show()
-   ```
-
-  Idiom: Scatter Plot / Mark: Point
-| Data: Attribute               | Data: Attribute Type | Encode: Channel                                             |
-|-------------------------------|----------------------|------------------------------------------------------------|
-| Land Area (sq mi)            | value, quantitative   | horizontal position on a common scale (x-axis)             |
-| Total Water Area (sq mi)     | value, quantitative   | vertical position on a common scale (y-axis)               |
-| Post Office ABBR              | key, categorical      | text labels on data points                                  |
-| Highest Water Area Point      | key, categorical      | color (distinguishing the highest point with a different color) |
-
-- *Explanation of how the idiom used in your chart is appropriate for your datasets and question/task*
-- Answer: I am doing a comparision of two quantitative attributes, so a scatter plot is the right plot.
-- *Discussion of any insights gained about the data from your chart*
-- I found that Alaska was a popout in the plot having the highest water and land area
-- *Discussion of any design decisions you made*
-- I decided to use a log scale to space out the points to prevent overcrowding 
-- *Discussion of any special customizations you used*
-- no special customizations
-- *Further Questions - What further questions does your exploration of the dataset prompt? What hypotheses do you have about what the answers might be? Are there other tables that might help you address these questions?*
-- My further question will be, have the total water and land area changed over time? My hypothesis will be that it has due to climate change. I would love to know what has changed, if water area has increased and land area has shrunk over time. I don't have other tables to help address this question.  
-
-
-
-### Q2: Pick 10 states and compare the proportion of their total area that is land and the proportion that is water. You may pick the 10 states however you wish (e.g., 10 largest, 10 smallest, 10 largest based on land area, 10 largest based on water area, 10 favorite states), but you must discuss how you chose the states.
-
-### ANSWER: I picked the top 10 largest cities by total area
-
-### STACKED BAR CHART
-<img src="https://github.com/vnwal001/MyTestFolder/blob/main/q2a.png" alt="Total Land Area vs Total Water Area Comparision" width="1389" height="690">
-
-**Python Code**
+- *Description of the chart and how is was created (explain the code you used and include code snippets)*
+- Answer: Code Snippet and Explanation
 
 ```
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 
-# Load the data from the CSV file
-file_path = 'https://raw.githubusercontent.com/vnwal001/MyTestFolder/main/QU1DATA.csv'  # Change this to your CSV file path
-df = pd.read_csv(file_path)
+# Step 1: Load the data
+data = pd.read_csv('https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/population4.csv')
 
-# Select relevant columns
-df = df[['POST OFFICE ABBR', 'Total area SQ MILE', 'Land area SQ MILE', 'Total Water SQ MILE']]
+# Step 2: Extract relevant columns
+year = '2009'  # Change to the desired year
+pop_data = data[['State', year]]
 
-# Rename columns for easier access
-df.columns = ['Post Office ABBR', 'Total Area (sq mi)', 'Land Area (sq mi)', 'Total Water Area (sq mi)']
+# Step 3: Filter out Washington D.C.
+pop_data = pop_data[pop_data['State'] != 'District of Columbia']
 
-# Convert columns to numeric
-df['Total Area (sq mi)'] = pd.to_numeric(df['Total Area (sq mi)'], errors='coerce')
-df['Land Area (sq mi)'] = pd.to_numeric(df['Land Area (sq mi)'], errors='coerce')
-df['Total Water Area (sq mi)'] = pd.to_numeric(df['Total Water Area (sq mi)'], errors='coerce')
+# Step 4: Convert the Population to numeric (if not already)
+pop_data[year] = pd.to_numeric(pop_data[year], errors='coerce')
 
-# Drop rows with NaN values
-df = df.dropna()
-
-# Sort by Total Area and get the top 10 largest states
-largest_states = df.nlargest(10, 'Total Area (sq mi)')
-
-# Calculate proportions
-largest_states['Land Proportion (%)'] = (largest_states['Land Area (sq mi)'] / largest_states['Total Area (sq mi)']) * 100
-largest_states['Water Proportion (%)'] = (largest_states['Total Water Area (sq mi)'] / largest_states['Total Area (sq mi)']) * 100
-
-# Plotting
+# Step 5: Create the histogram using Seaborn
 plt.figure(figsize=(12, 6))
+sns.histplot(pop_data[year].dropna(), bins=15, color='skyblue', kde=True)
 
-# Create a bar chart for proportions
-bar_width = 0.35
-x = range(len(largest_states))
-
-# Create bars for Land and Water proportions
-plt.bar(x, largest_states['Land Proportion (%)'], width=bar_width, color='royalblue', label='Land Proportion (%)')
-plt.bar(x, largest_states['Water Proportion (%)'], width=bar_width, bottom=largest_states['Land Proportion (%)'], color='lightskyblue', label='Water Proportion (%)')
-
-# Adding titles and labels
-plt.title('Proportion of Total Area that is Land and Water for the 10 Largest States')
-plt.xlabel('States')
-plt.ylabel('Proportion (%)')
-plt.xticks(x, largest_states['Post Office ABBR'])  # Set x-ticks to state abbreviations
-
-# Add gridlines for better readability
-plt.grid(axis='y', linestyle='--', linewidth=0.5)
-
-plt.legend()
+# Add titles and labels
+plt.title(f'Population Distribution of States in {year} (Excluding D.C.)')
+plt.xlabel('Population In Thousands')
+plt.ylabel('Number of States')
+plt.grid(axis='y')
 
 # Show the plot
 plt.tight_layout()
 plt.show()
 
+```
+
+- Explanation
+  ```
+1) The resulting histogram displays the distribution of state populations for the year 2009. X-Axis (Population in Thousands) represents the population of the states, segmented into bins. Y-Axis (Number of States)
+represents the number of states that fall within each population bin.
+2) The histogram visualizes how the populations of the states are distributed, allowing for quick identification of population ranges where most states fall. The overlayed KDE provides a smooth estimate of the population density
+.
+  ```
+
+- *Discuss the advantages and disadvantages of each type of distribution chart idiom for showing these distributions (talk specifically about these distributions, not just their advantages and disadvantages in general)*
+- Answer:
+```
 
 ```
+Advantages 
+
+1) The histogram effectively displays how state populations are distributed across a range, allowing for quick insights into the overall population distribution.
+Exclusion of D.C.:
+
+2) By excluding Washington, D.C., the histogram focuses solely on the states, which provides a clearer understanding of state populations without the outlier effect of the capital.
+Kernel Density Estimate (KDE):
+
+3) The inclusion of a KDE overlay smooths the distribution, helping to highlight underlying trends and patterns.
+
+Disadvantages
+
+1) Like all histograms, this one aggregates data into bins, which means that individual variations within those bins are not visible. This could mask important insights.
+
+2) Viewers might misinterpret the distribution if they are not aware of the effects of binning and KDE smoothing, leading to incorrect assumptions about the data's underlying distribution.
+
+3) While the KDE adds useful information, it could also create confusion if the audience misinterprets it as a distinct data series rather than a smoothed estimate of the histogram.
+   
+4) This histogram represents only the year 2009. It doesn’t allow for comparisons across multiple years or an understanding of population trends over time, limiting its analytical depth.
+   
+```
+- *Name 1-2 simple observations you can draw from each chart*
+- Answer:
+  1) I observed that about 25 states have populations clustered around the first bin which is between 4 million and 5 million people
+  2) I observed that this is a rightly skewed distribution. A right-skewed distribution often indicates the presence of outliers or extreme values on the high end of the scale.
+ 
+ 
+
+#### 3) eCDF: Show the distributions of the population of all states in two of the years (your legend must indicate which years)
+
+
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/h3.png" alt="eCDF Distributions of the population of all states for 1995 and 2009" width="989" height="590">
+
+- *Description of the chart and how is was created (explain the code you used and include code snippets)*
+- Answer: Code Snippet and Explanation
+
+```
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Step 1: Load the data
+data = pd.read_csv('https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/population4.csv')
+
+# Step 2: Exclude Washington D.C.
+data = data[data['State'] != 'District of Columbia']
+
+# Step 3: Extract population data for the years 1995 and 2009
+population_1995 = pd.to_numeric(data['1995'], errors='coerce').dropna()
+population_2009 = pd.to_numeric(data['2009'], errors='coerce').dropna()
+
+# Step 4: Create the eCDF plots using Seaborn
+plt.figure(figsize=(10, 6))
+
+# Plot eCDF for 1995
+sns.ecdfplot(population_1995, label='1995', color='skyblue', linewidth=2)
+
+# Plot eCDF for 2009
+sns.ecdfplot(population_2009, label='2009', color='salmon', linewidth=2)
+
+# Add titles and labels
+plt.title('Empirical Cumulative Distribution Function (eCDF) of State Populations (Excluding D.C.)')
+plt.xlabel('Population In Thousands')
+plt.ylabel('ECDF')
+plt.legend(loc='upper left')
+plt.grid(True)
+
+# Show the plot
+plt.tight_layout()
+plt.show()
+
+```
+
+- Explanation
+  
+  ```
+  1) This code effectively visualizes the cumulative distribution of state populations for the years 1995 and 2009 using eCDF plots.
+
+  2) The eCDF shows a clear comparisons of population distributions over time and provides insights into how the population landscape of the states has evolved, all while excluding Washington,
+     D.C. for the years 1995 and 2009
+  3) X-Axis (Population In Thousands) represents the population size of states while Y-Axis (ECDF), represents the cumulative proportion of states that have populations less than or equal to the values on the x-axis.
+  
+  ```
+  - *Discuss the advantages and disadvantages of each type of distribution chart idiom for showing these distributions (talk specifically about these distributions, not just their advantages and disadvantages in general)*
+- Answer:
+```
+Advantages:
+
+1) This eCDF plot shows the cumulative proportion of states with populations below a certain value, making it easy to understand the distribution of populations at a glance.
+
+2) By displaying eCDFs for both 1995 and 2009, the plot allows for straightforward comparisons between the two years, helping to highlight changes in population distributions over time.
+
+Disadvantages:
+
+1) While this eCDFs provide cumulative proportions, it does not show individual data points or the specific number of states within certain population ranges. This can mask important details about the data distribution.
+
+2) This eCDFs does convey information about the spread or variability of the data within each population range, unlike histograms or boxplots.
+
+```
+
+- *Name 1-2 simple observations you can draw from each chart*
+- Answer:
+  1) I observed that about 90% of the states in both 1995 and 2009 are have a population of 15 million or less people. 
+  2) I observed that this is a rightly skewed distribution. A right-skewed distribution often indicates the presence of outliers or extreme values on the high end of the scale.
+     
+
+
+## PART 2 : FURTHER ANALYSIS
+
+###### From the first Boxplot it show some outliers I wanted to answer the following question:
+###### 1) What states population were the outliers 1970, 1985, 1995 and 2009.
+###### 2) Are the same states consistently outliers in each of those years and why were they outliers in those year or not 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Idiom: STACKED BAR CHART / Mark: Bar
 | Data: Attribute | Data: Attribute Type  | Encode: Channel | 
