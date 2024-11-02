@@ -93,7 +93,7 @@ Disadvantages
 - *Name 1-2 simple observations you can draw from each chart*
 - Answer:
 - 1) Every year compared had state population outliers
-- 2) The median population does not change by so much, yes there is a steady increase but not by much. 
+- 2) The median population does not change by so much, yes there is a steady increase but not by much across the years compared. 
 
 
 
