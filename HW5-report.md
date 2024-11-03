@@ -451,30 +451,87 @@ plt.show()
 ## INTRIGUING OBSERVATION
 ### This observation was just something I found that awakened my curiosity about these charts, and I tried to find out why.
 ### I found that the shape of the of the eCDF and Horizontal Bar Chart (sorted in descending order) looked the same. I observed this for 2009. I could assumed it could be applied to other years
-### This phenomena and knowing the number of outliers, visually help to locate the outlier points in both graph. This was purely out of curiosity. 
+### This phenomena and knowing the number of outliers from the 2009 boxplot, visually helped me to locate the outlier points in both graph. This was purely out of curiosity. 
 
- | <img src="https://github.com/vnwal001/MyTestFolder/blob/main/h7.png" alt="Average Population Growth from 1970 to 2009" width="500"/> | <img src="https://github.com/vnwal001/MyTestFolder/blob/main/h8.png" alt="Average Population over those Years" width="500"/> |
+ | <img src="https://github.com/vnwal001/MyTestFolder/blob/main/h7.png" alt="2009 Population Histogram" width="500"/> | <img src="https://github.com/vnwal001/MyTestFolder/blob/main/h8.png" alt="2009 Population eCDF" width="500"/> |
 |------------------------------------------------------|------------------------------------------------------|
 
+- Explanation
 
+```
+Although the Horzontal Bar chart and eCDF convey different types of information (individual values vs. cumulative distribution), the overall shape of the two visualizations reflects the same underlying data, leading to their visual similarity when the bar chart is sorted in descending order.
+```
+**Python Code**
 
+```
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
+# Step 1: Load the data
+data = pd.read_csv('https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/population4.csv')
 
+# Step 2: Extract relevant columns for the year 2009
+pop_2009 = pd.to_numeric(data['2009'], errors='coerce').dropna()
+states = data['State'][pop_2009.index]  # Get the corresponding state names
 
+# Step 3: Create a DataFrame for 2009 populations
+pop_2009_df = pd.DataFrame({'State': states, 'Population': pop_2009})
 
+# Step 4: Exclude Washington, D.C.
+pop_2009_df = pop_2009_df[pop_2009_df['State'] != 'District of Columbia']
 
+# Step 5: Sort by population
+pop_2009_df = pop_2009_df.sort_values(by='Population', ascending=False)
 
+# Step 6: Create the bar chart using Seaborn
+plt.figure(figsize=(12, 8))
+sns.barplot(x='Population', y='State', data=pop_2009_df, palette='viridis')
 
+# Add titles and labels
+plt.title('State Populations in 2009 (Excluding D.C.)')
+plt.xlabel('Population')
+plt.ylabel('State')
+plt.grid(axis='x')
 
+# Show the plot
+plt.tight_layout()
+plt.show()
+```
 
+```
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
 
+# Step 1: Load the data
+data = pd.read_csv('https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/population4.csv')
 
+# Step 2: Exclude Washington D.C.
+data = data[data['State'] != 'District of Columbia']
 
+# Step 3: Extract population data for the year 2009
+population_2009 = pd.to_numeric(data['2009'], errors='coerce').dropna()
 
+# Step 4: Create the eCDF plot for 2009
+plt.figure(figsize=(10, 6))
+
+# Plot eCDF for 2009
+sns.ecdfplot(population_2009, label='2009', color='salmon', linewidth=2)
+
+# Add titles and labels
+plt.title('Empirical Cumulative Distribution Function (eCDF) of State Populations in 2009 (Excluding D.C.)')
+plt.xlabel('Population (in thousands)')
+plt.ylabel('ECDF')
+plt.grid(True)
+
+# Show the plot
+plt.tight_layout()
+plt.show()
+```
 
 
 
 **References:**
 - https://chatgpt.com/
-- https://www.census.gov/library/publications/2009/compendia/statab/129ed/geography-environment.html
-- https://www.census.gov/library/publications/2009/compendia/statab/129ed.html
+- https://www.census.gov/library/publications/2010/compendia/statab/130ed/population.html
