@@ -141,12 +141,12 @@ plt.show()
 ```
 
 - Explanation
-  ```
+  
+```
 1) The resulting histogram displays the distribution of state populations for the year 2009. X-Axis (Population in Thousands) represents the population of the states, segmented into bins. Y-Axis (Number of States)
 represents the number of states that fall within each population bin.
 2) The histogram visualizes how the populations of the states are distributed, allowing for quick identification of population ranges where most states fall. The overlayed KDE provides a smooth estimate of the population density
-.
-  ```
+```
 
 - *Discuss the advantages and disadvantages of each type of distribution chart idiom for showing these distributions (talk specifically about these distributions, not just their advantages and disadvantages in general)*
 Answer:
