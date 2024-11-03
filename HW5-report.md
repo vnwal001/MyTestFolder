@@ -12,8 +12,8 @@
 ##### To prepare my data for use I did the following:
 - The original file was in xls format, I created a new csv file to place my data
 - I copied over the values of the only data I needed for my analysis, I copied the state population data for just 1970, 1985, 1995 and 2009.
-- I for the specified years, if they had both and April and July data, I picked the July data for that year because most years data were collected in July. I only took the April data if there was not July available
-- I rename the Years column to just the Year and removed the month. 
+- For the specified years, if they had both and April and July data, I picked the July data for that year because most years data were collected in July. I only took the April data if there was not a July date available
+- I renamed the Years column to just the Year and removed the month. 
 
 ### B) TABLE 12
 
@@ -88,6 +88,7 @@ Advantages
 Disadvantages
 1) It does convey information about the number of data points or the specific values
 2) In this box plot you cannot clearly tell if outlier points overlap
+
 ```
 
 - *Name 1-2 simple observations you can draw from each chart*
@@ -177,7 +178,7 @@ Disadvantages
 - *Name 1-2 simple observations you can draw from each chart*
 - Answer:
 ```
-  1) I observed that about 25 states have populations clustered around the first bin which is between 4 million and 5 million people
+  1) I observed that about 25 states have populations clustered around the first bin which is between 4 million and 5 million people. This means they have a population of between 4 and 5 million people or less.
   2) I observed that this is a rightly skewed distribution. A right-skewed distribution often indicates the presence of outliers or extreme values on the high end of the scale.
  ```
 
@@ -257,14 +258,14 @@ Disadvantages:
 - Answer:
 ```
   1) I observed that about 90% of the states in both 1995 and 2009 are have a population of 15 million or less people. 
-  2) I observed that this is a rightly skewed distribution. A right-skewed distribution often indicates the presence of outliers or extreme values on the high end of the scale.
+
  ```    
 
 
 ## PART 2 : FURTHER ANALYSIS
 
 ### The first Boxplot showed some outliers I wanted to answer the following question:
-### 1) What states population were the outliers 1970, 1985, 1995 and 2009.
+### 1) What states population were the outliers in 1970, 1985, 1995 and 2009.
 ### 2) Were the same states consistently outliers in each of those years and why were they outliers in those years or not 
 
 
@@ -322,7 +323,7 @@ By 1985, the combination of economic decline, outmigration, demographic shifts, 
 
 
  ### Other Observations 
- ##### I wanted to see the average population growth or decline of the states that were consistenly outliers this will help me determine the state with fastest population growth rate.
+ ##### I wanted to see the average population growth or decline of the states that were consistenly outliers this will help me determine the state with fastest population growth rate among them.
  ##### The states I compared were California, New York and Texas
 
  | <img src="https://github.com/vnwal001/MyTestFolder/blob/main/h5.png" alt="Average Population Growth from 1970 to 2009" width="500"/> | <img src="https://github.com/vnwal001/MyTestFolder/blob/main/h6.png" alt="Average Population over those Years" width="500"/> |
@@ -451,7 +452,7 @@ plt.show()
 ## INTRIGUING OBSERVATION
 ### This observation was just something I found that awakened my curiosity about these charts, and I tried to find out why.
 ### I found that the shape of the of the eCDF and Horizontal Bar Chart (sorted in descending order) looked the same. I observed this for 2009. I could assumed it could be applied to other years
-### This phenomena and knowing the number of outliers from the 2009 boxplot, visually helped me to locate the outlier points in both graph. This was purely out of curiosity. 
+### With this mystery and knowing the number of outliers from the 2009 boxplot, visually helped me to locate the outlier points in both graph. This was purely out of curiosity. 
 
  | <img src="https://github.com/vnwal001/MyTestFolder/blob/main/h7.png" alt="2009 Population Histogram" width="500"/> | <img src="https://github.com/vnwal001/MyTestFolder/blob/main/h8.png" alt="2009 Population eCDF" width="500"/> |
 |------------------------------------------------------|------------------------------------------------------|
