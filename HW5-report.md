@@ -268,14 +268,57 @@ Disadvantages:
 
 
 #### 1) What states population were the outliers 1970, 1985, 1995 and 2009.
+```
+Outliers can indicate variability in the data, suggesting that there may be extreme values that differ from the majority of the data points.
+In this case we had very high population values compared to the other states as outliers
+```
 
  ##### Answer: To answer this question, I decided to plot a Bar chart of all the outliers across these years
 
  <img src="https://github.com/vnwal001/MyTestFolder/blob/main/h4.png" alt="eCDF Distributions of the population of all states for 1995 and 2009" width="1189" height="590">
+
+  ##### My First Deductions from the BAR CHART
+  
+  ###### In 1970 the population boxplot had the following outliers
+  - California
+  - Illinois
+  - New York
+  - Pennsylvania
+  - Ohio
+  - Texas
+
+    
+ ###### In 1985 the population boxplot had the following outliers
+  - California
+  - New York
+  - Texas
+
+    
+ ###### In 1995 the population boxplot had the following outliers
+  - California
+  - New York
+  - Texas
+  - Florida
+    
+
+ ###### In 2009 the population boxplot had the following outliers
+  - California
+  - New York
+  - Texas
+  - Florida
+
+ ##### My Second Deductions from the BAR CHART
+ - I was amazed to find the 1970 had six states that were outliers because visually I could only count 5. It appears 2 points overlap
+
+ #### 1)  Were the same states consistently outliers in each of those years and why were they outliers in those years or not
+ - California, New York and Texas were consistent outliers in 1970, 1985, 1995 and 2009.
+ - Ohio and Pennsylvania were outliers in 1970 but by 1985, they were no longer outliers while in 1995 AND 2009 Florida was an outlier.
  
+```
+In 1970, the populations of California, New York, Texas, Illinois, Pennsylvania, and Ohio were indeed significantly higher than those of many other states. These states represented key economic centers and had large urban populations, which contributed to their higher numbers. However, demographic trends were starting to shift, with some states like New York beginning to lose population to more rapidly growing states like California and Texas.
 
-
-
+By 1985, the combination of economic decline, outmigration, demographic shifts, and the rapid growth of other states contributed to Pennsylvania and Ohio no longer having significantly high populations compared to states like California and Texas. These trends reflected broader changes in the U.S. economy and population movements during that period.
+```
 
 
 
