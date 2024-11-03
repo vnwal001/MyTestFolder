@@ -176,14 +176,14 @@ Disadvantages
 ```
 - *Name 1-2 simple observations you can draw from each chart*
 - Answer:
+```
   1) I observed that about 25 states have populations clustered around the first bin which is between 4 million and 5 million people
   2) I observed that this is a rightly skewed distribution. A right-skewed distribution often indicates the presence of outliers or extreme values on the high end of the scale.
- 
- 
+ ```
+
+
 
 #### 3) eCDF: Show the distributions of the population of all states in two of the years (your legend must indicate which years)
-
-
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/h3.png" alt="eCDF Distributions of the population of all states for 1995 and 2009" width="989" height="590">
 
 - *Description of the chart and how is was created (explain the code you used and include code snippets)*
@@ -223,7 +223,6 @@ plt.grid(True)
 # Show the plot
 plt.tight_layout()
 plt.show()
-
 ```
 
 - Explanation
