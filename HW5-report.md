@@ -70,12 +70,12 @@ plt.show()
 
 ```
 - Explanation
-  ```
+```
   Each box represents the interquartile range (IQR) of the population data for each year, indicating where the middle 50% of data lies.
   The line inside each box represents the median population.
   Whiskers extend to show the range of the data (excluding outliers).
   Outliers are plotted as individual points outside the whiskers
-   ```
+```
   
 - *Discuss the advantages and disadvantages of each type of distribution chart idiom for showing these distributions (talk specifically about these distributions, not just their advantages and disadvantages in general)*
 - Answer:
@@ -94,7 +94,7 @@ Disadvantages
 - Answer:
 - 1) Every year compared had state population outliers
 - 2) The median population does not change by so much, yes there is a steady increase but not by much across the years compared. 
-
+```
 
 
 
@@ -189,6 +189,7 @@ Disadvantages
 - *Description of the chart and how is was created (explain the code you used and include code snippets)*
 - Answer: Code Snippet and Explanation
 
+
 ```
 import pandas as pd
 import seaborn as sns
@@ -227,14 +228,14 @@ plt.show()
 
 - Explanation
   
-  ```
+```
   1) This code effectively visualizes the cumulative distribution of state populations for the years 1995 and 2009 using eCDF plots.
 
   2) The eCDF shows a clear comparisons of population distributions over time and provides insights into how the population landscape of the states has evolved, all while excluding Washington,
      D.C. for the years 1995 and 2009
   3) X-Axis (Population In Thousands) represents the population size of states while Y-Axis (ECDF), represents the cumulative proportion of states that have populations less than or equal to the values on the x-axis.
   
-  ```
+ ```
   - *Discuss the advantages and disadvantages of each type of distribution chart idiom for showing these distributions (talk specifically about these distributions, not just their advantages and disadvantages in general)*
 - Answer:
 ```
@@ -254,9 +255,10 @@ Disadvantages:
 
 - *Name 1-2 simple observations you can draw from each chart*
 - Answer:
+```
   1) I observed that about 90% of the states in both 1995 and 2009 are have a population of 15 million or less people. 
   2) I observed that this is a rightly skewed distribution. A right-skewed distribution often indicates the presence of outliers or extreme values on the high end of the scale.
-     
+ ```    
 
 
 ## PART 2 : FURTHER ANALYSIS
@@ -316,7 +318,8 @@ In this case we had very high population values compared to the other states as 
 In 1970, the populations of California, New York, Texas, Illinois, Pennsylvania, and Ohio were indeed significantly higher than those of many other states. These states represented key economic centers and had large urban populations, which contributed to their higher numbers. However, demographic trends were starting to shift, with some states like New York beginning to lose population to more rapidly growing states like California and Texas.
 
 By 1985, the combination of economic decline, outmigration, demographic shifts, and the rapid growth of other states contributed to Pennsylvania and Ohio no longer having significantly high populations compared to states like California and Texas. These trends reflected broader changes in the U.S. economy and population movements during that period.
-```
+
+
 
  ### Other Observations 
  ##### I wanted to see the average population growth or decline of the states that were consistenly outliers this will help me determine the state with fastest population growth rate.
@@ -324,7 +327,6 @@ By 1985, the combination of economic decline, outmigration, demographic shifts, 
 
  | <img src="https://github.com/vnwal001/MyTestFolder/blob/main/h5.png" alt="Average Population Growth from 1970 to 2009" width="500"/> | <img src="https://github.com/vnwal001/MyTestFolder/blob/main/h6.png" alt="Average Population over those Years" width="500"/> |
 |------------------------------------------------------|------------------------------------------------------|
-
 ```
 I OBSERVED THAT THOUGH CALIFORNIA HAS THE HIGHER POPULATION, TEXAS HAS THE HIGHEST GROWTH RATE
 Average Percentage Growth the years 1970, 1985, 1995 and 2009:
