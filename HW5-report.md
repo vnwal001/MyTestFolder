@@ -149,8 +149,8 @@ represents the number of states that fall within each population bin.
   ```
 
 - *Discuss the advantages and disadvantages of each type of distribution chart idiom for showing these distributions (talk specifically about these distributions, not just their advantages and disadvantages in general)*
-- Answer:
-```
+Answer:
+
 
 ```
 Advantages 
