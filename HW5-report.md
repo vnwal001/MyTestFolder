@@ -309,7 +309,7 @@ In this case we had very high population values compared to the other states as 
   - Florida
 
  ##### My Second Deductions from the BAR CHART
- - I was amazed to find that 1970 had six states that were outliers because visually I could only count 5. It appears 2 points overlapped
+ - I was amazed to find that 1970 had six states that were outliers because visually I could only count 5 in the first boxplot. It appears 2 points overlapped
 
  #### 2)  Were the same states consistently outliers in each of those years and why were they outliers in those years or not
  - California, New York and Texas were consistent outliers in 1970, 1985, 1995 and 2009.
