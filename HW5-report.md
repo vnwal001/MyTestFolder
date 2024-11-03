@@ -326,8 +326,122 @@ By 1985, the combination of economic decline, outmigration, demographic shifts, 
  | <img src="https://github.com/vnwal001/MyTestFolder/blob/main/h5.png" alt="Average Population Growth from 1970 to 2009" width="500"/> | <img src="https://github.com/vnwal001/MyTestFolder/blob/main/h6.png" alt="Average Population over those Years" width="500"/> |
 |------------------------------------------------------|------------------------------------------------------|
 
- 
+```
+I OBSERVED THAT THOUGH CALIFORNIA HAS THE HIGHER POPULATION, TEXAS HAS THE HIGHEST GROWTH RATE
+Average Percentage Growth the years 1970, 1985, 1995 and 2009:
+California: 22.96%
+New York: 2.38%
+Texas: 30.84%
+```
+**Python Code**
+```
+import pandas as pd
+import matplotlib.pyplot as plt
 
+# Load the data
+data = pd.read_csv('https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/population4.csv')
+
+# Clean 'State' column
+data['State'] = data['State'].str.strip()
+
+# Extract relevant columns
+years = ['1970', '1985', '1995', '2009']
+pop_data = data[['State'] + years]
+
+# Melt the DataFrame to long format
+pop_melted = pop_data.melt(id_vars=['State'], value_vars=years, var_name='Year', value_name='Population')
+
+# Convert Population to numeric
+pop_melted['Population'] = pd.to_numeric(pop_melted['Population'], errors='coerce')
+
+# Exclude Washington, D.C.
+pop_melted = pop_melted[pop_melted['State'] != 'District of Columbia']
+
+# Filter for California, Texas, and New York
+selected_states = pop_melted[pop_melted['State'].isin(['California', 'Texas', 'New York'])]
+
+# Pivot the data for easier calculations
+pivot_data = selected_states.pivot(index='Year', columns='State', values='Population')
+
+# Calculate growth rates
+growth_rates = pivot_data.pct_change() * 100  # Percentage change
+growth_rates = growth_rates.dropna()  # Remove NaN values from the first row
+
+# Create a bar plot for growth rates
+plt.figure(figsize=(12, 6))
+growth_rates.plot(kind='bar', color=['skyblue', 'salmon', 'lightgreen'], alpha=0.7)
+
+# Add titles and labels
+plt.title('Average Growth Rate of Population (in %) for California, Texas, and New York')
+plt.xlabel('Year')
+plt.ylabel('Growth Rate (%)')
+plt.xticks(rotation=0)
+plt.grid(axis='y')
+
+# Show the plot
+plt.tight_layout()
+plt.legend(title='State')
+plt.show()
+
+```
+ 
+```
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load the data
+data = pd.read_csv('https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/population4.csv')
+
+# Clean 'State' column
+data['State'] = data['State'].str.strip()
+
+# Extract relevant columns
+years = ['1970', '1985', '1995', '2009']
+pop_data = data[['State'] + years]
+
+# Melt the DataFrame to long format
+pop_melted = pop_data.melt(id_vars=['State'], value_vars=years, var_name='Year', value_name='Population')
+
+# Convert Population to numeric
+pop_melted['Population'] = pd.to_numeric(pop_melted['Population'], errors='coerce')
+
+# Exclude Washington, D.C.
+pop_melted = pop_melted[pop_melted['State'] != 'District of Columbia']
+
+# Filter for California, Texas, and New York
+selected_states = pop_melted[pop_melted['State'].isin(['California', 'Texas', 'New York'])]
+
+# Pivot the data for easier calculations
+pivot_data = selected_states.pivot(index='Year', columns='State', values='Population')
+
+# Calculate growth rates
+growth_rates = pivot_data.pct_change() * 100  # Percentage change
+growth_rates = growth_rates.dropna()  # Remove NaN values from the first row
+
+# Calculate the average percentage growth for each state
+average_growth = growth_rates.mean()
+
+# Print the average growth rates for each state
+print("Average Percentage Growth from 1985 to 2009:")
+for state in average_growth.index:
+    print(f"{state}: {average_growth[state]:.2f}%")
+
+# Create a bar plot for average growth rates
+plt.figure(figsize=(8, 5))
+average_growth.plot(kind='bar', color=['skyblue', 'salmon', 'lightgreen'], alpha=0.7)
+
+# Add titles and labels
+plt.title('Average Percentage Growth of Population (1985-2009)')
+plt.xlabel('State')
+plt.ylabel('Average Growth Rate (%)')
+plt.xticks(rotation=0)
+plt.grid(axis='y')
+
+# Show the plot
+plt.tight_layout()
+plt.show()
+
+```
 
 
 
