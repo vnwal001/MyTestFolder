@@ -317,7 +317,8 @@ In this case we had very high population values compared to the other states as 
 In 1970, the populations of California, New York, Texas, Illinois, Pennsylvania, and Ohio were indeed significantly higher than those of many other states. These states represented key economic centers and had large urban populations, which contributed to their higher numbers. However, demographic trends were starting to shift, with some states like New York beginning to lose population to more rapidly growing states like California and Texas.
 
 By 1985, the combination of economic decline, outmigration, demographic shifts, and the rapid growth of other states contributed to Pennsylvania and Ohio no longer having significantly high populations compared to states like California and Texas. These trends reflected broader changes in the U.S. economy and population movements during that period.
-```
+
+
  ### Other Observations 
  ##### I wanted to see the average population growth or decline of the states that were consistenly outliers this will help me determine the state with fastest population growth rate.
  ##### The states I compared were California, New York and Texas
@@ -333,6 +334,7 @@ New York: 2.38%
 Texas: 30.84%
 ```
 **Python Code**
+
 ```
 import pandas as pd
 import matplotlib.pyplot as plt
