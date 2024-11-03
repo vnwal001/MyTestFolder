@@ -308,7 +308,7 @@ In this case we had very high population values compared to the other states as 
   - Florida
 
  ##### My Second Deductions from the BAR CHART
- - I was amazed to find the 1970 had six states that were outliers because visually I could only count 5. It appears 2 points overlap
+ - I was amazed to find that 1970 had six states that were outliers because visually I could only count 5. It appears 2 points overlapped
 
  #### 1)  Were the same states consistently outliers in each of those years and why were they outliers in those years or not
  - California, New York and Texas were consistent outliers in 1970, 1985, 1995 and 2009.
@@ -319,7 +319,11 @@ In 1970, the populations of California, New York, Texas, Illinois, Pennsylvania,
 
 By 1985, the combination of economic decline, outmigration, demographic shifts, and the rapid growth of other states contributed to Pennsylvania and Ohio no longer having significantly high populations compared to states like California and Texas. These trends reflected broader changes in the U.S. economy and population movements during that period.
 ```
-
+ ### Other Observations 
+ ##### I wanted to see the average population growth or decline of the states that were consistenly outliers this will help me determine the state with fastest population growth rate.
+ ##### The states I compared were California, New York and Texas
+ 
+ 
 
 
 
