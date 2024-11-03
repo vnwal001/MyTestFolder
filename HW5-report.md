@@ -448,8 +448,13 @@ plt.show()
 
 
 
+## INTRIGUING OBSERVATION
+### This observation was just something I found that awakened my curiosity about these charts, and I tried to find out why.
+### I found that the shape of the of the eCDF and Horizontal Bar Chart (sorted in descending order) looked the same. I observed this for 2009. I could assumed it could be applied to other years
+### This phenomena and knowing the number of outliers, visually help to locate the outlier points in both graph. This was purely out of curiosity. 
 
-
+ | <img src="https://github.com/vnwal001/MyTestFolder/blob/main/h7.png" alt="Average Population Growth from 1970 to 2009" width="500"/> | <img src="https://github.com/vnwal001/MyTestFolder/blob/main/h8.png" alt="Average Population over those Years" width="500"/> |
+|------------------------------------------------------|------------------------------------------------------|
 
 
 
