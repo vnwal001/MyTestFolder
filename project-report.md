@@ -705,6 +705,18 @@ fig.show()
 ```
 
 
+#### *THE HURRICANE FREQUENCY STORY OF THE LAST 50 YEARS FROM 2015 OVER THE PACIFIC OCEAN*
+
+```
+Just like the data from the atlantic ocean, I wanted to make sense of the peaks and valleys in frequency trend plot so I decided to break my data in two 25 year time period.
+By doing this I can clearly compare both time periods to verify what's actually happening . In doing this I observed the following:
+
+- The hurriance average frequency per year increased from 8.15 to 9.05 from the time periods 1964-1989 to 1990-2015
+- The boxplot also clearly shows a positive trend in hurricane frequency, the median is higher in the right boxplot, it suggests that the center of the data is shifted toward higher frequency compared to the left boxplot.
+- 1990-2015 time period also has a higher max frequncy value.
+
+```
+
 
 
 
