@@ -137,7 +137,7 @@ fig.update_layout(
 fig.show()
 ```
 
-#### AVERAGE ATLANTIC HURRICANES FREQUENCIES OVER THE LAST 50 YEARS FROM 2015
+####  THE LAST 50 YEARS FROM 2015 COMPARISM
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/atav.png" alt="Atlantic Hurricane Frequency" width="995" height="525">
 
@@ -224,9 +224,10 @@ fig.show()
 
 ```
 
-#### AVERAGE ATLANTIC HURRICANES FREQUENCY DISTRIBUTION OVER THE LAST 50 YEARS FROM 2015
+#### BOXPLOT OF THE LAST 50 YEARS FROM 2015 COMPARISM
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/atbox.png" alt="Atlantic Hurricane Frequency" width="995" height="525">
+
 ```
 import numpy as np
 import pandas as pd
