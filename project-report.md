@@ -43,7 +43,7 @@
 
 #### SECTION 2 QUESTION 1A ANSWERS 
 
-#### ATLANTIC HURRICANES
+#### ATLANTIC HURRICANES FREQUENCIES
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/HF2.png" alt="Atlantic Hurricane Frequency" width="910" height="525">
 
 - *Description of the chart and how is was created (explain the code you used and include code snippets)*
@@ -136,6 +136,9 @@ fig.update_layout(
 # Show the interactive plot
 fig.show()
 ```
+
+
+
 
 #### PACIFIC HURRICANES
 
