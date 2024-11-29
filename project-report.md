@@ -138,7 +138,9 @@ fig.show()
 ```
 
 #### AVERAGE ATLANTIC HURRICANES FREQUENCIES OVER THE LAST 50 YEARS FROM 2015
+
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/atav.png" alt="Atlantic Hurricane Frequency" width="995" height="525">
+
 ```
 import numpy as np    # linear algebra
 import pandas as pd   # data processing, CSV file I/O (e.g. pd.read_csv)
