@@ -42,7 +42,7 @@
 - 
 
 #### SECTION 2 QUESTION 1A ANSWERS 
-
+#### ANALYZING HURRICANE FREQUENCIES
 #### ATLANTIC HURRICANES FREQUENCIES
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/HF2.png" alt="Atlantic Hurricane Frequency" width="910" height="525">
 
@@ -716,6 +716,20 @@ By doing this I can clearly compare both time periods to verify what's actually 
 - 1990-2015 time period also has a higher max frequncy value.
 
 ```
+
+## ANALYZING HURRICANE WIND SPEEDS
+
+
+#### ATLANTIC HURRICANES WIND SPEEDS
+
+
+
+
+
+
+
+
+
 
 
 
