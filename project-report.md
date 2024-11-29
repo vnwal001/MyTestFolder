@@ -817,7 +817,7 @@ fig.show()
 ```
 
 
-#### ATLANTIC HURRICANES AVERAGE MAX WIND SPEEDS
+#### ATLANTIC HURRICANES AVERAGE MAX WIND SPEEDS FOR THE LAST 50 YEARS FROM 2015
 
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/atavwp.png" alt="Atlantic Hurricane Max Wind" width="910" height="525">
@@ -987,9 +987,287 @@ fig.show()
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/pcws.png" alt="Pacific Max Wind Speed" width="910" height="525">
 
+```
+# Step 1: Import necessary libraries
+import numpy as np
+import pandas as pd
+import plotly.express as px
+import seaborn as sns
+import matplotlib.colors as mcolors
+import warnings
 
+# Suppress warnings
+warnings.simplefilter("ignore")
 
+# Set Seaborn style
+sns.set(style="whitegrid")
 
+# Step 2: Read the dataset
+data = pd.read_csv("https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/pacific.csv")
+
+# Step 3: Clean the dataset
+# Remove leading and trailing spaces from all string columns
+data = data.applymap(lambda x: x.strip() if isinstance(x, str) else x)
+
+# Remove duplicates
+data.drop_duplicates(inplace=True)
+
+# Ensure the 'Date' column is in datetime format
+data['Date'] = pd.to_datetime(data['Date'], format='%Y%m%d')
+
+# Extract the year from the 'Date' column
+data['Year'] = data['Date'].dt.year
+
+# Step 4: Filter data for Status = 'HU' (Hurricane)
+hu_data = data[data['Status'] == 'HU']
+unique_ids_hurr = set(hu_data['ID'])
+hu_data = data[data['ID'].isin(unique_ids_hurr)]
+
+# Step 5: Handle Missing or Invalid Maximum Wind Values
+# Drop rows where 'Maximum Wind' is missing or invalid
+hu_data = hu_data.dropna(subset=['Maximum Wind'])
+
+# Step 6: Get the maximum wind speed for each year
+max_wind_per_year = hu_data.groupby('Year')['Maximum Wind'].max().reset_index()
+
+# Step 7: Plot using Plotly for an interactive graph with Seaborn style
+fig = px.line(max_wind_per_year, x='Year', y='Maximum Wind',
+              markers=True, title='Pacific Max Wind Speed by Year for Hurricanes')
+
+# Add hover data to highlight speed and year on hover
+fig.update_traces(
+    hovertemplate="<b>Year:</b> %{x}<br><b>Max Wind (knots):</b> %{y}<extra></extra>"
+)
+
+# Apply Seaborn's color palette, and convert it to a hex format for Plotly
+palette = sns.color_palette("muted", 1)  # Muted color palette from Seaborn
+hex_color = mcolors.to_hex(palette[0])  # Convert RGB tuple to hex using matplotlib
+
+# Update the line color with the hex color
+fig.update_traces(line=dict(color=hex_color))
+
+# Add vertical lines for the periods of lower, intermediate, and higher wind speeds
+fig.add_vline(x=1970, line=dict(color="black", dash="dot"), annotation_text="", annotation_position="top left")
+fig.add_vline(x=1990, line=dict(color="black", dash="dot"), annotation_text="", annotation_position="top left")
+
+# Annotate the periods to make it clearer
+fig.add_annotation(
+    x=1960,  # Position near the first period
+    y=max_wind_per_year['Maximum Wind'].min() + 10,  # Position vertically slightly above the minimum wind speed
+    text="Lower Wind Speeds\n(before 1970)",
+    showarrow=False,
+    font=dict(size=12, color="blue"),
+    bgcolor="white",
+    borderpad=4
+)
+
+fig.add_annotation(
+    x=1980,  # Position near the second period
+    y=max_wind_per_year['Maximum Wind'].min() + 80,  # Position vertically slightly above the minimum wind speed
+    text="Intermediate Wind Speeds\n(1970-1990)",
+    showarrow=False,
+    font=dict(size=12, color="green"),
+    bgcolor="white",
+    borderpad=4
+)
+
+fig.add_annotation(
+    x=2005,  # Position near the third period
+    y=max_wind_per_year['Maximum Wind'].min() + 100,  # Position vertically slightly above the minimum wind speed
+    text="Higher Wind Speeds\n(after 1990)",
+    showarrow=False,
+    font=dict(size=12, color="red"),
+    bgcolor="white",
+    borderpad=4
+)
+
+# Add text annotation at the high point
+fig.add_annotation(
+    x=2015,  # X-coordinate for the high point (year)
+    y=185,   # Y-coordinate for the wind speed
+    text="Highest",  # Text to display
+    showarrow=True,  # Show arrow pointing to the point
+    arrowhead=2,  # Style of the arrowhead
+    font=dict(
+        size=12,  # Font size
+        color="red",  # Font color
+        family="Arial"  # Font family
+    ),
+    bgcolor="white",  # Background color of the annotation box
+    borderpad=4,  # Padding around the text box
+    align="center",  # Align text horizontally
+    valign="middle"  # Align text vertically
+)
+
+# Show the plot
+fig.update_layout(
+    xaxis_title="Year",
+    yaxis_title="Max Wind (knots)",
+    title_x=0.5,  # Center the title
+    template="plotly"  # Polished default appearance similar to Seaborn
+)
+
+fig.show()
+
+```
+
+#### PACIFIC HURRICANES MAX WIND SPEEDS BAR PLOT OF THE LAST 50 YEARS FROM 2025
+
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/pcavws.png" alt="Average Pacific Max Wind Speed" width="910" height="525">
+
+```
+import numpy as np
+import pandas as pd
+import plotly.express as px
+import seaborn as sns
+import matplotlib.colors as mcolors
+import warnings
+
+# Suppress warnings
+warnings.simplefilter("ignore")
+
+# Set Seaborn style
+sns.set(style="whitegrid")
+
+# Step 2: Read the dataset
+data = pd.read_csv("https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/pacific.csv")
+
+# Step 3: Clean the dataset
+# Remove leading and trailing spaces from all string columns
+data = data.applymap(lambda x: x.strip() if isinstance(x, str) else x)
+
+# Remove duplicates
+data.drop_duplicates(inplace=True)
+
+# Ensure the 'Date' column is in datetime format
+data['Date'] = pd.to_datetime(data['Date'], format='%Y%m%d')
+
+# Extract the year from the 'Date' column
+data['Year'] = data['Date'].dt.year
+
+# Step 4: Filter data for Status = 'HU' (Hurricane)
+hu_data = data[data['Status'] == 'HU']
+unique_ids_hurr = set(hu_data['ID'])
+hu_data = data[data['ID'].isin(unique_ids_hurr)]
+
+# Step 5: Handle Missing or Invalid Maximum Wind Values
+# Drop rows where 'Maximum Wind' is missing or invalid
+hu_data = hu_data.dropna(subset=['Maximum Wind'])
+
+# Step 6: Calculate the average Maximum Wind for each year
+average_wind_per_year = hu_data.groupby('Year')['Maximum Wind'].mean().reset_index()
+
+# Filter the data to only include years from 1960 onwards
+average_wind_per_year = average_wind_per_year[average_wind_per_year['Year'] >= 1960]
+
+# Step 7: Calculate the average wind speed for two periods: 1965-1989 and 1990-2015
+# Define the two periods
+period_1 = average_wind_per_year[(average_wind_per_year['Year'] >= 1964) & (average_wind_per_year['Year'] <= 1989)]
+period_2 = average_wind_per_year[(average_wind_per_year['Year'] >= 1990) & (average_wind_per_year['Year'] <= 2015)]
+
+# Calculate the average wind speed for each period
+avg_wind_period_1 = period_1['Maximum Wind'].mean()
+avg_wind_period_2 = period_2['Maximum Wind'].mean()
+
+# Prepare data for the bar chart
+avg_wind_data = pd.DataFrame({
+    'Period': ['1964-1989', '1990-2015'],
+    'Average Wind Speed (knots)': [avg_wind_period_1, avg_wind_period_2]
+})
+
+# Step 8: Create a bar chart to compare average wind speeds
+fig = px.bar(avg_wind_data, x='Period', y='Average Wind Speed (knots)',
+             title='Pacific Comparison of Average Hurricane Wind Speed (1964-1989 vs. 1990-2015)',
+             labels={'Average Wind Speed (knots)': 'Average Wind Speed (knots)', 'Period': 'Time Period'},
+             color='Period')
+
+# Remove the labels by not adding them to the traces
+fig.update_traces(text=None)  # No text labels
+
+# Update the layout for the graph
+fig.update_layout(
+    xaxis_title="Time Period",
+    yaxis_title="Average Wind Speed (Knots)",
+    title_x=0.5,  # Center the title
+    template="plotly"  # Use Plotly's default template for styling
+)
+
+# Show the plot
+fig.show()
+
+```
+
+#### PACIFIC HURRICANES MAX WIND SPEEDS BOX PLOT PLOT DISTRIBUTION OF THE LAST 50 YEARS FROM 2025
+
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/pcavwsbox.png" alt="Pacific Max Wind Speed Box " width="910" height="525">
+
+```
+import numpy as np
+import pandas as pd
+import plotly.express as px
+import seaborn as sns
+import warnings
+
+# Suppress warnings
+warnings.simplefilter("ignore")
+
+# Set Seaborn style
+sns.set(style="whitegrid")
+
+# Step 2: Read the dataset
+data = pd.read_csv("https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/pacific.csv")
+
+# Step 3: Clean the dataset
+# Remove leading and trailing spaces from all string columns
+data = data.applymap(lambda x: x.strip() if isinstance(x, str) else x)
+
+# Remove duplicates
+data.drop_duplicates(inplace=True)
+
+# Ensure the 'Date' column is in datetime format
+data['Date'] = pd.to_datetime(data['Date'], format='%Y%m%d')
+
+# Extract the year from the 'Date' column
+data['Year'] = data['Date'].dt.year
+
+# Step 4: Filter data for Status = 'HU' (Hurricane)
+hu_data = data[data['Status'] == 'HU']
+unique_ids_hurr = set(hu_data['ID'])
+hu_data = data[data['ID'].isin(unique_ids_hurr)]
+
+# Step 5: Handle Missing or Invalid Maximum Wind Values
+# Drop rows where 'Maximum Wind' is missing or invalid
+hu_data = hu_data.dropna(subset=['Maximum Wind'])
+
+# Step 6: Create Periods for Comparison
+# Define the two periods
+period_1 = hu_data[(hu_data['Year'] >= 1964) & (hu_data['Year'] <= 1989)]
+period_2 = hu_data[(hu_data['Year'] >= 1990) & (hu_data['Year'] <= 2015)]
+
+# Add a column for the period (for boxplot comparison)
+period_1['Period'] = '1964-1989'
+period_2['Period'] = '1990-2015'
+
+# Combine the two periods into a single dataframe
+combined_data = pd.concat([period_1, period_2])
+
+# Step 7: Create a boxplot to compare wind speed distributions
+fig = px.box(combined_data, x='Period', y='Maximum Wind',
+             title='Pacific Distribution of Hurricane Wind Speeds (1965-1989 vs. 1990-2015)',
+             labels={'Maximum Wind': 'Wind Speed (knots)', 'Period': 'Time Period'},
+             color='Period')
+
+fig.update_layout(
+    xaxis_title="Time Period",
+    yaxis_title="Max Wind Speed (Knots)",
+    title_x=0.5,  # Center the title
+    template="plotly"  # Use Plotly's default template for styling
+)
+
+# Show the plot
+fig.show()
+
+```
 
 
 
