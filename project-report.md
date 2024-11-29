@@ -725,13 +725,267 @@ By doing this I can clearly compare both time periods to verify what's actually 
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/atws.png" alt="Atlantic Hurricane Max Wind" width="910" height="525">
 
+```
+# Step 1: Import necessary libraries
+import numpy as np
+import pandas as pd
+import plotly.express as px
+import seaborn as sns
+import matplotlib.colors as mcolors
+import warnings
+
+# Suppress warnings
+warnings.simplefilter("ignore")
+
+# Set Seaborn style
+sns.set(style="whitegrid")
+
+# Step 2: Read the dataset
+data = pd.read_csv("https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/atlantic.csv")
+
+# Step 3: Clean the dataset
+# Remove leading and trailing spaces from all string columns
+data = data.applymap(lambda x: x.strip() if isinstance(x, str) else x)
+
+# Remove duplicates
+data.drop_duplicates(inplace=True)
+
+# Ensure the 'Date' column is in datetime format
+data['Date'] = pd.to_datetime(data['Date'], format='%Y%m%d')
+
+# Extract the year from the 'Date' column
+data['Year'] = data['Date'].dt.year
+
+# Step 4: Filter data for Status = 'HU' (Hurricane)
+hu_data = data[data['Status'] == 'HU']
+unique_ids_hurr = set(hu_data['ID'])
+hu_data = data[data['ID'].isin(unique_ids_hurr)]
+
+# Step 5: Handle Missing or Invalid Maximum Wind Values
+# Drop rows where 'Maximum Wind' is missing or invalid
+hu_data = hu_data.dropna(subset=['Maximum Wind'])
+# Step 6: Get the maximum wind speed for each year
+max_wind_per_year = hu_data.groupby('Year')['Maximum Wind'].max().reset_index()
+
+# Filter the data to only include years from 1960 onwards
+max_wind_per_year = max_wind_per_year[max_wind_per_year['Year'] >= 1960]
+
+# Step 7: Plot using Plotly for an interactive graph with Seaborn style
+fig = px.line(max_wind_per_year, x='Year', y='Maximum Wind',
+              markers=True, title='Atlantic Max Wind Speed by Year for Hurrianes')
+
+# Add hover data to highlight speed and year on hover
+fig.update_traces(
+    hovertemplate="<b>Year:</b> %{x}<br><b>Max Wind (knots):</b> %{y}<extra></extra>"
+)
+
+# Apply Seaborn's color palette, and convert it to a hex format for Plotly
+palette = sns.color_palette("muted", 1)  # Muted color palette from Seaborn
+hex_color = mcolors.to_hex(palette[0])  # Convert RGB tuple to hex using matplotlib
+
+# Update the line color with the hex color
+fig.update_traces(line=dict(color=hex_color))
 
 
+fig.add_annotation(
+    x=1980,  # X-coordinate for the high point (year)
+    y=165,   # Y-coordinate for the wind speed
+    text="Highest",  # Text to display
+    showarrow=True,  # Show arrow pointing to the point
+    arrowhead=2,  # Style of the arrowhead
+    font=dict(
+        size=12,  # Font size
+        color="red",  # Font color
+        family="Arial"  # Font family
+    ),
+    bgcolor="white",  # Background color of the annotation box
+    borderpad=4,  # Padding around the text box
+    align="center",  # Align text horizontally
+    valign="middle"  # Align text vertically
+)
+
+# Show the plot
+fig.update_layout(
+    xaxis_title="Year",
+    yaxis_title="Max Wind (knots)",
+    title_x=0.5,  # Center the title
+    template="plotly"  # Polished default appearance similar to Seaborn
+)
+
+fig.show()
+
+```
 
 
+#### ATLANTIC HURRICANES AVERAGE MAX WIND SPEEDS
 
 
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/atavwp.png" alt="Atlantic Hurricane Max Wind" width="910" height="525">
 
+```
+import numpy as np
+import pandas as pd
+import plotly.express as px
+import seaborn as sns
+import matplotlib.colors as mcolors
+import warnings
+
+# Suppress warnings
+warnings.simplefilter("ignore")
+
+# Set Seaborn style
+sns.set(style="whitegrid")
+
+# Step 2: Read the dataset
+data = pd.read_csv("https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/atlantic.csv")
+
+# Step 3: Clean the dataset
+# Remove leading and trailing spaces from all string columns
+data = data.applymap(lambda x: x.strip() if isinstance(x, str) else x)
+
+# Remove duplicates
+data.drop_duplicates(inplace=True)
+
+# Ensure the 'Date' column is in datetime format
+data['Date'] = pd.to_datetime(data['Date'], format='%Y%m%d')
+
+# Extract the year from the 'Date' column
+data['Year'] = data['Date'].dt.year
+
+# Step 4: Filter data for Status = 'HU' (Hurricane)
+hu_data = data[data['Status'] == 'HU']
+unique_ids_hurr = set(hu_data['ID'])
+hu_data = data[data['ID'].isin(unique_ids_hurr)]
+
+# Step 5: Handle Missing or Invalid Maximum Wind Values
+# Drop rows where 'Maximum Wind' is missing or invalid
+hu_data = hu_data.dropna(subset=['Maximum Wind'])
+
+# Step 6: Calculate the average Maximum Wind for each year
+average_wind_per_year = hu_data.groupby('Year')['Maximum Wind'].mean().reset_index()
+
+# Filter the data to only include years from 1960 onwards
+average_wind_per_year = average_wind_per_year[average_wind_per_year['Year'] >= 1960]
+
+# Step 7: Calculate the average wind speed for two periods: 1964-1989 and 1990-2015
+# Define the two periods
+period_1 = average_wind_per_year[(average_wind_per_year['Year'] >= 1964) & (average_wind_per_year['Year'] <= 1989)]
+period_2 = average_wind_per_year[(average_wind_per_year['Year'] >= 1990) & (average_wind_per_year['Year'] <= 2015)]
+
+# Calculate the average wind speed for each period
+avg_wind_period_1 = period_1['Maximum Wind'].mean()
+avg_wind_period_2 = period_2['Maximum Wind'].mean()
+
+# Prepare data for the bar chart
+avg_wind_data = pd.DataFrame({
+    'Period': ['1964-1989', '1990-2015'],
+    'Average Wind Speed (knots)': [avg_wind_period_1, avg_wind_period_2]
+})
+
+# Step 8: Create a bar chart to compare average wind speeds
+fig = px.bar(avg_wind_data, x='Period', y='Average Wind Speed (knots)',
+             title='Comparison of Average Atlantic Hurricane Wind Speed (1964-1989 vs. 1990-2015)',
+             labels={'Average Wind Speed (knots)': 'Average Wind Speed (knots)', 'Period': 'Time Period'},
+             color='Period')
+
+# Add labels on top of the bars
+fig.update_traces(text=avg_wind_data['Average Wind Speed (knots)'].round(2),  # Add rounded wind speed values as labels
+                  textposition='outside',  # Position the labels outside the bars
+                  texttemplate='%{text}')  # Format the text to show the exact value
+# Show the plot
+fig.update_layout(
+    xaxis_title="Year",
+    yaxis_title="Average Wind Speed (Knots)",
+    title_x=0.5,  # Center the title
+    template="plotly"  # Polished default appearance similar to Seaborn
+)
+
+# Show the plot
+fig.show()
+
+```
+
+#### ATLANTIC HURRICANES MAX WIND SPEEDS BOX PLOT 
+
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/atavwsbox.png" alt="Pacific Hurricane Frequency" width="910" height="525">
+
+
+```
+import numpy as np
+import pandas as pd
+import plotly.express as px
+import seaborn as sns
+import warnings
+
+# Suppress warnings
+warnings.simplefilter("ignore")
+
+# Set Seaborn style
+sns.set(style="whitegrid")
+
+# Step 2: Read the dataset
+data = pd.read_csv("https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/atlantic.csv")
+
+# Step 3: Clean the dataset
+# Remove leading and trailing spaces from all string columns
+data = data.applymap(lambda x: x.strip() if isinstance(x, str) else x)
+
+# Remove duplicates
+data.drop_duplicates(inplace=True)
+
+# Ensure the 'Date' column is in datetime format
+data['Date'] = pd.to_datetime(data['Date'], format='%Y%m%d')
+
+# Extract the year from the 'Date' column
+data['Year'] = data['Date'].dt.year
+
+# Step 4: Filter data for Status = 'HU' (Hurricane)
+hu_data = data[data['Status'] == 'HU']
+unique_ids_hurr = set(hu_data['ID'])
+hu_data = data[data['ID'].isin(unique_ids_hurr)]
+
+# Step 5: Handle Missing or Invalid Maximum Wind Values
+# Drop rows where 'Maximum Wind' is missing or invalid
+hu_data = hu_data.dropna(subset=['Maximum Wind'])
+
+# Step 6: Create Periods for Comparison
+# Define the two periods
+period_1 = hu_data[(hu_data['Year'] >= 1964) & (hu_data['Year'] <= 1989)]
+period_2 = hu_data[(hu_data['Year'] >= 1990) & (hu_data['Year'] <= 2015)]
+
+# Add a column for the period (for boxplot comparison)
+period_1['Period'] = '1964-1989'
+period_2['Period'] = '1990-2015'
+
+# Combine the two periods into a single dataframe
+combined_data = pd.concat([period_1, period_2])
+
+# Step 7: Create a boxplot to compare wind speed distributions
+fig = px.box(combined_data, x='Period', y='Maximum Wind',
+             title='Atlantic Distribution of Hurricane Wind Speeds (1964-1989 vs. 1990-2015)',
+             labels={'Maximum Wind': 'Wind Speed (knots)', 'Period': 'Time Period'},
+             color='Period')
+
+
+# Show the plot
+fig.update_layout(
+    xaxis_title="Year",
+    yaxis_title="Wind Speed (Knots)",
+    title_x=0.5,  # Center the title
+    template="plotly"  # Polished default appearance similar to Seaborn
+)
+
+# Show the plot
+fig.show()
+
+```
+
+
+#### ANALYZING PACIFIC HURRICANES MAX WIND SPEEDS
+
+#### PACIFIC HURRICANES MAX WIND SPEEDS
+
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/pcws.png" alt="Pacific Max Wind Speed" width="910" height="525">
 
 
 
