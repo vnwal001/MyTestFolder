@@ -20,25 +20,32 @@
 #### Source: https://www.kaggle.com/datasets/noaa/hurricane-database/
 
 
-### SECTION 2:
+### SECTION 2: Final questions that I addressed
 #### 1) Hurricane Intensity and Frequency Analysis
 #### A) Is the frequency of hurricanes increasing over time?
 #### B) Are hurricane wind speeds becoming stronger over time?
 #### C) What are the potential factors contributing to any observed changes in hurricane frequency and intensity?
 
 #### 2) Comparative Analysis of Atlantic vs. Pacific Hurricanes
-#### How do trends in hurricane frequency and intensity differ between the Atlantic and Pacific Oceans over time?
+#### How do trends in hurricane frequency and intensity differ between the Atlantic and Pacific Oceans over years?
 
 #### 3) Impact of Category 5 Hurricanes on Population Migration
 #### For hurricanes that make landfall in the U.S., is there a noticeable migration response in the aftermath of Category 5 hurricanes? Specifically, does the population of selected cities decrease significantly a year #### after the hurricane, and can any patterns be identified?
+
 
 ##### To prepare my data for use I did the following:
 - The original file was in xls format, I created a new csv file to place my data
 - I copied over the values of the only data I needed for my analysis, I copied the state population data for just 1970, 1985, 1995 and 2009.
 - For the specified years, if they had both and April and July data, I picked the July data for that year because most years data were collected in July. I only took the April data if there was not a July date available
-- I renamed the Years column to just the Year and removed the month. 
+- I renamed the Years column to just the Year and removed the month.
+- 
 
-### B) TABLE 12
+#### SECTION 2 QUESTION 1A ANSWERS
+
+
+
+
+
 
 #### 1) BOXPLOT : Show the distributions of the population of all states in 1970, 1985, 1995, and 2009. This should result in 4 separate boxplot glyphs in a single chart
 
