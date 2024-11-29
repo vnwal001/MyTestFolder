@@ -262,6 +262,10 @@ fig.update_layout(
 fig.show()
 
 ```
+
+#### ATLANTIC VS PACIFIC HURRICANES
+
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/HF1.png" alt="Pacific Hurricane Frequency" width="910" height="525">
   
 - *Discuss the advantages and disadvantages of each type of distribution chart idiom for showing these distributions (talk specifically about these distributions, not just their advantages and disadvantages in general)*
 - Answer:
