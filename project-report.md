@@ -6,7 +6,7 @@
 
 
 ### A brief description of your chosen datasets (including links to the original sources of the data)
-#### I have chosen the datset from the The National Hurricane Center (NHC), it conducts a post-storm analysis of each tropical cyclone in its area of responsibility to determine the official assessment of the cyclone's #### history. In this dataset you find the all types of cyclones recorded across the Pacific and Atlantic Ocean.
+#### I have chosen the datset from the The National Hurricane Center (NHC), it conducts a post-storm analysis of each tropical cyclone in its area of responsibility to determine the official assessment of the cyclone's history. In this dataset you find the all types of cyclones recorded across the Pacific and Atlantic Ocean.
 #### TD – Tropical cyclone of tropical depression intensity (< 34 knots)
 #### TS – Tropical cyclone of tropical storm intensity (34-63 knots)
 #### HU – Tropical cyclone of hurricane intensity (> 64 knots)
