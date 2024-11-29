@@ -21,16 +21,16 @@
 
 
 ### SECTION 2: Final questions that I addressed
-#### 1) Hurricane Intensity and Frequency Analysis
-#### A) Is the frequency of hurricanes increasing over time?
-#### B) Are hurricane wind speeds becoming stronger over time?
-#### C) What are the potential factors contributing to any observed changes in hurricane frequency and intensity?
+- 1) Hurricane Intensity and Frequency Analysis
+- A) Is the frequency of hurricanes increasing over time?
+- B) Are hurricane wind speeds becoming stronger over time?
+- C) What are the potential factors contributing to any observed changes in hurricane frequency and intensity?
 
 #### 2) Comparative Analysis of Atlantic vs. Pacific Hurricanes
-#### How do trends in hurricane frequency and intensity differ between the Atlantic and Pacific Oceans over years?
+- How do trends in hurricane frequency and intensity differ between the Atlantic and Pacific Oceans over years?
 
 #### 3) Impact of Category 5 Hurricanes on Population Migration
-#### For hurricanes that make landfall in the U.S., is there a noticeable migration response in the aftermath of Category 5 hurricanes? Specifically, does the population of selected cities decrease significantly a year #### after the hurricane, and can any patterns be identified?
+- For hurricanes that make landfall in the U.S., is there a noticeable migration response in the aftermath of Category 5 hurricanes? Specifically, does the population of selected cities decrease significantly a year  after the hurricane, and can any patterns be identified?
 
 
 
@@ -341,6 +341,32 @@ fig.update_layout(
 fig.show()
 
 ```
+
+
+
+
+#### *THE HURRICANE FREQUENCY STORY OF THE LAST 50 YEARS FROM 2015 OVER THE ATLANTIC OCEAN*
+
+```
+One the look of my first line plot, I noticed that a slight increase in the hurricane frequency over the past 50 years but,
+I wanted to see more clearly into the data. I decided to break my data in two 25 year time period.
+By doing this I can clearly compare both time periods to verify my suspicion. In doing this I observed the following:
+
+- The hurriance average frequency per year increased from 5.38 to 6.88 from the time periods 1964-1989 to 1990-2015
+- The boxplot clearly shows a positive trend in hurricane frequency, the median is higher in the right boxplot, it suggests that the center of the data is shifted toward higher frequency compared to the left boxplot.
+- 1990-2015 time period has a higher max frequncy value, I should not that this max value is not an outlier or anomaly .i.e it is not outside the normal range compared to others. 
+
+```
+
+
+
+
+
+
+
+
+
+
 
 #### PACIFIC HURRICANES  FREQUENCIES
 
