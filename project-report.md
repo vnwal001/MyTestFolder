@@ -5,7 +5,19 @@
 **Due:** November 30, 2024 by 11:59 PM
 
 
-## A brief description of your chosen datasets (including links to the original sources of the data)
+### A brief description of your chosen datasets (including links to the original sources of the data)
+#### I have chosen the datset from the The National Hurricane Center (NHC), it conducts a post-storm analysis of each tropical cyclone in its area of responsibility to determine the official assessment of the cyclone's #### history. In this dataset you find the all types of cyclones recorded across the Pacific and Atlantic Ocean.
+#### TD – Tropical cyclone of tropical depression intensity (< 34 knots)
+#### TS – Tropical cyclone of tropical storm intensity (34-63 knots)
+#### HU – Tropical cyclone of hurricane intensity (> 64 knots)
+#### EX – Extratropical cyclone (of any intensity)
+#### SD – Subtropical cyclone of subtropical depression intensity (< 34 knots)
+#### SS – Subtropical cyclone of subtropical storm intensity (> 34 knots)
+#### LO – A low that is neither a tropical cyclone, a subtropical cyclone, nor an extratropical cyclone (of any intensity)
+#### WV – Tropical Wave (of any intensity)
+#### DB – Disturbance (of any intensity)
+#### I have focus my analysic just on Hurricanes i.e. Tropical cyclone of hurricane intensity (> 64 knots)
+
 
 ### A) DATA MANIPULATION
 
