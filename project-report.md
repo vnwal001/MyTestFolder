@@ -41,71 +41,226 @@
 - I renamed the Years column to just the Year and removed the month.
 - 
 
-#### SECTION 2 QUESTION 1A ANSWERS
+#### SECTION 2 QUESTION 1A ANSWERS 
 
+#### ATLANTIC HURRICANES
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/HF2.png" alt="Atlantic Hurricane Frequency" width="910" height="525">
-
-
-
-
-#### 1) BOXPLOT : Show the distributions of the population of all states in 1970, 1985, 1995, and 2009. This should result in 4 separate boxplot glyphs in a single chart
-
-<img src="https://github.com/vnwal001/MyTestFolder/blob/main/h1.png" alt="Boxplot of Population distribution For 50 States for 1970, 1985, 1995, and 2009" width="1189" height="590">
 
 - *Description of the chart and how is was created (explain the code you used and include code snippets)*
 - Answer: Code Snippet and Explanation
 
 ```
-#pandas: Used for data manipulation and analysis.
-#matplotlib.pyplot: A plotting library for creating static, animated, and interactive visualizations.
-#seaborn: A statistical data visualization library based on Matplotlib, providing a high-level interface for drawing attractive graphics.
+import numpy as np    # linear algebra
+import pandas as pd   # data processing, CSV file I/O (e.g. pd.read_csv)
+import plotly.express as px
+import warnings
+import re
 
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
+# Suppress warnings
+warnings.simplefilter("ignore")
 
-# Step 1: Load the data
-data = pd.read_csv('https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/population4.csv')
+# Step 1: Read the dataset
+data = pd.read_csv("https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/atlantic.csv")
+
+# Step 2: Clean the dataset
+# Remove duplicates
+data.drop_duplicates(inplace=True)
+
+# Convert the latitude and longitude Column to numeric type.
+data['Latitude'] = data['Latitude'].apply(lambda x: re.match('[0-9]{1,3}.[0-9]{0,1}' , x)[0])
+data['Longitude'] = data['Longitude'].apply(lambda x: re.match('[0-9]{1,3}.[0-9]{0,1}' , x)[0])
+
+# Convert date column to datetime format
+data['Date'] = pd.to_datetime(data['Date'], format='%Y%m%d')
+data['Month'] = data['Date'].apply(lambda x: x.month)
+data['Year'] = data['Date'].apply(lambda x: x.year)
+
+# Step 3: Filter data for 'HU' (Hurricane) status
+# Ensure 'Status' column is cleaned and consistent for filtering
+data['Status'] = data['Status'].str.strip()  # Remove leading/trailing spaces
+hu_data = data[data['Status'] == 'HU']
 
 
-# Step 2: Extract relevant columns (removing unnecessary columns)
-years = ['1970', '1985', '1995', '2009']
-pop_data = data[['State'] + years]  # Only keep State and relevant year columns
+# Step 4: Filter data from 1960 onwards
+hu_data = hu_data[hu_data['Year'] >= 1960]
 
-# Step 3: Melt the DataFrame to long format
-pop_melted = pop_data.melt(id_vars=['State'], value_vars=years, var_name='Year', value_name='Population')
+# Step 5: Group by Year and unique Hurricane ID to get the count of unique hurricanes per year
+hurricane_counts = hu_data.groupby([ 'ID','Year']).size().reset_index(name='Count')
 
-# Convert Population to numeric (if not already)
-pop_melted['Population'] = pd.to_numeric(pop_melted['Population'], errors='coerce')
+Year_Count = hurricane_counts['Year'].value_counts().reset_index()
 
-# Step 4: Exclude Washington, D.C.
-pop_melted = pop_melted[pop_melted['State'] != 'District of Columbia']
+Year_Count.columns = ['Year', 'Frequency']
+Year_Count = Year_Count.sort_values(by='Year')
 
-# Step 5: Create the boxplots
-plt.figure(figsize=(12, 6))
-sns.boxplot(x='Year', y='Population', data=pop_melted)
 
-# Set the y-axis to start from 0
-plt.ylim(0, pop_melted['Population'].max() * 1.1)  # Adjust the upper limit as needed
+# Step 6: Aggregate to get the total number of unique hurricanes per year
+#hurricane_counts_per_year = hurricane_counts.groupby('Year')['Count'].sum().reset_index(name='Frequency')
 
-# Add titles and labels
-plt.title('Population Distribution by State for Selected Years (Excluding D.C.)')
-plt.xlabel('Year')
-plt.ylabel('Population In Thousands')
-plt.xticks(rotation=45)
-plt.grid(True)
+# Step 7: Plot with Plotly (Interactive plot)
+fig = px.line(Year_Count, x='Year', y='Frequency',
+              title='Atlantic Hurricane Frequency (1960 - 2015)',
+              labels={'Year': 'Year', 'Frequency': 'Frequency'},
+              markers=True)
+
+# Step 8: Customize hover to display both Year and Frequency
+fig.update_traces(mode='lines+markers', hovertemplate='Year: %{x}<br>Frequency: %{y}')
+
+
+fig.add_annotation(
+    x=2005,  # X-coordinate for the high point (year)
+    y=15,   # Y-coordinate for the wind speed
+    text="Peak Frequency = 15",  # Text to display
+    showarrow=True,  # Show arrow pointing to the point
+    arrowhead=2,  # Style of the arrowhead
+    font=dict(
+        size=12,  # Font size
+        color="red",  # Font color
+        family="Arial"  # Font family
+    ),
+    bgcolor="white",  # Background color of the annotation box
+    borderpad=4,  # Padding around the text box
+    align="center",  # Align text horizontally
+    valign="middle"  # Align text vertically
+)
 
 # Show the plot
-plt.tight_layout()
-plt.show()
+fig.update_layout(
+    xaxis_title="Year",
+    yaxis_title="Atlantic Hurricane Frequency",
+    title_x=0.5,  # Center the title
+    template="plotly"  # Polished default appearance similar to Seaborn
+)
+
+
+
+# Show the interactive plot
+fig.show()
+```
+
+#### PACIFIC HURRICANES
+
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/HF3.png" alt="Pacific Hurricane Frequency" width="910" height="525">
 
 ```
-- Explanation
-```
-  Each box represents the interquartile range (IQR) of the population data for each year, indicating where the middle 50% of data lies.
-  The line inside each box represents the median population.
-  Whiskers extend to show the range of the data (excluding outliers).
-  Outliers are plotted as individual points outside the whiskers
+import numpy as np    # linear algebra
+import pandas as pd   # data processing, CSV file I/O (e.g. pd.read_csv)
+import plotly.express as px
+import warnings
+import re
+
+# Suppress warnings
+warnings.simplefilter("ignore")
+
+# Step 1: Read the dataset
+data = pd.read_csv("https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/pacific.csv")
+
+# Step 2: Clean the dataset
+# Remove duplicates
+data.drop_duplicates(inplace=True)
+
+# Convert the latitude and longitude Column to numeric type.
+data['Latitude'] = data['Latitude'].apply(lambda x: re.match('[0-9]{1,3}.[0-9]{0,1}' , x)[0])
+data['Longitude'] = data['Longitude'].apply(lambda x: re.match('[0-9]{1,3}.[0-9]{0,1}' , x)[0])
+
+# Convert date column to datetime format
+data['Date'] = pd.to_datetime(data['Date'], format='%Y%m%d')
+data['Month'] = data['Date'].apply(lambda x: x.month)
+data['Year'] = data['Date'].apply(lambda x: x.year)
+
+# Step 3: Filter data for 'HU' (Hurricane) status
+# Ensure 'Status' column is cleaned and consistent for filtering
+data['Status'] = data['Status'].str.strip()  # Remove leading/trailing spaces
+hu_data = data[data['Status'] == 'HU']
+
+
+# Step 4: Filter data from 1960 onwards
+hu_data = hu_data[hu_data['Year'] >= 1960]
+
+# Step 5: Group by Year and unique Hurricane ID to get the count of unique hurricanes per year
+hurricane_counts = hu_data.groupby([ 'ID','Year']).size().reset_index(name='Count')
+
+Year_Count = hurricane_counts['Year'].value_counts().reset_index()
+
+Year_Count.columns = ['Year', 'Frequency']
+Year_Count = Year_Count.sort_values(by='Year')
+
+
+# Step 6: Aggregate to get the total number of unique hurricanes per year
+#hurricane_counts_per_year = hurricane_counts.groupby('Year')['Count'].sum().reset_index(name='Frequency')
+
+# Step 7: Plot with Plotly (Interactive plot)
+fig = px.line(Year_Count, x='Year', y='Frequency',
+              title='Pacific Hurricane Frequency from 1960-2015',
+              labels={'Year': 'Year', 'Frequency': 'Frequency'},
+              markers=True)
+
+# Step 8: Customize hover to display both Year and Frequency
+fig.update_traces(mode='lines+markers', hovertemplate='Year: %{x}<br>Frequency: %{y}')
+
+fig.add_annotation(
+    x=1990,  # X-coordinate for the high point (year)
+    y=16,   # Y-coordinate for the wind speed
+    text="Peak",  # Text to display
+    showarrow=True,  # Show arrow pointing to the point
+    arrowhead=2,  # Style of the arrowhead
+    font=dict(
+        size=12,  # Font size
+        color="red",  # Font color
+        family="Arial"  # Font family
+    ),
+    bgcolor="white",  # Background color of the annotation box
+    borderpad=4,  # Padding around the text box
+    align="center",  # Align text horizontally
+    valign="middle"  # Align text vertically
+),
+
+
+fig.add_annotation(
+    x=1992,  # X-coordinate for the high point (year)
+    y=16,   # Y-coordinate for the wind speed
+    text="Peak",  # Text to display
+    showarrow=True,  # Show arrow pointing to the point
+    arrowhead=2,  # Style of the arrowhead
+    font=dict(
+        size=12,  # Font size
+        color="red",  # Font color
+        family="Arial"  # Font family
+    ),
+    bgcolor="white",  # Background color of the annotation box
+    borderpad=4,  # Padding around the text box
+    align="center",  # Align text horizontally
+    valign="middle"  # Align text vertically
+)
+
+fig.add_annotation(
+    x=2014,  # X-coordinate for the high point (year)
+    y=16,   # Y-coordinate for the wind speed
+    text="Peak",  # Text to display
+    showarrow=True,  # Show arrow pointing to the point
+    arrowhead=2,  # Style of the arrowhead
+    font=dict(
+        size=12,  # Font size
+        color="red",  # Font color
+        family="Arial"  # Font family
+    ),
+    bgcolor="white",  # Background color of the annotation box
+    borderpad=4,  # Padding around the text box
+    align="center",  # Align text horizontally
+    valign="middle"  # Align text vertically
+)
+
+# Show the plot
+fig.update_layout(
+    xaxis_title="Year",
+    yaxis_title="Pacific Hurricane Frequency",
+    title_x=0.5,  # Center the title
+    template="plotly"  # Polished default appearance similar to Seaborn
+)
+
+
+# Show the interactive plot
+fig.show()
+
 ```
   
 - *Discuss the advantages and disadvantages of each type of distribution chart idiom for showing these distributions (talk specifically about these distributions, not just their advantages and disadvantages in general)*
