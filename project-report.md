@@ -5,7 +5,7 @@
 **Due:** November 30, 2024 by 11:59 PM
 
 
-### PART A: A brief description of your chosen datasets (including links to the original sources of the data)
+### SECTION 1: A brief description of your chosen datasets (including links to the original sources of the data)
 #### I have chosen the datset from the The National Hurricane Center (NHC), it conducts a post-storm analysis of each tropical cyclone in its area of responsibility to determine the official assessment of the cyclone's history. In this dataset you find the all types of cyclones recorded across the Pacific and Atlantic Ocean.
 #### TD – Tropical cyclone of tropical depression intensity (< 34 knots)
 #### TS – Tropical cyclone of tropical storm intensity (34-63 knots)
@@ -20,7 +20,17 @@
 #### Source: https://www.kaggle.com/datasets/noaa/hurricane-database/
 
 
-### A) DATA MANIPULATION
+### SECTION 2:
+#### 1) Hurricane Intensity and Frequency Analysis
+#### A) Is the frequency of hurricanes increasing over time?
+#### B) Are hurricane wind speeds becoming stronger over time?
+#### C) What are the potential factors contributing to any observed changes in hurricane frequency and intensity?
+
+#### 2) Comparative Analysis of Atlantic vs. Pacific Hurricanes
+#### How do trends in hurricane frequency and intensity differ between the Atlantic and Pacific Oceans over time?
+
+#### 3) Impact of Category 5 Hurricanes on Population Migration
+#### For hurricanes that make landfall in the U.S., is there a noticeable migration response in the aftermath of Category 5 hurricanes? Specifically, does the population of selected cities decrease significantly a year #### after the hurricane, and can any patterns be identified?
 
 ##### To prepare my data for use I did the following:
 - The original file was in xls format, I created a new csv file to place my data
