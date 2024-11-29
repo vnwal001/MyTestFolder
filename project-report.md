@@ -33,6 +33,7 @@
 #### For hurricanes that make landfall in the U.S., is there a noticeable migration response in the aftermath of Category 5 hurricanes? Specifically, does the population of selected cities decrease significantly a year #### after the hurricane, and can any patterns be identified?
 
 
+
 ##### To prepare my data for use I did the following:
 - The original file was in xls format, I created a new csv file to place my data
 - I copied over the values of the only data I needed for my analysis, I copied the state population data for just 1970, 1985, 1995 and 2009.
