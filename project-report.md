@@ -43,7 +43,7 @@
 
 #### SECTION 2 QUESTION 1A ANSWERS
 
-
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/HF2.png" alt="Atlantic Hurricane Frequency" width="910" height="525">
 
 
 
