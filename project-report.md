@@ -717,10 +717,15 @@ By doing this I can clearly compare both time periods to verify what's actually 
 
 ```
 
-## ANALYZING HURRICANE WIND SPEEDS
+## ANALYZING HURRICANE MAX WIND SPEEDS
 
 
-#### ATLANTIC HURRICANES WIND SPEEDS
+#### ATLANTIC HURRICANES MAX WIND SPEEDS
+
+
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/atws.png" alt="Atlantic Hurricane Max Wind" width="910" height="525">
+
+
 
 
 
