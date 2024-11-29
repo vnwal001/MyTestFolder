@@ -219,9 +219,11 @@ fig.update_layout(
 
 # Show the plot
 fig.show()
+
 ```
 
 #### AVERAGE ATLANTIC HURRICANES FREQUENCY DISTRIBUTION OVER THE LAST 50 YEARS FROM 2015
+
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/atbox.png" alt="Atlantic Hurricane Frequency" width="995" height="525">
 ```
 import numpy as np
@@ -334,6 +336,7 @@ fig.update_layout(
 
 # Show the plot
 fig.show()
+
 ```
 
 #### PACIFIC HURRICANES  FREQUENCIES
