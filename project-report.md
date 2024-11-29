@@ -139,7 +139,7 @@ fig.show()
 
 ####  THE LAST 50 YEARS FROM 2015 COMPARISM
 
-<img src="https://github.com/vnwal001/MyTestFolder/blob/main/atav.png" alt="Atlantic Hurricane Frequency" width="995" height="525">
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/atav.png" alt="Average Atlantic Hurricane Frequency" width="995" height="525">
 
 ```
 import numpy as np    # linear algebra
@@ -348,7 +348,7 @@ fig.show()
 #### *THE HURRICANE FREQUENCY STORY OF THE LAST 50 YEARS FROM 2015 OVER THE ATLANTIC OCEAN*
 
 ```
-One the look of my first line plot, I noticed that a slight increase in the hurricane frequency over the past 50 years but,
+On the look of my first line plot, I noticed that a slight increase in the hurricane frequency over the past 50 years but,
 I wanted to see more clearly into the data. I decided to break my data in two 25 year time period.
 By doing this I can clearly compare both time periods to verify my suspicion. In doing this I observed the following:
 
@@ -369,6 +369,9 @@ By doing this I can clearly compare both time periods to verify my suspicion. In
 
 
 #### PACIFIC HURRICANES  FREQUENCIES
+
+- *Description of the chart and how is was created (explain the code you used and include code snippets)*
+- Answer: Code Snippet and Explanation
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/HF3.png" alt="Pacific Hurricane Frequency" width="910" height="525">
 
@@ -493,6 +496,217 @@ fig.update_layout(
 fig.show()
 
 ```
+
+####  THE LAST 50 YEARS FROM 2015 AVERAGE HURRICANE COMPARISM 
+
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/pcav.png" alt="Average Atlantic Hurricane Frequency" width="995" height="525">
+
+```
+import numpy as np    # linear algebra
+import pandas as pd   # data processing, CSV file I/O (e.g. pd.read_csv)
+import plotly.express as px
+import warnings
+import re
+
+# Suppress warnings
+warnings.simplefilter("ignore")
+
+# Step 1: Read the dataset
+data = pd.read_csv("https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/pacific.csv")
+
+# Step 2: Clean the dataset
+# Remove duplicates
+data.drop_duplicates(inplace=True)
+
+# Convert the latitude and longitude Column to numeric type.
+data['Latitude'] = data['Latitude'].apply(lambda x: re.match('[0-9]{1,3}.[0-9]{0,1}' , x)[0])
+data['Longitude'] = data['Longitude'].apply(lambda x: re.match('[0-9]{1,3}.[0-9]{0,1}' , x)[0])
+
+# Convert date column to datetime format
+data['Date'] = pd.to_datetime(data['Date'], format='%Y%m%d')
+data['Month'] = data['Date'].apply(lambda x: x.month)
+data['Year'] = data['Date'].apply(lambda x: x.year)
+
+# Step 3: Filter data for 'HU' (Hurricane) status
+# Ensure 'Status' column is cleaned and consistent for filtering
+data['Status'] = data['Status'].str.strip()  # Remove leading/trailing spaces
+hu_data = data[data['Status'] == 'HU']
+
+
+# Step 3: Filter data for 'HU' (Hurricane) status
+hu_data = hu_data[hu_data['Year'] >= 1960]
+
+# Step 4: Filter data from 1960 onwards
+hu_data = hu_data[hu_data['Year'] >= 1960]
+
+# Step 5: Group by Year and unique Hurricane ID to get the count of unique hurricanes per year
+hurricane_counts = hu_data.groupby([ 'ID','Year']).size().reset_index(name='Count')
+
+Year_Count = hurricane_counts['Year'].value_counts().reset_index()
+
+Year_Count.columns = ['Year', 'Frequency']
+Year_Count = Year_Count.sort_values(by='Year')
+
+# Step 6: Calculate the average frequency for two periods: 1965-1989 and 1990-2015
+# Define the two periods
+period_1 = Year_Count[(Year_Count['Year'] >= 1964) & (Year_Count['Year'] <= 1989)]
+period_2 = Year_Count[(Year_Count['Year'] >= 1990) & (Year_Count['Year'] <= 2015)]
+
+# Calculate the average frequency for each period
+avg_freq_period_1 = period_1['Frequency'].mean()
+avg_freq_period_2 = period_2['Frequency'].mean()
+
+# Prepare data for the bar chart
+avg_freq_data = pd.DataFrame({
+    'Period': ['1964-1989', '1990-2015'],
+    'Average Frequency': [avg_freq_period_1, avg_freq_period_2]
+})
+
+# Step 7: Create a bar chart to compare average frequencies
+fig = px.bar(avg_freq_data, x='Period', y='Average Frequency',
+             title='Comparison of Average Hurricane Frequency Over the Pacific (1964-1989 vs. 1990-2015)',
+             labels={'Average Frequency': 'Average Frequency', 'Period': 'Time Period'},
+             color='Period', text='Average Frequency')  # Add text labels to bars
+
+# Update the layout to position the text labels inside the bars
+fig.update_traces(texttemplate='%{text:.2f}', textposition='inside')
+
+# Show the plot
+fig.update_layout(
+    xaxis_title="Year",
+    yaxis_title="Average Frequency",
+    title_x=0.5,  # Center the title
+    template="plotly"  # Polished default appearance similar to Seaborn
+)
+
+# Show the plot
+fig.show()
+
+
+```
+
+
+####  THE LAST 50 YEARS FROM 2015 AVERAGE HURRICANE COMPARISM 
+
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/pcbox.png" alt="Average Atlantic Hurricane Frequency" width="995" height="525">
+
+```
+import numpy as np
+import pandas as pd
+import plotly.express as px
+import warnings
+import re
+
+# Suppress warnings
+warnings.simplefilter("ignore")
+
+# Step 1: Read the dataset
+data = pd.read_csv("https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/pacific.csv")
+
+# Step 2: Clean the dataset
+# Remove duplicates
+data.drop_duplicates(inplace=True)
+
+# Convert the latitude and longitude Column to numeric type.
+data['Latitude'] = data['Latitude'].apply(lambda x: re.match('[0-9]{1,3}.[0-9]{0,1}' , x)[0])
+data['Longitude'] = data['Longitude'].apply(lambda x: re.match('[0-9]{1,3}.[0-9]{0,1}' , x)[0])
+
+# Convert date column to datetime format
+data['Date'] = pd.to_datetime(data['Date'], format='%Y%m%d')
+data['Month'] = data['Date'].apply(lambda x: x.month)
+data['Year'] = data['Date'].apply(lambda x: x.year)
+
+# Step 3: Filter data for 'HU' (Hurricane) status
+# Ensure 'Status' column is cleaned and consistent for filtering
+data['Status'] = data['Status'].str.strip()  # Remove leading/trailing spaces
+hu_data = data[data['Status'] == 'HU']
+
+
+# Step 3: Filter data for hurricanes from 1960 onwards
+hu_data = hu_data[hu_data['Year'] >= 1960]
+
+
+# Step 4: Filter data from 1960 onwards
+hu_data = hu_data[hu_data['Year'] >= 1960]
+
+# Step 5: Group by Year and unique Hurricane ID to get the count of unique hurricanes per year
+hurricane_counts = hu_data.groupby([ 'ID','Year']).size().reset_index(name='Count')
+
+Year_Count = hurricane_counts['Year'].value_counts().reset_index()
+
+Year_Count.columns = ['Year', 'Frequency']
+Year_Count = Year_Count.sort_values(by='Year')
+
+# Step 6: Define the two periods for comparison
+period_1 = Year_Count[(Year_Count['Year'] >= 1964) & (Year_Count['Year'] <= 1989)]
+period_2 = Year_Count[(Year_Count['Year'] >= 1990) & (Year_Count['Year'] <= 2015)]
+
+# Combine the two periods for boxplot plotting
+period_1['Period'] = '1964-1989'
+period_2['Period'] = '1990-2015'
+
+# Concatenate both periods into a single dataframe
+combined_data = pd.concat([period_1, period_2])
+
+# Step 7: Create a boxplot to compare frequency distributions
+fig = px.box(combined_data, x='Period', y='Frequency', 
+             title='Pacific Frequency Distribution of Hurricanes (1964-1989 vs. 1990-2015)',
+             labels={'Frequency': 'Hurricane Frequency', 'Period': 'Time Period'},
+             color='Period')
+
+# Adding frequency labels to the major parts of the boxplot
+for period in ['1964-1989', '1990-2015']:
+    # Get the statistics for the period
+    period_data = combined_data[combined_data['Period'] == period]
+    q1 = period_data['Frequency'].quantile(0.25)
+    median = period_data['Frequency'].median()
+    q3 = period_data['Frequency'].quantile(0.75)
+    whisker_min = period_data['Frequency'].min()
+    whisker_max = period_data['Frequency'].max()
+    
+    # Add labels to the boxplot
+    fig.add_annotation(
+        x=period, y=q1, text=f"Q1: {q1:.2f}",
+        showarrow=True, arrowhead=2, font=dict(size=12, color="blue"),
+        bgcolor="white", borderpad=4
+    )
+    fig.add_annotation(
+        x=period, y=median, text=f"Median: {median:.2f}",
+        showarrow=True, arrowhead=2, font=dict(size=12, color="black"),
+        bgcolor="white", borderpad=4
+    )
+    fig.add_annotation(
+        x=period, y=q3, text=f"Q3: {q3:.2f}",
+        showarrow=True, arrowhead=2, font=dict(size=12, color="green"),
+        bgcolor="white", borderpad=4
+    )
+    fig.add_annotation(
+        x=period, y=whisker_min, text=f"Min: {whisker_min}",
+        showarrow=True, arrowhead=2, font=dict(size=12, color="red"),
+        bgcolor="white", borderpad=4
+    )
+    fig.add_annotation(
+        x=period, y=whisker_max, text=f"Max: {whisker_max}",
+        showarrow=True, arrowhead=2, font=dict(size=12, color="red"),
+        bgcolor="white", borderpad=4
+    )
+
+# Show the plot
+fig.update_layout(
+    xaxis_title="Year",
+    yaxis_title="Pacific Hurricane Frequency",
+    title_x=0.5,  # Center the title
+    template="plotly"  # Polished default appearance similar to Seaborn
+)
+
+# Show the plot
+fig.show()
+
+```
+
+
+
+
 
 #### ATLANTIC VS PACIFIC HURRICANES
 
