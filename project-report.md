@@ -1737,7 +1737,7 @@ While wind speed is an important factor in determining the strength of a hurrica
 Yes, hurricane devastion causing population migration but it has to be a very severe devastation. People will normally stay back and rebuld after a hurricane. 
 
 ```
-### FINAL THOUGHT 
+### FINAL THOUGHTS 
 ##### I will like to put the entire Atlantic and Pacific Hurricane in Context, with these visualizations. 
 ![Total Frequency](https://github.com/vnwal001/MyTestFolder/blob/main/total_frequency.png?raw=true)
 **Idiom**: Boxplot / **Mark**: Box
