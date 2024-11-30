@@ -1731,12 +1731,17 @@ plt.show()
 
 ```
 DEDUCTIONS
-Hurricane Katrina had the most fatalties and economic devastation, hence a rapid drop in the popultion of the city affected the most. I should note that by this, having the highest wind speed does not translate to being
+Hurricane Katrina had the most fatalties and economic devastation, hence a rapid drop in the popultion of the city affected the most, a lot of people migrated out of New Orleans. I should note that by this, having the highest wind speed does not translate to being
 the most devastation hurricane.
 While wind speed is an important factor in determining the strength of a hurricane, other elements like storm surge, flooding, storm size, infrastructure weaknesses, and response efforts play critical roles in determining the overall devastation. Hurricane Katrina's impact was driven largely by the storm surge and flooding, particularly in New Orleans, and the failure of critical infrastructure, making it one of the deadliest and most costly hurricanes in history despite its lower wind speed at landfall compared to other storms on the list.
-Yes hurricane devastion causing population migration but it has to be a very severe devastation. People will normally stay back and rebuld after a hurricane. 
+Yes, hurricane devastion causing population migration but it has to be a very severe devastation. People will normally stay back and rebuld after a hurricane. 
 
 ```
+### FINAL THOUGHT 
+##### I will like to put the entire Atlantic and Pacific Hurricane in Context, with these visualizations. 
+
+
+
 
 **References:**
 - https://chatgpt.com/
