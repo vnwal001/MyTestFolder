@@ -149,6 +149,14 @@ fig.show()
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/atav.png" alt="Average Atlantic Hurricane Frequency" width="995" height="525">
 
+Idiom: Bar Chart / Mark: Bar
+
+| Data: Attribute       | Data: Attribute Type  | Encode: Channel                             |
+|-----------------------|-----------------------|---------------------------------------------|
+| Period                | Key, Categorical      | Horizontal spatial region (x-axis)          |
+| Average Frequency     | Value, Quantitative   | Vertical spatial region (y-axis)            |
+
+
 ```
 import numpy as np    # linear algebra
 import pandas as pd   # data processing, CSV file I/O (e.g. pd.read_csv)
@@ -235,6 +243,14 @@ fig.show()
 #### BOXPLOT OF THE LAST 50 YEARS FROM 2015 COMPARISM
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/atbox.png" alt="Atlantic Hurricane Frequency" width="995" height="525">
+
+Idiom: Boxplot / Mark: Box
+
+| Data: Attribute       | Data: Attribute Type  | Encode: Channel                             |
+|-----------------------|-----------------------|---------------------------------------------|
+| Period                | Key, Categorical      | Horizontal spatial region (x-axis)          |
+| Frequency             | Value, Quantitative   | Vertical spatial region (y-axis)            |
+
 
 ```
 import numpy as np
@@ -376,6 +392,14 @@ By doing this I can clearly compare both time periods to verify my suspicion. In
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/HF3.png" alt="Pacific Hurricane Frequency" width="910" height="525">
 
+Idiom: Line Chart / Mark: Line
+
+| Data: Attribute       | Data: Attribute Type  | Encode: Channel                             |
+|-----------------------|-----------------------|---------------------------------------------|
+| Year                  | Key, Categorical      | Horizontal position (x-axis)                |
+| Frequency             | Value, Quantitative   | Vertical position (y-axis)                  |
+
+
 ```
 import numpy as np    # linear algebra
 import pandas as pd   # data processing, CSV file I/O (e.g. pd.read_csv)
@@ -502,6 +526,14 @@ fig.show()
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/pcav.png" alt="Pacific Atlantic Hurricane Frequency" width="995" height="525">
 
+Idiom: Bar Chart / Mark: Bar
+
+| Data: Attribute       | Data: Attribute Type  | Encode: Channel                             |
+|-----------------------|-----------------------|---------------------------------------------|
+| Period                | Key, Categorical      | Horizontal position (x-axis)                |
+| Average Frequency     | Value, Quantitative   | Vertical position (y-axis)                  |
+
+
 ```
 import numpy as np    # linear algebra
 import pandas as pd   # data processing, CSV file I/O (e.g. pd.read_csv)
@@ -590,6 +622,14 @@ fig.show()
 ####  THE LAST 50 YEARS FROM 2015 AVERAGE PACIFIC HURRICANE COMPARISM 
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/pcbox.png" alt="Average Pacific Hurricane Frequency" width="995" height="525">
+
+Idiom: Box Plot / Mark: Box
+
+| Data: Attribute       | Data: Attribute Type  | Encode: Channel                             |
+|-----------------------|-----------------------|---------------------------------------------|
+| Period                | Key, Categorical      | Horizontal position (x-axis)                |
+| Frequency             | Value, Quantitative   | Vertical position (y-axis)                  |
+
 
 ```
 import numpy as np
@@ -725,6 +765,14 @@ By doing this I can clearly compare both time periods to verify what's actually 
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/atws.png" alt="Atlantic Hurricane Max Wind" width="910" height="525">
 
+Idiom: Line Plot / Mark: Line
+
+| Data: Attribute       | Data: Attribute Type  | Encode: Channel                             |
+|-----------------------|-----------------------|---------------------------------------------|
+| Year                  | Temporal, Quantitative| Horizontal position (x-axis)                |
+| Maximum Wind          | Quantitative          | Vertical position (y-axis)                  |
+
+
 ```
 # Step 1: Import necessary libraries
 import numpy as np
@@ -822,6 +870,14 @@ fig.show()
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/atavwp.png" alt="Atlantic Hurricane Max Wind" width="910" height="525">
 
+Idiom: Bar Chart / Mark: Bar
+
+| Data: Attribute             | Data: Attribute Type | Encode: Channel                             |
+|-----------------------------|----------------------|---------------------------------------------|
+| Period                      | Temporal, Ordinal    | Horizontal position (x-axis)                |
+| Average Wind Speed (knots)  | Quantitative         | Vertical position (y-axis)                  |
+
+
 ```
 import numpy as np
 import pandas as pd
@@ -908,6 +964,14 @@ fig.show()
 #### ATLANTIC HURRICANES MAX WIND SPEEDS BOX PLOT 
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/atavwsbox.png" alt="Pacific Hurricane Frequency" width="910" height="525">
+
+Idiom: Box Plot / Mark: Box
+
+| Data: Attribute             | Data: Attribute Type | Encode: Channel                             |
+|-----------------------------|----------------------|---------------------------------------------|
+| Period                      | Temporal, Ordinal    | Horizontal position (x-axis)                |
+| Maximum Wind                | Quantitative         | Vertical position (y-axis)                  |
+
 
 
 ```
@@ -997,6 +1061,14 @@ By doing this I can clearly compare both time periods to verify what's actually 
 #### PACIFIC HURRICANES MAX WIND SPEEDS
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/pcws.png" alt="Pacific Max Wind Speed" width="910" height="525">
+
+Idiom: Line Plot / Mark: Line
+
+| Data: Attribute             | Data: Attribute Type | Encode: Channel                             |
+|-----------------------------|----------------------|---------------------------------------------|
+| Year                        | Temporal             | Horizontal position (x-axis)                |
+| Maximum Wind                | Quantitative         | Vertical position (y-axis)                  |
+
 
 ```
 # Step 1: Import necessary libraries
@@ -1126,6 +1198,15 @@ fig.show()
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/pcavws.png" alt="Average Pacific Max Wind Speed" width="910" height="525">
 
+Idiom: Bar Chart / Mark: Bar
+
+| Data: Attribute               | Data: Attribute Type | Encode: Channel                            |
+|--------------------------------|----------------------|--------------------------------------------|
+| Period                         | Ordinal              | Horizontal position (x-axis)               |
+| Average Wind Speed (knots)     | Quantitative         | Vertical position (y-axis)                 |
+| Period (for coloring)          | Nominal              | Color (to distinguish between periods)     |
+
+
 ```
 import numpy as np
 import pandas as pd
@@ -1211,6 +1292,15 @@ fig.show()
 #### PACIFIC HURRICANES MAX WIND SPEEDS BOX PLOT PLOT DISTRIBUTION OF THE LAST 50 YEARS FROM 2025
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/pcavwsbox.png" alt="Pacific Max Wind Speed Box " width="910" height="525">
+
+Idiom: Boxplot / Mark: Box
+
+| Data: Attribute               | Data: Attribute Type | Encode: Channel                            |
+|--------------------------------|----------------------|--------------------------------------------|
+| Period                         | Ordinal              | Horizontal position (x-axis)               |
+| Maximum Wind                   | Quantitative         | Vertical position (y-axis)                 |
+| Period (for coloring)          | Nominal              | Color (to differentiate between periods)   |
+
 
 ```
 import numpy as np
@@ -1388,6 +1478,17 @@ In short, the more methodical trend of increasing hurricane wind speeds in the P
 ##### TOP 5 HURRICANES PATHS AROUND AND INTO US MAINLAND
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/hu_path.png" alt="Average Pacific Max Wind Speed" width="1350" height="819">
 
+**Idiom: Map / Mark: CircleMarker, PolyLine**
+
+| **Data: Attribute**            | **Data: Attribute Type** | **Encode: Channel**                              | **Mark**              |
+|---------------------------------|--------------------------|-------------------------------------------------|-----------------------|
+| Name                           | Nominal                  | Popup and Tooltip (to show the hurricane name)   | CircleMarker, PolyLine |
+| Maximum Wind                   | Quantitative             | Radius (size of the circle marker based on wind speed) | CircleMarker        |
+| Latitude, Longitude            | Spatial                  | Position (location of the hurricane on the map) | CircleMarker         |
+| Name (for coloring)            | Nominal                  | Color (to differentiate between hurricanes)      | CircleMarker, PolyLine |
+| Path (Coordinates)             | Spatial                  | Path (line connecting the hurricane locations)   | PolyLine             |
+
+
 ```
 import numpy as np
 import pandas as pd
@@ -1552,6 +1653,19 @@ m
 
 ##### Population Comparism Before And After the Hurricane
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/citypop.png" alt="Comparism Before And After the Hurricane" width="1378" height="784">
+
+**Idiom: Grouped Bar Plot / Mark: Bar**
+
+| **Data: Attribute**               | **Data: Attribute Type** | **Encode: Channel**                              | **Mark**              |
+|------------------------------------|--------------------------|-------------------------------------------------|-----------------------|
+| Hurricane/City                    | Nominal                  | Horizontal position (x-axis)                    | Bar                   |
+| Population Before Hurricane       | Quantitative             | Vertical position (y-axis)                      | Bar                   |
+| Population 1 Yr After             | Quantitative             | Vertical position (y-axis)                      | Bar                   |
+| Number of Fatalities              | Quantitative             | Vertical position (y-axis)                      | Bar                   |
+| Speed at Landfall (mph)           | Quantitative             | Vertical position (y-axis)                      | Bar                   |
+| Metric (for grouping)             | Nominal                  | Color (to differentiate between metrics)        | Bar                   |
+| Value                             | Quantitative             | Value (height of the bars)                      | Bar                   |
+
 
 ```
 # Import necessary libraries
