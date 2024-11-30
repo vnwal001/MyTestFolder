@@ -1745,6 +1745,17 @@ Yes, hurricane devastion causing population migration but it has to be a very se
 
 ![Total Landfall](https://github.com/vnwal001/MyTestFolder/blob/main/total_landfall_2.png?raw=true)
 
+```
+As can be shown by the visualization, the frequency of the hurricanes and max wind speed are higher overall on pacific ocean than the atlantic ocean. Nevetheless, the amount of hurricanes that make Landfall are much
+more higher on the atlantic ocean. Hence hurricanes over the atlantic have more overall impact than those of the atlantic ocean.
+
+The reason hurricanes over the Atlantic cause more overall impact than those over the Pacific is largely due to landfall and the population density of the areas that are affected. Even though Pacific hurricanes may be stronger and more frequent, they often do not hit densely populated areas as much as those in the Atlantic. Therefore, hurricanes in the Atlantic not only cause direct damage due to their winds but also trigger a series of secondary impacts such as flooding, power outages, infrastructure damage, and long-term economic consequences in highly populated coastal areas.
+
+Atlantic Ocean hurricanes tend to follow tracks that bring them near or directly into the path of populated areas in the Caribbean, Gulf of Mexico, and the Eastern United States. These areas are more likely to experience the direct effects of landfall.
+In contrast, the Pacific Ocean hurricanes often have paths that either curve away from land or affect less populated regions, such as parts of the Pacific islands, or dissipate over the ocean.
+
+```
+
 
 
 
