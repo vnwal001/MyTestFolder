@@ -55,8 +55,6 @@ Idiom: Bar Chart / Mark: Line
 | Frequency | value, quantitative | vertical spatial region (y-axis) |
 
 
-- *Description of the chart and how is was created (explain the code you used and include code snippets)*
-- Answer: Code Snippet and Explanation
 
 ```
 import numpy as np    # linear algebra
