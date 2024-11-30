@@ -985,7 +985,7 @@ fig.show()
 I wanted to make sense of the peaks and valleys in frequency trend plot so I decided to break my data in two 25 year time period.
 By doing this I can clearly compare both time periods to verify what's actually happening . In doing this I observed the following:
 
-- The hurriance wind speeds have a small increase from 1964-1989 to 1990-2015. 
+- The hurriance wind speeds have increased from 55.4 to 56.4 from 1964-1989 to 1990-2015. 
 - The boxplot distribution also clearly shows almost the same for both time periods with outliers  (relatively higher than normal) existing in both time periods 
 
 ```
@@ -1285,7 +1285,7 @@ fig.show()
 I wanted to make sense of the peaks and valleys in frequency trend plot so I decided to break my data in two 25 year time period.
 By doing this I can clearly compare both time periods to verify what's actually happening . In doing this I observed the following:
 
-- The hurriance wind speeds have a small increase from 1964-1989 to 1990-2015. 
+- The hurriance wind speeds have increased from 55.5 to 56.2 from 1964-1989 to 1990-2015. 
 - The boxplot distribution also clearly shows almost the same for both time periods with outliers  (relatively higher than normal) existing more in time period 1990-2015
 
 ```
