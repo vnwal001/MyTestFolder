@@ -497,9 +497,9 @@ fig.show()
 
 ```
 
-####  THE LAST 50 YEARS FROM 2015 AVERAGE HURRICANE COMPARISM 
+####  THE LAST 50 YEARS FROM 2015 AVERAGE PACIFIC HURRICANE COMPARISM 
 
-<img src="https://github.com/vnwal001/MyTestFolder/blob/main/pcav.png" alt="Average Atlantic Hurricane Frequency" width="995" height="525">
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/pcav.png" alt="Pacific Atlantic Hurricane Frequency" width="995" height="525">
 
 ```
 import numpy as np    # linear algebra
@@ -586,9 +586,9 @@ fig.show()
 ```
 
 
-####  THE LAST 50 YEARS FROM 2015 AVERAGE HURRICANE COMPARISM 
+####  THE LAST 50 YEARS FROM 2015 AVERAGE PACIFIC HURRICANE COMPARISM 
 
-<img src="https://github.com/vnwal001/MyTestFolder/blob/main/pcbox.png" alt="Average Atlantic Hurricane Frequency" width="995" height="525">
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/pcbox.png" alt="Average Pacific Hurricane Frequency" width="995" height="525">
 
 ```
 import numpy as np
@@ -980,6 +980,17 @@ fig.show()
 
 ```
 
+#### *THE HURRICANE MAX WIND SPEED STORY OF THE LAST 50 YEARS FROM 2015 OVER THE ATLANTIC OCEAN*
+
+```
+I wanted to make sense of the peaks and valleys in frequency trend plot so I decided to break my data in two 25 year time period.
+By doing this I can clearly compare both time periods to verify what's actually happening . In doing this I observed the following:
+
+- The hurriance average frequency has relatively been the same in periods 1964-1989 to 1990-2015, 1990-2015 has very small or negligible increase. 
+- The boxplot distribution also clearly shows almost the same for both time periods with outliers  (relatively higher than normal) existing in both time periods 
+
+```
+
 
 #### ANALYZING PACIFIC HURRICANES MAX WIND SPEEDS
 
@@ -1269,7 +1280,16 @@ fig.show()
 
 ```
 
+#### *THE HURRICANE MAX WIND SPEED STORY OF THE LAST 50 YEARS FROM 2015 OVER THE PACIFIC OCEAN*
 
+```
+I wanted to make sense of the peaks and valleys in frequency trend plot so I decided to break my data in two 25 year time period.
+By doing this I can clearly compare both time periods to verify what's actually happening . In doing this I observed the following:
+
+- The hurriance average frequency has relatively been the same in periods 1964-1989 to 1990-2015, 1990-2015 has very small or negligible increase. 
+- The boxplot distribution also clearly shows almost the same for both time periods with outliers  (relatively higher than normal) existing more in time period 1990-2015
+
+```
 
 #### ATLANTIC VS PACIFIC HURRICANES
 
