@@ -1542,7 +1542,8 @@ m
 | **Hurricane Andrew (1992)** | 165 mph (266 km/h)             | 165 mph (266 km/h)             | Homestead, Florida     | ~35,000 (1992)                    | ~36,000 (1993)                   | 65             | $75 billion                    |
 | **Hurricane Katrina (2005)** | 175 mph (280 km/h)             | 125 mph (201 km/h)             | New Orleans, Louisiana | ~450,000 (2005)                   | ~230,000 (2006)                  | 1,836          | $186 billion                   |
 
-
+##### Population Comparism Before And After the Hurricane
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/citypop.png" alt="Comparism Before And After the Hurricane" width="1378" height="784">
 
 
 **References:**
