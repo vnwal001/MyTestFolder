@@ -41,7 +41,7 @@
 
   
 
-#### SECTION 2 QUESTION A ANSWERS 
+#### SECTION 2 PART 1A QUESTION ANSWERS 
 <h4 style="text-align: center;">ANALYZING HURRICANE FREQUENCIES</h4>
 
 <h4 style="text-align: center;"> ATLANTIC HURRICANES FREQUENCIES</h4>
@@ -759,7 +759,7 @@ By doing this I can clearly compare both time periods to verify what's actually 
 - 1990-2015 time period also has a higher max frequncy value.
 
 ```
-#### SECTION 2 B QUESTION A ANSWERS
+#### SECTION 2 PART 1B QUESTION A ANSWERS
 
 <h4 style="text-align: center;"> ANALYZING HURRICANE MAX WIND SPEEDS</h4>
 
@@ -1390,9 +1390,9 @@ By doing this I can clearly compare both time periods to verify what's actually 
 
 
 
-#### SECTION 2 C:  What are the potential factors contributing to any observed changes in hurricane frequency and intensity?
+#### SECTION 2 PART 1C  What are the potential factors contributing to any observed changes in hurricane frequency and intensity?
 
-#### SECTION 2 C ANSWERS 
+#### SECTION 2 1C ANSWERS 
 
 ```
 These are the contributors to observed increase in hurricane frequency over the atlantic and pacific over the last 50 years from 2015:
