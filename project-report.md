@@ -34,11 +34,11 @@
 
 
 
-##### To prepare my data for use I did the following:
-- The original file was in xls format, I created a new csv file to place my data
-- I copied over the values of the only data I needed for my analysis, I copied the state population data for just 1970, 1985, 1995 and 2009.
-- For the specified years, if they had both and April and July data, I picked the July data for that year because most years data were collected in July. I only took the April data if there was not a July date available
-- I renamed the Years column to just the Year and removed the month.
+#### DATA PROCESSING WITH MY CODE
+- I removed blank and emtpy rows
+- I selected rows with Status = HU indicating Hurricanes
+- I selecting unique HU IDs so as not to have an accurate representation of my dataset
+
   
 
 #### SECTION 2 QUESTION A ANSWERS 
