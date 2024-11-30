@@ -21,15 +21,15 @@
 
 
 ### SECTION 2: Final questions that I addressed
-- Hurricane Intensity and Frequency Analysis
+#### PART 1 Hurricane Intensity and Frequency Analysis
 - A) Is the frequency of hurricanes increasing over time?
 - B) Are hurricane wind speeds becoming stronger over time?
 - C) What are the potential factors contributing to any observed changes in hurricane frequency and intensity?
 
-#### 2) Comparative Analysis of Atlantic vs. Pacific Hurricanes
+#### PART 2 Comparative Analysis of Atlantic vs. Pacific Hurricanes
 - How do trends in hurricane frequency and intensity differ between the Atlantic and Pacific Oceans over years?
 
-#### 3) Impact of Category 5 Hurricanes on Population Migration
+#### PART 3 Impact of Category 5 Hurricanes on Population Migration
 - For hurricanes that make landfall in the U.S., is there a noticeable migration response in the aftermath of Category 5 hurricanes? Specifically, does the population of selected cities decrease significantly a year  after the hurricane, and can any patterns be identified?
 
 
@@ -39,7 +39,7 @@
 - I copied over the values of the only data I needed for my analysis, I copied the state population data for just 1970, 1985, 1995 and 2009.
 - For the specified years, if they had both and April and July data, I picked the July data for that year because most years data were collected in July. I only took the April data if there was not a July date available
 - I renamed the Years column to just the Year and removed the month.
-- 
+  
 
 #### SECTION 2 QUESTION A ANSWERS 
 #### ANALYZING HURRICANE FREQUENCIES
@@ -1291,9 +1291,41 @@ By doing this I can clearly compare both time periods to verify what's actually 
 ```
 
 
+
+#### SECTION 2 C:  What are the potential factors contributing to any observed changes in hurricane frequency and intensity?
+
 #### SECTION 2 C ANSWERS 
 
-# Hurricane Frequency and Maximum Wind Speed Comparison
+```
+These are the contributors to observed increase in hurricane frequency over the atlantic and pacific over the last 50 years from 2015:
+
+- Rising sea surface temperatures (due to global warming),
+- Reduced vertical wind shear (favorable atmospheric conditions),
+- Climate oscillations, El Niño-Southern Oscillation (ENSO), the Atlantic Multidecadal Oscillation (AMO), and the Pacific Decadal Oscillation (PDO)
+- Changes in atmospheric circulation patterns, and
+- Improved monitoring and detection of storms.
+
+The general hurricane windspeed average has relatively been the same from 1965 to 2015 but there has certainly been notable extraordinarily high wind speeds (outliers) :
+
+- Climate Change (Rising Sea Surface Temperatures)
+- Low Vertical Wind Shear (Favorable Atmospheric Conditions)
+- Increased Ocean Heat Content (Deep Ocean Energy)
+- Weakening Jet Stream and Atmospheric Circulation Changes
+- Increased Atmospheric Moisture Content
+- Ocean-Atmosphere Interactions (El Niño/La Niña)
+- Rapid Intensification Events
+- Natural Climate Oscillations (AMO, PDO)
+- Improved Monitoring and Detection
+
+```
+
+
+#### SECTION 2 PART 2 
+
+
+
+#### ATLANTIC VS PACIFIC HURRICANES
+
 
 ## Atlantic vs Pacific Hurricane Frequency
 
@@ -1310,7 +1342,7 @@ By doing this I can clearly compare both time periods to verify what's actually 
 
 
 
-#### ATLANTIC VS PACIFIC HURRICANES
+
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/HF1.png" alt="Pacific Hurricane Frequency" width="910" height="525">
   
