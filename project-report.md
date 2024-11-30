@@ -1739,6 +1739,11 @@ Yes, hurricane devastion causing population migration but it has to be a very se
 ```
 ### FINAL THOUGHT 
 ##### I will like to put the entire Atlantic and Pacific Hurricane in Context, with these visualizations. 
+![Total Frequency](https://github.com/vnwal001/MyTestFolder/blob/main/total_frequency.png?raw=true)
+
+![Total Max Wind](https://github.com/vnwal001/MyTestFolder/blob/main/total_maxwind.png?raw=true)
+
+![Total Landfall](https://github.com/vnwal001/MyTestFolder/blob/main/total_landfall.png?raw=true)
 
 
 
