@@ -373,7 +373,7 @@ fig.show()
 
 
 
-<h4 style="text-align: center;"> *THE HURRICANE FREQUENCY STORY OF THE LAST 50 YEARS FROM 2015 OVER THE ATLANTIC OCEAN*</h4>
+#### *THE HURRICANE FREQUENCY STORY OF THE LAST 50 YEARS FROM 2015 OVER THE ATLANTIC OCEAN*
 
 ```
 On the look of my first line plot, I noticed that a slight increase in the hurricane frequency over the past 50 years but,
@@ -749,7 +749,7 @@ fig.show()
 
 ```
 
-<h4 style="text-align: center;"> *THE HURRICANE FREQUENCY STORY OF THE LAST 50 YEARS FROM 2015 OVER THE PACIFIC OCEAN*  </h4>
+#### *THE HURRICANE FREQUENCY STORY OF THE LAST 50 YEARS FROM 2015 OVER THE PACIFIC OCEAN*  
 
 
 ```
@@ -870,7 +870,7 @@ fig.show()
 
 ```
 
-<h4 style="text-align: center;"> ATLANTIC HURRICANES AVERAGE MAX WIND SPEEDS FOR THE LAST 50 YEARS FROM 2015</h4>
+<h4 style="text-align: center;">ATLANTIC HURRICANES AVERAGE MAX WIND SPEEDS FOR THE LAST 50 YEARS FROM 2015</h4>
 
 
 
@@ -1379,7 +1379,7 @@ fig.show()
 ```
 
 
-<h4 style="text-align: center;"> *THE HURRICANE MAX WIND SPEED STORY OF THE LAST 50 YEARS FROM 2015 OVER THE PACIFIC OCEAN*</h4>
+#### *THE HURRICANE MAX WIND SPEED STORY OF THE LAST 50 YEARS FROM 2015 OVER THE PACIFIC OCEAN*
 
 ```
 I wanted to make sense of the peaks and valleys in frequency trend plot so I decided to break my data in two 25 year time period.
@@ -1455,7 +1455,7 @@ The general hurricane windspeed average has relatively been the same from 1965 t
 
 
 
-<h4 style="text-align: center;"> *ATLANTIC VS PACIFIC HURRICANE MAX WIND SPEED AND FREQUENCY STORY*</h4>
+#### *ATLANTIC VS PACIFIC HURRICANE MAX WIND SPEED AND FREQUENCY STORY*
 
 
 ```
