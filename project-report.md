@@ -1545,6 +1545,15 @@ m
 ##### Population Comparism Before And After the Hurricane
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/citypop.png" alt="Comparism Before And After the Hurricane" width="1378" height="784">
 
+```
+```
+
+```
+DEDUCTIONS
+
+
+
+```
 
 **References:**
 - https://chatgpt.com/
