@@ -1293,6 +1293,23 @@ By doing this I can clearly compare both time periods to verify what's actually 
 
 #### SECTION 2 C ANSWERS 
 
+# Hurricane Frequency and Maximum Wind Speed Comparison
+
+## Atlantic vs Pacific Hurricane Frequency
+
+| Atlantic Hurricane Frequency | Pacific Hurricane Frequency |
+|-------------------------------|-----------------------------|
+| ![Atlantic Hurricane Frequency](https://github.com/vnwal001/MyTestFolder/blob/main/HF2.png) | ![Pacific Hurricane Frequency](https://github.com/vnwal001/MyTestFolder/blob/main/HF3.png) |
+
+## Atlantic vs Pacific Maximum Wind Speed
+
+| Atlantic Max Wind Speed | Pacific Max Wind Speed |
+|--------------------------|------------------------|
+| ![Atlantic Hurricane Max Wind](https://github.com/vnwal001/MyTestFolder/blob/main/atws.png) | ![Pacific Max Wind Speed](https://github.com/vnwal001/MyTestFolder/blob/main/pcws.png) |
+
+
+
+
 #### ATLANTIC VS PACIFIC HURRICANES
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/HF1.png" alt="Pacific Hurricane Frequency" width="910" height="525">
