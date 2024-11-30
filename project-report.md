@@ -361,13 +361,6 @@ By doing this I can clearly compare both time periods to verify my suspicion. In
 
 
 
-
-
-
-
-
-
-
 #### PACIFIC HURRICANES  FREQUENCIES
 
 - *Description of the chart and how is was created (explain the code you used and include code snippets)*
@@ -1373,6 +1366,17 @@ In short, the more methodical trend of increasing hurricane wind speeds in the P
 
 ```
 
+#### SECTION 2: PART 3 Impact of Category 5 Hurricanes on Population Migration
+#### QUESTION: For hurricanes that make landfall in the U.S., is there a noticeable migration response in the aftermath of Category 5 hurricanes? Specifically, does the population of selected cities decrease significantly a year  after the hurricane, and can any patterns be identified?
+
+#### ANSWERS 
+
+```
+- To answer this question, I focussed on the Hurricanes over the atlantic, these are typically the hurricanes that make landfall in the U.S.
+- I also identified the hurricanes with highest Maximum speed that made landfall. I should note that hurricanes typically do not make landfall at their maximum speed.
+- I plotted the path of these selected hurricanes, I focussed on the hurricane path as it got closer to the U.S mainland and into the U.S. mainland.  
+
+```
 
 
 
