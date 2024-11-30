@@ -1782,9 +1782,240 @@ In contrast, the Pacific Ocean hurricanes often have paths that either curve awa
 
 ```
 
+*python code*
 
+```
+import numpy as np
+import pandas as pd
+import plotly.express as px
+import warnings
+import re
+
+# Suppress warnings
+warnings.simplefilter("ignore")
+
+# --- Atlantic Dataset ---
+# Step 1: Read the Atlantic dataset
+atlantic_data = pd.read_csv("https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/atlantic.csv")
+
+# Step 2: Clean the Atlantic dataset
+# Strip leading/trailing spaces from all string columns
+atlantic_data = atlantic_data.applymap(lambda x: x.strip() if isinstance(x, str) else x)
+
+atlantic_data.drop_duplicates(inplace=True)
+atlantic_data['Latitude'] = atlantic_data['Latitude'].apply(lambda x: re.match('[0-9]{1,3}.[0-9]{0,1}', x)[0])
+atlantic_data['Longitude'] = atlantic_data['Longitude'].apply(lambda x: re.match('[0-9]{1,3}.[0-9]{0,1}', x)[0])
+atlantic_data['Date'] = pd.to_datetime(atlantic_data['Date'], format='%Y%m%d')
+atlantic_data['Year'] = atlantic_data['Date'].dt.year
+
+# Step 3: Filter data for 'HU' (Hurricane) status in Atlantic dataset
+atlantic_hu_data = atlantic_data[atlantic_data['Status'] == 'HU']
+atlantic_counts = atlantic_hu_data.groupby(['ID', 'Year']).size().reset_index(name='Count')
+atlantic_frequency = atlantic_counts.groupby('Year')['Count'].sum().reset_index(name='Frequency')
+
+# --- Pacific Dataset ---
+# Step 1: Read the Pacific dataset
+pacific_data = pd.read_csv("https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/pacific.csv")
+
+# Step 2: Clean the Pacific dataset
+# Strip leading/trailing spaces from all string columns
+pacific_data = pacific_data.applymap(lambda x: x.strip() if isinstance(x, str) else x)
+
+pacific_data.drop_duplicates(inplace=True)
+pacific_data['Latitude'] = pacific_data['Latitude'].apply(lambda x: re.match('[0-9]{1,3}.[0-9]{0,1}', x)[0])
+pacific_data['Longitude'] = pacific_data['Longitude'].apply(lambda x: re.match('[0-9]{1,3}.[0-9]{0,1}', x)[0])
+pacific_data['Date'] = pd.to_datetime(pacific_data['Date'], format='%Y%m%d')
+pacific_data['Year'] = pacific_data['Date'].dt.year
+
+
+
+
+
+# Step 3: Filter data for 'HU' (Hurricane) status in Pacific dataset
+pacific_hu_data = pacific_data[pacific_data['Status'] == 'HU']
+pacific_counts = pacific_hu_data.groupby(['ID', 'Year']).size().reset_index(name='Count')
+pacific_frequency = pacific_counts['Year'].value_counts().reset_index()
+atlantic_frequency = atlantic_counts['Year'].value_counts().reset_index()
+atlantic_frequency.columns = ['Year', 'Frequency']
+pacific_frequency.columns = ['Year', 'Frequency']
+
+# Step 4: Filter both datasets for years 1965 to 2015
+atlantic_frequency = atlantic_frequency[(atlantic_frequency['Year'] >= 1965) & (atlantic_frequency['Year'] <= 2015)]
+pacific_frequency = pacific_frequency[(pacific_frequency['Year'] >= 1965) & (pacific_frequency['Year'] <= 2015)]
+
+# Step 5: Add 'Region' column to differentiate between Atlantic and Pacific
+atlantic_frequency['Region'] = 'Atlantic'
+pacific_frequency['Region'] = 'Pacific'
+
+# Step 6: Combine both Atlantic and Pacific datasets into a single dataframe
+combined_data = pd.concat([atlantic_frequency, pacific_frequency])
+
+# Step 7: Create a boxplot to compare the frequency distributions of hurricanes
+fig = px.box(combined_data, x='Region', y='Frequency', 
+             title='Hurricane Frequency Distribution (1965-2015): Atlantic vs Pacific',
+             labels={'Frequency': 'Hurricane Frequency', 'Region': 'Ocean Region'},
+             color='Region')
+
+# Show the plot
+fig.show()
+
+
+
+import numpy as np
+import pandas as pd
+import plotly.express as px
+import warnings
+import re
+
+# Suppress warnings
+warnings.simplefilter("ignore")
+
+# Step 1: Read the Atlantic dataset
+atlantic_data = pd.read_csv("https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/atlantic.csv")
+
+# Step 2: Clean the Atlantic dataset
+atlantic_data = atlantic_data.applymap(lambda x: x.strip() if isinstance(x, str) else x)  # Strip spaces
+atlantic_data.drop_duplicates(inplace=True)
+atlantic_data['Latitude'] = atlantic_data['Latitude'].apply(lambda x: re.match('[0-9]{1,3}.[0-9]{0,1}', x)[0])
+atlantic_data['Longitude'] = atlantic_data['Longitude'].apply(lambda x: re.match('[0-9]{1,3}.[0-9]{0,1}', x)[0])
+atlantic_data['Date'] = pd.to_datetime(atlantic_data['Date'], format='%Y%m%d')
+atlantic_data['Year'] = atlantic_data['Date'].dt.year
+
+# Step 3: Filter for hurricanes (Status = 'HU') in Atlantic
+atlantic_hu_data = atlantic_data[atlantic_data['Status'] == 'HU']
+atlantic_hu_data = atlantic_hu_data.dropna(subset=['Maximum Wind'])
+
+# Step 4: Split into two periods for Atlantic
+period_1_atlantic = atlantic_hu_data[(atlantic_hu_data['Year'] >= 1965) & (atlantic_hu_data['Year'] <= 1989)]
+period_2_atlantic = atlantic_hu_data[(atlantic_hu_data['Year'] >= 1990) & (atlantic_hu_data['Year'] <= 2015)]
+
+# Add a column for the period in Atlantic
+period_1_atlantic['Period'] = '1965-1989'
+period_2_atlantic['Period'] = '1990-2015'
+
+# Step 5: Read the Pacific dataset
+pacific_data = pd.read_csv("https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/pacific.csv")
+
+# Step 6: Clean the Pacific dataset
+pacific_data = pacific_data.applymap(lambda x: x.strip() if isinstance(x, str) else x)  # Strip spaces
+pacific_data.drop_duplicates(inplace=True)
+pacific_data['Latitude'] = pacific_data['Latitude'].apply(lambda x: re.match('[0-9]{1,3}.[0-9]{0,1}', x)[0])
+pacific_data['Longitude'] = pacific_data['Longitude'].apply(lambda x: re.match('[0-9]{1,3}.[0-9]{0,1}', x)[0])
+pacific_data['Date'] = pd.to_datetime(pacific_data['Date'], format='%Y%m%d')
+pacific_data['Year'] = pacific_data['Date'].dt.year
+
+# Step 7: Filter for hurricanes (Status = 'HU') in Pacific
+pacific_hu_data = pacific_data[pacific_data['Status'] == 'HU']
+pacific_hu_data = pacific_hu_data.dropna(subset=['Maximum Wind'])
+
+# Step 8: Split into two periods for Pacific
+period_1_pacific = pacific_hu_data[(pacific_hu_data['Year'] >= 1965) & (pacific_hu_data['Year'] <= 1989)]
+period_2_pacific = pacific_hu_data[(pacific_hu_data['Year'] >= 1990) & (pacific_hu_data['Year'] <= 2015)]
+
+# Add a column for the period in Pacific
+period_1_pacific['Period'] = '1965-1989'
+period_2_pacific['Period'] = '1990-2015'
+
+# Step 9: Combine the two datasets
+# Add 'Region' column to distinguish between Atlantic and Pacific
+period_1_atlantic['Region'] = 'Atlantic'
+period_2_atlantic['Region'] = 'Atlantic'
+period_1_pacific['Region'] = 'Pacific'
+period_2_pacific['Region'] = 'Pacific'
+
+# Concatenate both the Atlantic and Pacific datasets
+combined_data = pd.concat([period_1_atlantic, period_2_atlantic, period_1_pacific, period_2_pacific])
+
+
+
+# Step 10: Create a boxplot to compare wind speed distributions for both regions and periods
+fig = px.box(combined_data, x='Region', y='Maximum Wind',
+             title='Comparison of Hurricane Wind Speeds (1965-2015): Atlantic vs. Pacific',
+             labels={'Maximum Wind': 'Wind Speed (knots)', 'Region': 'Region'},
+             color='Region')
+
+# Show the plot
+fig.show()
+
+import pandas as pd  # data processing
+import plotly.express as px  # for interactive plotting
+import warnings
+import re
+
+# Suppress warnings
+warnings.simplefilter("ignore")
+
+# Step 1: Read the Atlantic dataset
+atlantic_data = pd.read_csv("https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/atlantic.csv")
+
+# Clean the Atlantic dataset
+atlantic_data.drop_duplicates(inplace=True)
+atlantic_data['Latitude'] = atlantic_data['Latitude'].apply(lambda x: re.match('[0-9]{1,3}.[0-9]{0,1}', x)[0])
+atlantic_data['Longitude'] = atlantic_data['Longitude'].apply(lambda x: re.match('[0-9]{1,3}.[0-9]{0,1}', x)[0])
+atlantic_data['Date'] = pd.to_datetime(atlantic_data['Date'], format='%Y%m%d')
+atlantic_data['Month'] = atlantic_data['Date'].apply(lambda x: x.month)
+atlantic_data['Year'] = atlantic_data['Date'].apply(lambda x: x.year)
+atlantic_data['Status'] = atlantic_data['Status'].str.strip()  # Remove leading/trailing spaces
+atlantic_data['Event'] = atlantic_data['Event'].str.strip()  # Remove leading/trailing spaces
+
+
+# Filter for hurricanes (Status = 'HU') and landfall events (Event = 'L')
+atlantic_landfall = atlantic_data[(atlantic_data['Status'] == 'HU') & (atlantic_data['Event'] == 'L')]
+
+# Count total landfall hurricanes in Atlantic (1960 to 2015)
+atlantic_landfall_total = atlantic_landfall[(atlantic_landfall['Year'] >= 1965) & (atlantic_landfall['Year'] <= 2015)].shape[0]
+
+# Step 2: Read the Pacific dataset
+pacific_data = pd.read_csv("https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/pacific.csv")
+
+# Clean the Pacific dataset
+pacific_data.drop_duplicates(inplace=True)
+pacific_data['Latitude'] = pacific_data['Latitude'].apply(lambda x: re.match('[0-9]{1,3}.[0-9]{0,1}', x)[0])
+pacific_data['Longitude'] = pacific_data['Longitude'].apply(lambda x: re.match('[0-9]{1,3}.[0-9]{0,1}', x)[0])
+pacific_data['Date'] = pd.to_datetime(pacific_data['Date'], format='%Y%m%d')
+pacific_data['Month'] = pacific_data['Date'].apply(lambda x: x.month)
+pacific_data['Year'] = pacific_data['Date'].apply(lambda x: x.year)
+pacific_data['Status'] = pacific_data['Status'].str.strip()  # Remove leading/trailing spaces
+pacific_data['Event'] = pacific_data['Event'].str.strip()  # Remove leading/trailing spaces
+
+
+# Filter for hurricanes (Status = 'HU') and landfall events (Event = 'L')
+pacific_landfall = pacific_data[(pacific_data['Status'] == 'HU') & (pacific_data['Event'] == 'L')]
+
+# Count total landfall hurricanes in Pacific (1965 to 2015)
+pacific_landfall_total = pacific_landfall[(pacific_landfall['Year'] >= 1965) & (pacific_landfall['Year'] <= 2015)].shape[0]
+
+# Step 3: Prepare data for the interactive plot
+landfall_data = pd.DataFrame({
+    'Basin': ['Atlantic', 'Pacific'],
+    'Total Landfall Hurricanes': [atlantic_landfall_total, pacific_landfall_total]
+})
+
+# Step 4: Create the interactive bar chart with Plotly
+fig = px.bar(
+    landfall_data, 
+    x='Basin', 
+    y='Total Landfall Hurricanes', 
+    text='Total Landfall Hurricanes',  # Display count on bars
+    title='Total Landfall Hurricanes (1965 - 2015) in Atlantic vs Pacific',
+    labels={'Total Landfall Hurricanes': 'Number of Landfall Hurricanes'}, 
+    color='Basin',
+    color_discrete_map={'Atlantic': 'blue', 'Pacific': 'red'},
+    template='plotly_dark'  # Optional: change to any other template if preferred
+)
+
+# Update hover information to show the number of landfall hurricanes
+fig.update_traces(
+    hovertemplate='<b>%{x}</b><br>Landfall Hurricanes: %{text}<br><extra></extra>'
+)
+
+# Show the plot
+fig.show()
+
+
+```
 
 
 **References:**
 - https://chatgpt.com/
-- https://www.census.gov/library/publications/2010/compendia/statab/130ed/population.html
+- https://www.kaggle.com/datasets/noaa/hurricane-database/
