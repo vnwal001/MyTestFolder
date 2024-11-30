@@ -21,7 +21,7 @@
 
 
 ### SECTION 2: Final questions that I addressed
-- 1) Hurricane Intensity and Frequency Analysis
+- Hurricane Intensity and Frequency Analysis
 - A) Is the frequency of hurricanes increasing over time?
 - B) Are hurricane wind speeds becoming stronger over time?
 - C) What are the potential factors contributing to any observed changes in hurricane frequency and intensity?
@@ -41,7 +41,7 @@
 - I renamed the Years column to just the Year and removed the month.
 - 
 
-#### SECTION 2 QUESTION 1A ANSWERS 
+#### SECTION 2 QUESTION A ANSWERS 
 #### ANALYZING HURRICANE FREQUENCIES
 #### ATLANTIC HURRICANES FREQUENCIES
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/HF2.png" alt="Atlantic Hurricane Frequency" width="910" height="525">
@@ -716,9 +716,8 @@ By doing this I can clearly compare both time periods to verify what's actually 
 - 1990-2015 time period also has a higher max frequncy value.
 
 ```
-
-## ANALYZING HURRICANE MAX WIND SPEEDS
-
+#### SECTION 2 B QUESTION A ANSWERS
+#### ANALYZING HURRICANE MAX WIND SPEEDS
 
 #### ATLANTIC HURRICANES MAX WIND SPEEDS
 
@@ -1290,6 +1289,9 @@ By doing this I can clearly compare both time periods to verify what's actually 
 - The boxplot distribution also clearly shows almost the same for both time periods with outliers  (relatively higher than normal) existing more in time period 1990-2015
 
 ```
+
+
+#### SECTION 2 C ANSWERS 
 
 #### ATLANTIC VS PACIFIC HURRICANES
 
