@@ -1377,7 +1377,7 @@ In short, the more methodical trend of increasing hurricane wind speeds in the P
 - I plotted the path of these selected hurricanes, I focussed on the hurricane path as it got closer to the U.S mainland and into the U.S. mainland.  
 
 ```
-
+##### TOP 5 HURRICANES PATHS AROUND AND INTO US MAINLAND
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/hu_path.png" alt="Average Pacific Max Wind Speed" width="1350" height="819">
 
 ```
