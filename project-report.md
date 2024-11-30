@@ -389,8 +389,6 @@ By doing this I can clearly compare both time periods to verify my suspicion. In
 
 <h4 style="text-align: center;">PACIFIC HURRICANES  FREQUENCIES</h4>
 
-- *Description of the chart and how is was created (explain the code you used and include code snippets)*
-- Answer: Code Snippet and Explanation
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/HF3.png" alt="Pacific Hurricane Frequency" width="910" height="525">
 
