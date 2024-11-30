@@ -1344,15 +1344,14 @@ The general hurricane windspeed average has relatively been the same from 1965 t
 
 
 
-# Hurricane Data Boxplot Distribution Dashboard
+# Hurricane Data Boxplot Distribution 
 
 ## Comparison of Pacific vs. Atlantic Hurricanes
 
-### 1. Hurricane Frequency Comparison
-<img src="https://github.com/vnwal001/MyTestFolder/blob/main/combined_frequency.png" alt="Pacific vs Atlantic" width="450" height="250" style="display: inline-block;">
 
-### 2. Maximum Wind Speed Comparison
-<img src="https://github.com/vnwal001/MyTestFolder/blob/main/combined_windSpeed.png" alt="Pacific vs Atlantic" width="450" height="250" style="display: inline-block;">
+| Atlantic vs Pacific Frequency | Atlantic vs Pacific Max Wind Speed |
+|--------------------------|------------------------|
+| ![ Atlantic vs Pacific Frequency](img src="https://github.com/vnwal001/MyTestFolder/blob/main/combined_frequency.png) | ![Atlantic vs Pacific Max Wind Speed](<img src="https://github.com/vnwal001/MyTestFolder/blob/main/combined_windSpeed.png) |
 
   
 
