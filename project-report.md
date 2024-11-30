@@ -1743,7 +1743,7 @@ Yes, hurricane devastion causing population migration but it has to be a very se
 
 ![Total Max Wind](https://github.com/vnwal001/MyTestFolder/blob/main/total_maxwind.png?raw=true)
 
-![Total Landfall](https://github.com/vnwal001/MyTestFolder/blob/main/total_landfall.png?raw=true)
+![Total Landfall](https://github.com/vnwal001/MyTestFolder/blob/main/total_landfall_2.png?raw=true)
 
 
 
