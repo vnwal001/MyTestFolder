@@ -1380,6 +1380,161 @@ In short, the more methodical trend of increasing hurricane wind speeds in the P
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/hu_path.png" alt="Average Pacific Max Wind Speed" width="1350" height="819">
 
+```
+import numpy as np
+import pandas as pd
+import folium
+import warnings
+import re
+from geopy.geocoders import Nominatim
+from geopy.exc import GeocoderTimedOut
+
+# Suppress warnings
+warnings.simplefilter("ignore")
+
+# Step 2: Read the dataset
+data = pd.read_csv("https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/atlantic.csv")
+
+# Step 3: Clean the dataset
+# Remove leading and trailing spaces from all string columns
+data = data.applymap(lambda x: x.strip() if isinstance(x, str) else x)
+
+# Remove duplicates
+data.drop_duplicates(inplace=True)
+
+# Ensure the 'Date' column is in datetime format
+data['Date'] = pd.to_datetime(data['Date'], format='%Y%m%d')
+
+# Extract the year from the 'Date' column
+data['Year'] = data['Date'].dt.year
+
+# Step 4: Filter data for Status = 'HU' (Hurricane) and Name not equal to 'UNNAMED'
+hu_data = data[(data['Status'] == 'HU') & (data['Name'] != 'UNNAMED')]
+unique_ids_hurr = set(hu_data['ID'])
+hu_data = data[data['ID'].isin(unique_ids_hurr)]
+
+# Step 5: Handle Missing or Invalid Maximum Wind Values
+# Drop rows where 'Maximum Wind' is missing or invalid
+hu_data = hu_data.dropna(subset=['Maximum Wind'])
+
+# Step 6: Define the US Mainland Coastal Boundaries
+lat_min = 24.396308  # Southern border of the US (latitude)
+lat_max = 49.384358  # Northern border of the US (latitude)
+lon_min = -125.0     # Western border of the US (longitude)
+lon_max = -66.93457  # Eastern border of the US (longitude)
+
+# Coastal zone buffer region (you can adjust the buffer distance)
+coastal_buffer = 0.5  # Allow a buffer of 0.5 degrees around the coastline
+
+# Step 7: Filter hurricanes based on the coastal region
+hu_coastal_data = hu_data[
+    (hu_data['Latitude'].apply(lambda x: float(x[:-1]) if x[-1] == 'N' else -float(x[:-1]))
+     .between(lat_min + coastal_buffer, lat_max - coastal_buffer)) &
+    (hu_data['Longitude'].apply(lambda x: float(x[:-1]) if x[-1] == 'E' else -float(x[:-1]))
+     .between(lon_min + coastal_buffer, lon_max - coastal_buffer))
+]
+
+# Step 8: Find the top 5 hurricanes by maximum wind speed
+top_5_hurricanes = hu_coastal_data.groupby('Name')['Maximum Wind'].max().nlargest(5).index
+
+# Filter the data for the top 5 hurricanes
+top_5_data = hu_coastal_data[hu_coastal_data['Name'].isin(top_5_hurricanes)]
+
+# Step 9: Create a base map centered on the US region
+m = folium.Map(location=[37.5, -95], zoom_start=5)  # Center map around the US
+
+# Step 10: Define colors for each hurricane
+colors = ['red', 'blue', 'green', 'purple', 'orange']
+hurricane_colors = dict(zip(top_5_hurricanes, colors))
+
+# Initialize geolocator for getting city names from coordinates
+geolocator = Nominatim(user_agent="hurricane_map")
+
+# Function to get the nearest location name based on latitude and longitude
+def get_location_name(lat, lon):
+    try:
+        # Try to get the location name (city, town, or county) from coordinates
+        location = geolocator.reverse((lat, lon), language="en", exactly_one=True)
+        if location:
+            address = location.raw.get('address', {})
+            # Try to fetch different levels of location information (city, town, or county)
+            city_name = address.get('city', None)
+            town_name = address.get('town', None)
+            village_name = address.get('village', None)
+            county_name = address.get('county', None)
+
+            # If city, town, or village are not available, return the county if available
+            if city_name:
+                return city_name
+            elif town_name:
+                return town_name
+            elif village_name:
+                return village_name
+            elif county_name:
+                return county_name
+            else:
+                return "Unknown"
+        else:
+            return "Unknown"
+    except GeocoderTimedOut:
+        return "Unknown"  # In case of geocoding service timeout
+    except Exception as e:
+        return "Unknown"  # Catch any other exceptions
+
+# Step 11: Plot the full path of each of the top 5 hurricanes on the map
+for hurricane in top_5_hurricanes:
+    # Filter data for the current hurricane
+    hurricane_data = top_5_data[top_5_data['Name'] == hurricane]
+
+    # Create a list of coordinates for the path of the hurricane
+    path = []
+    for idx, row in hurricane_data.iterrows():
+        lat = row['Latitude']
+        lon = row['Longitude']
+
+        # Convert latitude and longitude from string to float
+        if lat[-1] == 'N':
+            lat = float(lat[:-1])  # Positive for Northern Hemisphere
+        elif lat[-1] == 'S':
+            lat = -float(lat[:-1])  # Negative for Southern Hemisphere
+        else:
+            lat = float(lat)  # If no direction, just convert to float (assuming no S/N)
+
+        if lon[-1] == 'E':
+            lon = float(lon[:-1])  # Positive for Eastern Hemisphere
+        elif lon[-1] == 'W':
+            lon = -float(lon[:-1])  # Negative for Western Hemisphere
+        else:
+            lon = float(lon)  # If no direction, just convert to float (assuming no E/W)
+
+        path.append([lat, lon])
+
+        # Get the nearest location name from the coordinates
+        location_name = get_location_name(lat, lon)
+
+        # Add a marker for the current position of the hurricane with a tooltip
+        folium.CircleMarker(
+            location=[lat, lon],
+            radius=5 + (row['Maximum Wind'] / 20),  # Adjust the radius based on wind speed
+            color=hurricane_colors[hurricane],
+            fill=True,
+            fill_color=hurricane_colors[hurricane],
+            fill_opacity=0.6,
+            popup=f"Name: {hurricane}<br>Year: {row['Year']}<br>Wind: {row['Maximum Wind']} knots",
+            tooltip=f"{hurricane} | Year: {row['Year']} | Wind: {row['Maximum Wind']} knots | Location: {location_name}"
+        ).add_to(m)
+
+    # Plot the full path as a line on the map
+    folium.PolyLine(path, color=hurricane_colors[hurricane], weight=3, opacity=0.7).add_to(m)
+
+# Step 12: Display the map
+# Save the map as an HTML file
+m.save('/content/full_path_top_5_hurricanes_with_nearest_location.html')
+
+# If you're in Jupyter Notebook or Colab, use:
+m
+
+```
 
 **References:**
 - https://chatgpt.com/
