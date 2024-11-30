@@ -1535,6 +1535,15 @@ m.save('/content/full_path_top_5_hurricanes_with_nearest_location.html')
 m
 
 ```
+| **Hurricane**        | **Max Wind Speed (Life Cycle)** | **Max Wind Speed at Landfall** | **City Most Affected** | **Population (Year of Hurricane)** | **Population (One Year After)** | **Fatalities** | **Economic Damage (2024 USD)** |
+|----------------------|---------------------------------|-------------------------------|------------------------|------------------------------------|----------------------------------|----------------|-------------------------------|
+| **Hurricane Carla (1961)** | 175 mph (280 km/h)             | 145 mph (233 km/h)             | Galveston, Texas       | ~46,000 (1961)                    | ~46,000 (1962)                   | 43             | $20 billion                    |
+| **Hurricane Camille (1969)** | 190 mph (305 km/h)             | 190 mph (305 km/h)             | Gulfport, Mississippi  | ~70,000 (1969)                    | ~75,000 (1970)                   | 256            | $21 billion                    |
+| **Hurricane Andrew (1992)** | 165 mph (266 km/h)             | 165 mph (266 km/h)             | Homestead, Florida     | ~35,000 (1992)                    | ~36,000 (1993)                   | 65             | $75 billion                    |
+| **Hurricane Katrina (2005)** | 175 mph (280 km/h)             | 125 mph (201 km/h)             | New Orleans, Louisiana | ~450,000 (2005)                   | ~230,000 (2006)                  | 1,836          | $186 billion                   |
+
+
+
 
 **References:**
 - https://chatgpt.com/
