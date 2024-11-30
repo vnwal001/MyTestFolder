@@ -2015,7 +2015,6 @@ fig.show()
 
 ```
 
-
 **References:**
 - https://chatgpt.com/
 - https://www.kaggle.com/datasets/noaa/hurricane-database/
