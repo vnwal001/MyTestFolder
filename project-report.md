@@ -1546,12 +1546,73 @@ m
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/citypop.png" alt="Comparism Before And After the Hurricane" width="1378" height="784">
 
 ```
+# Import necessary libraries
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load the dataset
+url = "https://raw.githubusercontent.com/vnwal001/MyTestFolder/refs/heads/main/hurricaneData.csv"  # Replace this with your actual CSV file path or URL
+data = pd.read_csv(url)
+
+# Step 1: Clean the Data
+# Remove leading/trailing spaces in all column names
+data.columns = data.columns.str.strip()
+
+# Remove commas from the numeric columns before converting to numeric
+data['Population Before Hurricane'] = data['Population Before Hurricane'].replace({',': ''}, regex=True)
+data['Population 1 Yr After'] = data['Population 1 Yr After'].replace({',': ''}, regex=True)
+data['Number of Fatalities'] = data['Number of Fatalities'].replace({',': ''}, regex=True)
+data['Speed at Landfall (mph)'] = data['Speed at Landfall (mph)'].replace({',': ''}, regex=True)
+
+# Convert all columns to the correct data type (numeric)
+data['Population Before Hurricane'] = pd.to_numeric(data['Population Before Hurricane'], errors='coerce')
+data['Population 1 Yr After'] = pd.to_numeric(data['Population 1 Yr After'], errors='coerce')
+data['Number of Fatalities'] = pd.to_numeric(data['Number of Fatalities'], errors='coerce')
+data['Speed at Landfall (mph)'] = pd.to_numeric(data['Speed at Landfall (mph)'], errors='coerce')
+
+# Handle missing values by replacing with the mean or median, or dropping rows
+data = data.dropna(subset=['Population Before Hurricane', 'Population 1 Yr After', 'Number of Fatalities', 'Speed at Landfall (mph)'])
+
+# Step 2: Reshape the data for grouped bar plot (melt the data)
+data_melted = data.melt(id_vars=['Hurricane/City'], 
+                        value_vars=['Population Before Hurricane', 'Population 1 Yr After', 'Number of Fatalities', 'Speed at Landfall (mph)'],
+                        var_name='Metric', value_name='Value')
+
+# Step 3: Create a grouped bar plot
+plt.figure(figsize=(14, 8))
+ax = sns.barplot(x='Hurricane/City', y='Value', hue='Metric', data=data_melted, palette='Set2')
+
+# Step 4: Set logarithmic scale for y-axis
+plt.yscale('log')
+
+# Step 5: Add bar labels to the bars
+for p in ax.patches:
+    ax.annotate(f'{p.get_height():,.0f}',  # Display the height of each bar
+                (p.get_x() + p.get_width() / 2., p.get_height()),  # Position label at the top of each bar
+                ha='center', va='center',  # Align the label
+                fontsize=10, color='black',  # Label styling
+                xytext=(0, 5), textcoords='offset points')  # Position the label slightly above the bar
+
+# Step 6: Customize the plot
+plt.title('Comparison of Hurricane Impacts on Cities (Log Scale)', fontsize=16)
+plt.xlabel('Hurricane/City', fontsize=12)
+plt.ylabel('Log(Value)', fontsize=12)
+plt.xticks(rotation=90)  # Rotate x-axis labels to make them readable
+plt.legend(title='Metric', bbox_to_anchor=(1.05, 1), loc='upper left')  # Move the legend to the side
+plt.tight_layout()  # Adjust layout to prevent clipping
+
+# Show the plot
+plt.show()
+
 ```
 
 ```
 DEDUCTIONS
-
-
+Hurricane Katrina had the most fatalties and economic devastation, hence a rapid drop in the popultion of the city affected the most. I should note that by this, having the highest wind speed does not translate to being
+the most devastation hurricane.
+While wind speed is an important factor in determining the strength of a hurricane, other elements like storm surge, flooding, storm size, infrastructure weaknesses, and response efforts play critical roles in determining the overall devastation. Hurricane Katrina's impact was driven largely by the storm surge and flooding, particularly in New Orleans, and the failure of critical infrastructure, making it one of the deadliest and most costly hurricanes in history despite its lower wind speed at landfall compared to other storms on the list.
+Yes hurricane devastion causing population migration but it has to be a very severe devastation. People will normally stay back and rebuld after a hurricane. 
 
 ```
 
