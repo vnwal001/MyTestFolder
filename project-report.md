@@ -1378,7 +1378,7 @@ In short, the more methodical trend of increasing hurricane wind speeds in the P
 
 ```
 
-
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/hu_path.png" alt="Average Pacific Max Wind Speed" width="1350" height="819">
 
 
 **References:**
