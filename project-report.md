@@ -1344,28 +1344,17 @@ The general hurricane windspeed average has relatively been the same from 1965 t
 
 
 
-<img src="https://github.com/vnwal001/MyTestFolder/blob/main/HF1.png" alt="Pacific Hurricane Frequency" width="910" height="525">
+# Hurricane Data Boxplot Distribution Dashboard
+
+## Comparison of Pacific vs. Atlantic Hurricanes
+
+### 1. Hurricane Frequency Comparison
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/combined_frequency.png" alt="Pacific vs Atlantic" width="450" height="250" style="display: inline-block;">
+
+### 2. Maximum Wind Speed Comparison
+<img src="https://github.com/vnwal001/MyTestFolder/blob/main/combined_windSpeed.png" alt="Pacific vs Atlantic" width="450" height="250" style="display: inline-block;">
+
   
-- *Discuss the advantages and disadvantages of each type of distribution chart idiom for showing these distributions (talk specifically about these distributions, not just their advantages and disadvantages in general)*
-- Answer:
-```
-Advantages
-1) This Boxplots have provide a concise summary of the dataset by displaying the median, quartiles, and potential outliers, making it easy to grasp the distribution characteristics at a glance.
-2) It has helped to facilitate comparisons between different categories (in this case, different years), highlighting differences in central tendency and variability.
-3) This Boxplot has  effectively identified outliers, which can be crucial for understanding anomalies in the data.
-
-Disadvantages
-1) It does convey information about the number of data points or the specific values
-2) In this box plot you cannot clearly tell if outlier points overlap
-
-```
-
-- *Name 1-2 simple observations you can draw from each chart*
-- Answer:
-- 1) Every year compared had state population outliers
-- 2) The median population does not change by so much, yes there is a steady increase but not by much across the years compared. 
-
-
 
 
 #### 2) Histogram: Show the distribution of the population of all states in one of the years (your chart title must indicate which year) your histogram should use a reasonable bin size for the data
