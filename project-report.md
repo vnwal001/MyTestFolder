@@ -46,6 +46,14 @@
 #### ATLANTIC HURRICANES FREQUENCIES
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/HF2.png" alt="Atlantic Hurricane Frequency" width="910" height="525">
 
+Idiom: Bar Chart / Mark: Line
+
+| Data: Attribute | Data: Attribute Type  | Encode: Channel | 
+| --- | --- | --- |
+| Year | key, categorical | horizontal spatial region (x-axis) |
+| Frequency | value, quantitative | vertical spatial region (y-axis) |
+
+
 - *Description of the chart and how is was created (explain the code you used and include code snippets)*
 - Answer: Code Snippet and Explanation
 
