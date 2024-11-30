@@ -1350,10 +1350,9 @@ The general hurricane windspeed average has relatively been the same from 1965 t
 
 
 | Atlantic vs Pacific Frequency | Atlantic vs Pacific Max Wind Speed |
-|--------------------------|------------------------|
+|-------------------------------|------------------------------------|
 | ![ Atlantic vs Pacific Frequency](img src="https://github.com/vnwal001/MyTestFolder/blob/main/combined_frequency.png) | ![Atlantic vs Pacific Max Wind Speed](<img src="https://github.com/vnwal001/MyTestFolder/blob/main/combined_windSpeed.png) |
 
-  
 
 
 #### 2) Histogram: Show the distribution of the population of all states in one of the years (your chart title must indicate which year) your histogram should use a reasonable bin size for the data
