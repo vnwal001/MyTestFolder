@@ -42,8 +42,9 @@
   
 
 #### SECTION 2 QUESTION A ANSWERS 
-#### ANALYZING HURRICANE FREQUENCIES
-#### ATLANTIC HURRICANES FREQUENCIES
+<h4 style="text-align: center;">ANALYZING HURRICANE FREQUENCIES</h4>
+
+<h4 style="text-align: center;"> ATLANTIC HURRICANES FREQUENCIES</h4>
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/HF2.png" alt="Atlantic Hurricane Frequency" width="910" height="525">
 
 Idiom: Bar Chart / Mark: Line
@@ -145,7 +146,8 @@ fig.update_layout(
 fig.show()
 ```
 
-####  THE LAST 50 YEARS FROM 2015 COMPARISM
+
+<h4 style="text-align: center;"> THE LAST 50 YEARS FROM 2015 COMPARISM</h4>
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/atav.png" alt="Average Atlantic Hurricane Frequency" width="995" height="525">
 
@@ -240,7 +242,9 @@ fig.show()
 
 ```
 
-#### BOXPLOT OF THE LAST 50 YEARS FROM 2015 COMPARISM
+
+
+<h4 style="text-align: center;"> BOXPLOT OF THE LAST 50 YEARS FROM 2015 COMPARISM</h4>
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/atbox.png" alt="Atlantic Hurricane Frequency" width="995" height="525">
 
@@ -369,7 +373,7 @@ fig.show()
 
 
 
-#### *THE HURRICANE FREQUENCY STORY OF THE LAST 50 YEARS FROM 2015 OVER THE ATLANTIC OCEAN*
+<h4 style="text-align: center;"> *THE HURRICANE FREQUENCY STORY OF THE LAST 50 YEARS FROM 2015 OVER THE ATLANTIC OCEAN*</h4>
 
 ```
 On the look of my first line plot, I noticed that a slight increase in the hurricane frequency over the past 50 years but,
@@ -385,7 +389,7 @@ By doing this I can clearly compare both time periods to verify my suspicion. In
 
 
 
-#### PACIFIC HURRICANES  FREQUENCIES
+<h4 style="text-align: center;">PACIFIC HURRICANES  FREQUENCIES</h4>
 
 - *Description of the chart and how is was created (explain the code you used and include code snippets)*
 - Answer: Code Snippet and Explanation
@@ -522,7 +526,7 @@ fig.show()
 
 ```
 
-####  THE LAST 50 YEARS FROM 2015 AVERAGE PACIFIC HURRICANE COMPARISM 
+<h4 style="text-align: center;"> THE LAST 50 YEARS FROM 2015 AVERAGE PACIFIC HURRICANE COMPARISM </h4>
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/pcav.png" alt="Pacific Atlantic Hurricane Frequency" width="995" height="525">
 
@@ -618,8 +622,8 @@ fig.show()
 
 ```
 
+<h4 style="text-align: center;"> THE LAST 50 YEARS FROM 2015 AVERAGE PACIFIC HURRICANE COMPARISM  </h4>
 
-####  THE LAST 50 YEARS FROM 2015 AVERAGE PACIFIC HURRICANE COMPARISM 
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/pcbox.png" alt="Average Pacific Hurricane Frequency" width="995" height="525">
 
@@ -745,8 +749,8 @@ fig.show()
 
 ```
 
+<h4 style="text-align: center;"> *THE HURRICANE FREQUENCY STORY OF THE LAST 50 YEARS FROM 2015 OVER THE PACIFIC OCEAN*  </h4>
 
-#### *THE HURRICANE FREQUENCY STORY OF THE LAST 50 YEARS FROM 2015 OVER THE PACIFIC OCEAN*
 
 ```
 Just like the data from the atlantic ocean, I wanted to make sense of the peaks and valleys in frequency trend plot so I decided to break my data in two 25 year time period.
@@ -758,9 +762,11 @@ By doing this I can clearly compare both time periods to verify what's actually 
 
 ```
 #### SECTION 2 B QUESTION A ANSWERS
-#### ANALYZING HURRICANE MAX WIND SPEEDS
 
-#### ATLANTIC HURRICANES MAX WIND SPEEDS
+<h4 style="text-align: center;"> ANALYZING HURRICANE MAX WIND SPEEDS</h4>
+
+<h4 style="text-align: center;"> ATLANTIC HURRICANES MAX WIND SPEEDS</h4>
+
 
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/atws.png" alt="Atlantic Hurricane Max Wind" width="910" height="525">
@@ -864,8 +870,8 @@ fig.show()
 
 ```
 
+<h4 style="text-align: center;"> ATLANTIC HURRICANES AVERAGE MAX WIND SPEEDS FOR THE LAST 50 YEARS FROM 2015</h4>
 
-#### ATLANTIC HURRICANES AVERAGE MAX WIND SPEEDS FOR THE LAST 50 YEARS FROM 2015
 
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/atavwp.png" alt="Atlantic Hurricane Max Wind" width="910" height="525">
@@ -961,7 +967,8 @@ fig.show()
 
 ```
 
-#### ATLANTIC HURRICANES MAX WIND SPEEDS BOX PLOT 
+<h4 style="text-align: center;"> ATLANTIC HURRICANES MAX WIND SPEEDS BOX PLOT</h4>
+ 
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/atavwsbox.png" alt="Pacific Hurricane Frequency" width="910" height="525">
 
@@ -1043,8 +1050,8 @@ fig.update_layout(
 fig.show()
 
 ```
+<h4 style="text-align: center;"> *THE HURRICANE MAX WIND SPEED STORY OF THE LAST 50 YEARS FROM 2015 OVER THE ATLANTIC OCEAN*</h4>
 
-#### *THE HURRICANE MAX WIND SPEED STORY OF THE LAST 50 YEARS FROM 2015 OVER THE ATLANTIC OCEAN*
 
 ```
 I wanted to make sense of the peaks and valleys in frequency trend plot so I decided to break my data in two 25 year time period.
@@ -1055,10 +1062,11 @@ By doing this I can clearly compare both time periods to verify what's actually 
 
 ```
 
+<h4 style="text-align: center;"> ANALYZING PACIFIC HURRICANES MAX WIND SPEEDS</h4>
 
-#### ANALYZING PACIFIC HURRICANES MAX WIND SPEEDS
+<h4 style="text-align: center;"> PACIFIC HURRICANES MAX WIND SPEEDS</h4>
 
-#### PACIFIC HURRICANES MAX WIND SPEEDS
+ 
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/pcws.png" alt="Pacific Max Wind Speed" width="910" height="525">
 
@@ -1193,8 +1201,7 @@ fig.update_layout(
 fig.show()
 
 ```
-
-#### PACIFIC HURRICANES MAX WIND SPEEDS BAR PLOT OF THE LAST 50 YEARS FROM 2025
+<h4 style="text-align: center;"> PACIFIC HURRICANES MAX WIND SPEEDS BAR PLOT OF THE LAST 50 YEARS FROM 2015</h4>
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/pcavws.png" alt="Average Pacific Max Wind Speed" width="910" height="525">
 
@@ -1289,7 +1296,8 @@ fig.show()
 
 ```
 
-#### PACIFIC HURRICANES MAX WIND SPEEDS BOX PLOT PLOT DISTRIBUTION OF THE LAST 50 YEARS FROM 2025
+
+<h4 style="text-align: center;"> PACIFIC HURRICANES MAX WIND SPEEDS BOX PLOT PLOT DISTRIBUTION OF THE LAST 50 YEARS FROM 2015</h4>
 
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/pcavwsbox.png" alt="Pacific Max Wind Speed Box " width="910" height="525">
 
@@ -1370,7 +1378,8 @@ fig.show()
 
 ```
 
-#### *THE HURRICANE MAX WIND SPEED STORY OF THE LAST 50 YEARS FROM 2015 OVER THE PACIFIC OCEAN*
+
+<h4 style="text-align: center;"> *THE HURRICANE MAX WIND SPEED STORY OF THE LAST 50 YEARS FROM 2015 OVER THE PACIFIC OCEAN*</h4>
 
 ```
 I wanted to make sense of the peaks and valleys in frequency trend plot so I decided to break my data in two 25 year time period.
@@ -1415,7 +1424,7 @@ The general hurricane windspeed average has relatively been the same from 1965 t
 
 
 
-#### ATLANTIC VS PACIFIC HURRICANES
+#### ATLANTIC VS PACIFIC HURRICANES 
 
 
 ## Atlantic vs Pacific Hurricane Frequency
@@ -1446,8 +1455,8 @@ The general hurricane windspeed average has relatively been the same from 1965 t
 
 
 
+<h4 style="text-align: center;"> *ATLANTIC VS PACIFIC HURRICANE MAX WIND SPEED AND FREQUENCY STORY*</h4>
 
-#### *ATLANTIC VS PACIFIC HURRICANE MAX WIND SPEED AND FREQUENCY STORY*
 
 ```
 Comparing the charts over the past 50 years from 2015, this is what I discovered concerning hurricane frequencies and wind speeds across the pacific vs the atlantic:
@@ -1475,7 +1484,8 @@ In short, the more methodical trend of increasing hurricane wind speeds in the P
 - I plotted the path of these selected hurricanes, I focussed on the hurricane path as it got closer to the U.S mainland and into the U.S. mainland.  
 
 ```
-##### TOP 5 HURRICANES PATHS AROUND AND INTO US MAINLAND
+<h4 style="text-align: center;"> TOP 5 HURRICANES PATHS AROUND AND INSIDE US MAINLAND</h4>
+
 <img src="https://github.com/vnwal001/MyTestFolder/blob/main/hu_path.png" alt="Average Pacific Max Wind Speed" width="1350" height="819">
 
 **Idiom: Map / Mark: CircleMarker, PolyLine**
